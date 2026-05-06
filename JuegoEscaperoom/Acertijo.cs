@@ -21,6 +21,7 @@ namespace JuegoEscaperoom
             public string NombreObjeto { get; protected set; } = "";
             public string ItemRequerido { get; protected set; } = "";
             public string ItemRecompensa { get; protected set; } = "";
+            public Rectangle Area { get; set; }
             public bool Resuelto { get; private set; } = false;
             public int Intentos { get; private set; } = 0;
             public Habitacion? HabitacionDestino { get; protected set; }

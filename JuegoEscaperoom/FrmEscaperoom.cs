@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -39,8 +40,18 @@ namespace JuegoEscaperoom
         }
         private void CargarHabitacion(Habitacion hab)
         {
+            Image fondo = CargarImagenFondo(hab);
+
+            if (fondo == null)
+            {
+                MessageBox.Show($"¡Error de Recursos! No se encontró la imagen para: {hab}",
+                                "Error Crítico", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             var acertijos = BancoPreguntas.ObtenerAcertijosPorHabitacion(hab);
-            escenaActual = new EscenaHabitacion(CargarImagenFondo(hab));
+
+            escenaActual = new EscenaHabitacion(fondo);
 
             foreach (var acertijo in acertijos)
             {
@@ -52,12 +63,11 @@ namespace JuegoEscaperoom
                 {
                     acertijo.AlResolver += (itemRecompensa) =>
                     {
-                        ManejarExitoAcertijo(acertijo, itemRecompensa);
+                        ManejarExitoAcertijo(acertijo);
                     };
                 }
 
-                Rectangle area = MapaCoordenadas.ObtenerArea(hab, acertijo.NombreObjeto);
-                escenaActual.RegistrarObjeto(acertijo, area);
+                escenaActual.RegistrarObjeto(acertijo, acertijo.Area);
             }
 
             pbxEscena.Image = escenaActual.Fondo;
@@ -65,7 +75,6 @@ namespace JuegoEscaperoom
             estado.CambiarHabitacion(hab);
             ActualizarInventarioVisual();
         }
-
         private void CargarPartida()
         {
             var guardado = PersistenciaPartida.CargarPartida();
@@ -84,27 +93,18 @@ namespace JuegoEscaperoom
             MostrarDialogoAnimado("Retomando donde lo dejé...\nAquí están mis notas.");
         }
 
-        private void ManejarExitoAcertijo(Acertijo acertijo, string recompensa)
+        private void ManejarExitoAcertijo(Acertijo acertijo)
         {
-            estado.RegistrarObjetoResuelto(acertijo.NombreObjeto);
-            estado.SumarPuntos(100);
+            bool huboCambioDeHabitacion = estado.ProcesarVictoria(acertijo);
 
-            if (!string.IsNullOrEmpty(recompensa))
+            if (!string.IsNullOrEmpty(acertijo.ItemRecompensa))
             {
-                estado.AgregarAlInventario(recompensa);
-                MostrarDialogoAnimado($"¡He encontrado: {recompensa}!");
-                ActualizarInventarioVisual();
+                MostrarDialogoAnimado($"¡He encontrado: {acertijo.ItemRecompensa}!");
             }
-            else
-            {
-                MostrarDialogoAnimado($"He resuelto el acertijo: {acertijo.NombreObjeto}.");
-            }
-
-            // Lógica de navegación: Si el acertijo lleva a otra habitación
-            if (acertijo.HabitacionDestino.HasValue)
+            if (huboCambioDeHabitacion)
             {
                 MostrarDialogoAnimado($"¡Progreso! Se ha desbloqueado el acceso a: {acertijo.HabitacionDestino}");
-                CargarHabitacion(acertijo.HabitacionDestino.Value);
+                CargarHabitacion(estado.HabitacionActual);
             }
 
             // Caso especial de victoria final
@@ -113,35 +113,38 @@ namespace JuegoEscaperoom
                 MessageBox.Show("¡La puerta de salida se ha desbloqueado! ¡He escapado!", "¡Felicidades!");
                 ReiniciarJuego();
             }
-
+            ActualizarInventarioVisual();
             ActualizarUI();
             cambiosSinGuardar = true;
         }
 
         private void pbxEscena_MouseClick(object sender, MouseEventArgs e)
         {
-            var acertijo = escenaActual.GetAcertijoEnPunto(e.Location);
+            var acertijo = escenaActual.GetAcertijoEnPunto(e.Location, pbxEscena.Size, pbxEscena.Image);
 
-            if (acertijo != null)
-            {
-                if (acertijo.Resuelto)
+            if (acertijo == null) return;
+
+            if (acertijo.Resuelto)
                 {
                     MostrarDialogoAnimado($"Ya revisé {acertijo.NombreObjeto}. No hay nada más aquí.");
                     return;
                 }
 
-                if (!string.IsNullOrEmpty(acertijo.ItemRequerido) && !estado.Inventario.Contains(acertijo.ItemRequerido))
+               if (!estado.PuedeResolver(acertijo))
                 {
-                    MostrarDialogoAnimado($"Parece bloqueado... Necesito [{acertijo.ItemRequerido}].");
+                    MostrarDialogoAnimado($"Parece bloqueado... Necesito [{acertijo.ItemRequerido}] para esto.");
+
                     return;
                 }
 
                 using (var frm = new FrmPregunta(acertijo))
                 {
-                    frm.ShowDialog();
+                   if (frm.ShowDialog() == DialogResult.OK)
+                   {
+                       ManejarExitoAcertijo(acertijo);
+                   }
                 }
             }
-        }
 
         private Image CargarImagenFondo(Habitacion hab)
         {
@@ -186,33 +189,8 @@ namespace JuegoEscaperoom
 
         private void ActualizarInventarioVisual()
         {
-            flpInventario.Controls.Clear();
-
-            foreach (string nombreItem in estado.Inventario)
-            {
-                PictureBox icono = new PictureBox
-                {
-                    Size = new Size(50, 50),
-                    SizeMode = PictureBoxSizeMode.Zoom,
-                    Margin = new Padding(5),
-                    Cursor = Cursors.Help,
-                    BackColor = Color.FromArgb(50, 50, 50)
-                };
-
-                var img = (Image)Properties.Resources.ResourceManager.GetObject(nombreItem);
-
-                if (img != null)
-                {
-                    icono.Image = img;
-                }
-
-                ToolTip tip = new ToolTip();
-                tip.SetToolTip(icono, nombreItem);
-
-                flpInventario.Controls.Add(icono);
-            }
+            InterfazHelper.ActualizarInventario(flpInventario, estado.Inventario);
         }
-
         private void ActualizarUI()
         {
             lblPuntaje.Text = $"Puntaje: {estado.Puntaje}";

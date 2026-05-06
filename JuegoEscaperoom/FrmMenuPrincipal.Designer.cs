@@ -38,11 +38,11 @@
             // lblTitulo
             // 
             lblTitulo.AutoSize = true;
-            lblTitulo.Font = new Font("Press Start 2P", 24F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            lblTitulo.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             lblTitulo.ForeColor = Color.FromArgb(20, 10, 64);
-            lblTitulo.Location = new Point(26, 26);
+            lblTitulo.Location = new Point(92, 34);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(344, 32);
+            lblTitulo.Size = new Size(256, 46);
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "Escaperoom";
             // 
@@ -51,11 +51,11 @@
             lblSubtitulo.AutoSize = true;
             lblSubtitulo.Font = new Font("MS UI Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblSubtitulo.ForeColor = SystemColors.GrayText;
-            lblSubtitulo.Location = new Point(106, 60);
+            lblSubtitulo.Location = new Point(180, 80);
             lblSubtitulo.Name = "lblSubtitulo";
-            lblSubtitulo.Size = new Size(184, 15);
+            lblSubtitulo.Size = new Size(88, 19);
             lblSubtitulo.TabIndex = 1;
-            lblSubtitulo.Text = "¡Ayuda!, no he dormido nada";
+            lblSubtitulo.Text = "No sé bro";
             // 
             // btnNueva
             // 
@@ -63,11 +63,12 @@
             btnNueva.FlatAppearance.BorderColor = Color.White;
             btnNueva.FlatAppearance.BorderSize = 0;
             btnNueva.FlatStyle = FlatStyle.Popup;
-            btnNueva.Font = new Font("Dogica", 9F);
+            btnNueva.Font = new Font("Microsoft Sans Serif", 9F);
             btnNueva.ForeColor = SystemColors.ControlLightLight;
-            btnNueva.Location = new Point(112, 100);
+            btnNueva.Location = new Point(128, 133);
+            btnNueva.Margin = new Padding(3, 4, 3, 4);
             btnNueva.Name = "btnNueva";
-            btnNueva.Size = new Size(168, 40);
+            btnNueva.Size = new Size(192, 53);
             btnNueva.TabIndex = 2;
             btnNueva.Text = "Nueva Partida";
             btnNueva.UseVisualStyleBackColor = false;
@@ -78,11 +79,12 @@
             btnCargar.BackColor = Color.Maroon;
             btnCargar.FlatAppearance.BorderColor = Color.White;
             btnCargar.FlatStyle = FlatStyle.Popup;
-            btnCargar.Font = new Font("Dogica", 9F);
+            btnCargar.Font = new Font("Microsoft Sans Serif", 9F);
             btnCargar.ForeColor = SystemColors.ControlLightLight;
-            btnCargar.Location = new Point(112, 149);
+            btnCargar.Location = new Point(128, 199);
+            btnCargar.Margin = new Padding(3, 4, 3, 4);
             btnCargar.Name = "btnCargar";
-            btnCargar.Size = new Size(168, 40);
+            btnCargar.Size = new Size(192, 53);
             btnCargar.TabIndex = 3;
             btnCargar.Text = "Cargar Partida";
             btnCargar.UseVisualStyleBackColor = false;
@@ -93,11 +95,12 @@
             btnSalir.BackColor = Color.Maroon;
             btnSalir.FlatAppearance.BorderColor = Color.White;
             btnSalir.FlatStyle = FlatStyle.Popup;
-            btnSalir.Font = new Font("Dogica", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSalir.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSalir.ForeColor = SystemColors.ControlLightLight;
-            btnSalir.Location = new Point(112, 198);
+            btnSalir.Location = new Point(128, 264);
+            btnSalir.Margin = new Padding(3, 4, 3, 4);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(168, 40);
+            btnSalir.Size = new Size(192, 53);
             btnSalir.TabIndex = 4;
             btnSalir.Text = "Salir";
             btnSalir.UseVisualStyleBackColor = false;
@@ -105,16 +108,17 @@
             // 
             // FrmMenuPrincipal
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.GhostWhite;
-            ClientSize = new Size(398, 263);
+            ClientSize = new Size(455, 351);
             Controls.Add(btnSalir);
             Controls.Add(btnCargar);
             Controls.Add(btnNueva);
             Controls.Add(lblSubtitulo);
             Controls.Add(lblTitulo);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FrmMenuPrincipal";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;

@@ -1,7 +1,9 @@
-﻿using JuegoEscaperoom.JuegoEscaperoomS;
+﻿using JuegoEscaperoom.EscapeRoomPOO;
+using JuegoEscaperoom.JuegoEscaperoomS;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -40,16 +42,37 @@ namespace JuegoEscaperoom
             if (!ObjetosResueltos.Contains(nombreObjeto))
                 ObjetosResueltos.Add(nombreObjeto);
         }
-
+        public bool PuedeResolver(Acertijo acertijo)
+        {
+            if (string.IsNullOrEmpty(acertijo.ItemRequerido)) return true;
+            return Inventario.Contains(acertijo.ItemRequerido);
+        }
         public void AgregarAlInventario(string item)
         {
             if (!string.IsNullOrEmpty(item) && !Inventario.Contains(item))
                 Inventario.Add(item);
         }
-
         public void CambiarHabitacion(Habitacion nuevaHabitacion)
         {
             HabitacionActual = nuevaHabitacion;
+        }
+        public bool ProcesarVictoria(Acertijo acertijo)
+        {
+            RegistrarObjetoResuelto(acertijo.NombreObjeto);
+            SumarPuntos(100); 
+
+        if (!string.IsNullOrEmpty(acertijo.ItemRecompensa)) 
+        {
+                AgregarAlInventario(acertijo.ItemRecompensa);
+        }
+
+            if (acertijo.HabitacionDestino.HasValue)
+            {
+                CambiarHabitacion(acertijo.HabitacionDestino.Value);
+                 return true;
+            }
+
+            return false;
         }
     }
 }

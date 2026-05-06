@@ -25,10 +25,21 @@ namespace JuegoEscaperoom
             _mapaInteractivo[acertijo] = area;
         }
 
-        public Acertijo GetAcertijoEnPunto(Point punto)
+        public Acertijo GetAcertijoEnPunto(Point puntoClic, Size tamañoControl, Image imagenOriginal)
         {
+            if (imagenOriginal == null || tamañoControl.Width == 0 || tamañoControl.Height == 0)
+                return null;
+
+            float factorX = (float)imagenOriginal.Width / tamañoControl.Width;
+            float factorY = (float)imagenOriginal.Height / tamañoControl.Height;
+
+            Point puntoReal = new Point((int)(puntoClic.X * factorX), (int)(puntoClic.Y * factorY));
+
             foreach (var kvp in _mapaInteractivo)
-                if (kvp.Value.Contains(punto)) return kvp.Key;
+            {
+                if (kvp.Value.Contains(puntoReal))
+                    return kvp.Key;
+            }
             return null;
         }
 

@@ -35,9 +35,10 @@ namespace JuegoEscaperoom
                 //acertijo aleatorio para la caja fuerte
                 var acertijosCaja = new List<Acertijo>
             {
-                new AcertijoNumerico("Caja Fuerte", "Si 1=5, 2=25, 3=125, ¿cuánto es 5?", 5,"No te compliques, lee la primera igualdad.", "Nota con Manchas"),
-
+                new AcertijoNumerico("Caja Fuerte", "Si 1=5, 2=25, 3=125, ¿cuánto es 5?", 5,"No te compliques, lee la primera igualdad.", "Nota con Manchas")
+                { Area = new Rectangle(620, 310, 50, 40) },
                 new AcertijoNumerico("Caja Fuerte", "Código de 4 dígitos: El primero es la mitad del segundo, el tercero es el doble del cuarto. La suma es 15. (Pista: 2463)", 2463, "Prueba con el número de la pista.", "Nota con Manchas")
+                { Area = new Rectangle(620, 310, 50, 40) }
             };
 
                 var cajaFuerte = acertijosCaja[_rng.Next(acertijosCaja.Count)];
@@ -50,8 +51,10 @@ namespace JuegoEscaperoom
                     "Mira la nota de tu inventario de cabeza",
                     "Nota con Manchas",
                     "Llave de la Cocina",
-                    Habitacion.Cocina
-                );
+                    Habitacion.Cocina)
+                
+                { Area = new Rectangle(20, 250, 50, 40) };
+                
 
                 return new List<Acertijo> { cajaFuerte, computadora };
             }
@@ -67,14 +70,14 @@ namespace JuegoEscaperoom
                     3,
                     "Cuenta los espacios de izquierda a derecha.",
                     "Fusible Gastado"
-                ),
-
+                )
+                    {Area = new Rectangle(450, 240, 144, 61) },
 
                 new AcertijoTexto("Grifo goteante", "Limpia el pecado, pero nunca la memoria. ¿Qué fluye aquí que la vida entrega y quita?", "Agua","Es un elemento vital.", "Fusible Gastado", habitacionDestino: Habitacion.Biblioteca
                 )
-            };
+                { Area = new Rectangle(100, 280, 40, 40) }
+                };
             }
-
             private static List<Acertijo> GenerarBiblioteca()
             {
                 return new List<Acertijo>
@@ -86,7 +89,8 @@ namespace JuegoEscaperoom
                     
                     "Es una señal de auxilio internacional.",
                     "", "Tijeras Oxidadas"
-                ),
+                )
+                { Area = new Rectangle(330, 40, 83, 37) },
 
                 new AcertijoTexto(
                     "Libro de Cuero",
@@ -97,6 +101,7 @@ namespace JuegoEscaperoom
                     "Tijeras Oxidadas",
                     "Llave Maestra", Habitacion.Salida
                 )
+                { Area = new Rectangle(610, 110, 50, 40) }
             };
             }
 
@@ -113,6 +118,7 @@ namespace JuegoEscaperoom
                     "Llave Maestra",
                     ""
                     )
+                      { Area = new Rectangle(252, 29, 521, 325) }
                 };
             
             }
