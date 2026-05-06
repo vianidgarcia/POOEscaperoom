@@ -27,7 +27,7 @@ namespace JuegoEscaperoom
             "Ahora estoy aquí. Solo.",
             "Las puertas están bloqueadas. Alguien — o algo — las cerró.",
             "Tendré que resolver los acertijos que me dejaron si quiero salir.",
-            "Mi nombre... no lo recuerdo pero tengo que escapar de esta casa..."
+            "Mi nombre es Tilin. Y voy a escapar de esta casa."
         };
 
         private int dialogoActual = 0;
