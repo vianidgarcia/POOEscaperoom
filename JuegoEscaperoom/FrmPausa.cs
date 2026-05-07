@@ -7,61 +7,45 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace JuegoEscaperoom
 {
+
     public partial class FrmPausa : Form
     {
-        private readonly EstadoJuego estado;
-        private readonly Form frmPadre;
+        private readonly EstadoJuego _estado;
+        public event Action SolicitarSalida;
 
-        // Propiedad para que el FrmEscapeRoom sepa si hubo un guardado exitoso
         public bool PartidaGuardada { get; private set; } = false;
 
-        public FrmPausa(EstadoJuego estado, Form frmPadre)
+        public FrmPausa(EstadoJuego estado)
         {
-            this.estado = estado;
-            this.frmPadre = frmPadre;
+            _estado = estado;
             InitializeComponent();
-            ConfigurarEsteticaPausa();
+            ConfigurarVista();
         }
 
-        private void ConfigurarEsteticaPausa()
+        private void ConfigurarVista()
         {
-            lblPuntaje.Text = $"Puntos de Lógica: {estado.Puntaje}";
-            lblHabitacion.Text = $"Ubicación: {estado.HabitacionActual}";
-
-            // Actualizar lista de inventario rápida
-            ActualizarMiniInventario();
-        }
-
-        private void ActualizarMiniInventario()
-        {
-            if (estado.Inventario.Count == 0)
-            {
-                lblInventarioResumen.Text = "Sin pistas u objetos.";
-            }
-            else
-            {
-                lblInventarioResumen.Text = "Objetos: " + string.Join(" | ", estado.Inventario);
-            }
+            lblPuntaje.Text = $"Puntos de Lógica: {_estado.Puntaje}";
+            lblHabitacion.Text = $"Ubicación: {_estado.HabitacionActual}";
+            lblInventarioResumen.Text = _estado.Inventario.Count == 0
+                ? "Sin pistas u objetos."
+                : "Objetos: " + string.Join(" | ", _estado.Inventario);
         }
 
         private void btnContinuar_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            DialogResult = DialogResult.OK;
+            Close();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
             {
-                // Invocamos el servicio de guardado que ya tienes
-                PersistenciaPartida.GuardarPartida(estado);
-
+                PersistenciaPartida.GuardarPartida(_estado);
                 PartidaGuardada = true;
-                MessageBox.Show("Progreso de la investigación guardado.", "Sistema",
+                MessageBox.Show("Progreso guardado.", "Sistema",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
@@ -73,15 +57,12 @@ namespace JuegoEscaperoom
 
         private void btnSalirMenu_Click(object sender, EventArgs e)
         {
-            var res = MessageBox.Show("¿Seguro que quieres volver al menú? Se perderá el progreso no guardado.",
+            var res = MessageBox.Show(
+                "¿Seguro que quieres volver al menú? Se perderá el progreso no guardado.",
                 "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (res == DialogResult.Yes)
-            {
-                // Cerramos la pausa y forzamos el cierre del juego para volver al menú principal
-                this.DialogResult = DialogResult.Abort;
-                frmPadre.Close();
-            }
+                SolicitarSalida?.Invoke(); // El padre decide cómo cerrarse.
         }
     }
 }

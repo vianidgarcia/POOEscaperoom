@@ -13,7 +13,6 @@ namespace JuegoEscaperoom
     {
         public abstract class Acertijo : IResoluble
         {
-            public event Action<string> AlResolver;
 
             // Propiedades públicas (Lectura)
             public string Pregunta { get; protected set; } = "";
@@ -30,13 +29,8 @@ namespace JuegoEscaperoom
             public bool Resolver(string respuesta)
             {
                 Intentos++;
-                if (ValidarRespuesta(respuesta))
-                {
-                    Resuelto = true;
-                    AlResolver?.Invoke(ItemRecompensa);
-                    return true;
-                }
-                return false;
+                Resuelto = ValidarRespuesta(respuesta);
+                return Resuelto;
             }
 
             public void MarcarComoResuelto()

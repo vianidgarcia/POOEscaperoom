@@ -4,55 +4,41 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace JuegoEscaperoom
 {
     public static class PersistenciaPartida
     {
-        private static readonly string rutaGuardado = Path.Combine(
+        private static readonly string RutaGuardado = Path.Combine(
             AppDomain.CurrentDomain.BaseDirectory, "guardado.json");
+
+        private static readonly JsonSerializerOptions Opciones =
+            new() { WriteIndented = true };
+
         public static void GuardarPartida(EstadoJuego estado)
         {
-            try
-            {
-                string json = System.Text.Json.JsonSerializer.Serialize(estado, new JsonSerializerOptions { WriteIndented = true });
-                File.WriteAllText(rutaGuardado, json);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al guardar la partida: {ex.Message}");
-            }
+            string json = JsonSerializer.Serialize(estado, Opciones);
+            File.WriteAllText(RutaGuardado, json);
         }
+
         public static EstadoJuego CargarPartida()
         {
-            try
-            {
-                if (!File.Exists(rutaGuardado))
-                    throw new FileNotFoundException("No se encontró el archivo de guardado.");
-                string json = File.ReadAllText(rutaGuardado);
-                return System.Text.Json.JsonSerializer.Deserialize<EstadoJuego>(json);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al cargar la partida: {ex.Message}");
-                return null;
-            }
+            if (!File.Exists(RutaGuardado))
+                throw new FileNotFoundException(
+                    "No se encontró el archivo de guardado.", RutaGuardado);
+
+            string json = File.ReadAllText(RutaGuardado);
+            return JsonSerializer.Deserialize<EstadoJuego>(json)
+                ?? throw new InvalidDataException("El archivo de guardado está vacío o corrupto.");
         }
-        public static bool ExistePartida()
-        {
-            return File.Exists(rutaGuardado);
-        }
+
+        public static bool ExistePartida() => File.Exists(RutaGuardado);
+
         public static void BorrarPartida()
         {
-            try
-            {
-                if (ExistePartida())
-                    File.Delete(rutaGuardado);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al borrar la partida: {ex.Message}");
-            }
+            if (ExistePartida())
+                File.Delete(RutaGuardado);
         }
     }
 }

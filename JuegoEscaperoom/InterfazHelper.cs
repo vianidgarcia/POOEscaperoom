@@ -22,7 +22,7 @@ namespace JuegoEscaperoom
                     SizeMode = PictureBoxSizeMode.Zoom,
                     Margin = new Padding(5),
                     Cursor = Cursors.Help,
-                    BackColor = Color.FromArgb(50, 50, 50)
+                    BackColor = flp.BackColor
                 };
 
                 var img = (Image)Properties.Resources.ResourceManager.GetObject(nombreItem);
