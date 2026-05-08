@@ -21,7 +21,7 @@ namespace JuegoEscaperoom
         public event Action UIActualizada;
         public event Action JuegoTerminado;
 
-        
+
         public void IniciarPartidaNueva()
         {
             _estado = new EstadoJuego();
@@ -47,8 +47,8 @@ namespace JuegoEscaperoom
             CambiosSinGuardar = false;
         }
 
-       
-        public AcertijoResultado EvaluarClic(Acertijo acertijo)
+
+        public AcertijoResultado EvaluarClick(Acertijo acertijo)
         {
             if (acertijo.Resuelto)
                 return AcertijoResultado.YaResuelto;
@@ -61,26 +61,33 @@ namespace JuegoEscaperoom
 
         public void ProcesarVictoria(Acertijo acertijo)
         {
-            bool cambioHabitacion = _estado.ProcesarVictoria(acertijo);
             CambiosSinGuardar = true;
+            _estado.RegistrarObjetoResuelto(acertijo.NombreObjeto);
+            _estado.SumarPuntos(100);
 
             if (!string.IsNullOrEmpty(acertijo.ItemRecompensa))
-                DialogoSolicitado?.Invoke($"¡He encontrado: {acertijo.ItemRecompensa}!");
-
-            if (cambioHabitacion)
             {
+                _estado.AgregarAlInventario(acertijo.ItemRecompensa);
+                DialogoSolicitado?.Invoke($"¡He encontrado: {acertijo.ItemRecompensa}!");
+            }
+
+            if (acertijo.HabitacionDestino.HasValue)
+            {
+                _estado.CambiarHabitacion(acertijo.HabitacionDestino.Value);
                 DialogoSolicitado?.Invoke(
                     $"¡Progreso! Se ha desbloqueado el acceso a: {acertijo.HabitacionDestino}");
                 CargarHabitacion(_estado.HabitacionActual);
             }
 
-            if (acertijo.NombreObjeto == "Puerta Final")
+            if (acertijo.EsVictoriaFinal)
             {
                 JuegoTerminado?.Invoke();
                 return; // El Form maneja el reinicio; no seguimos actualizando.
             }
 
             UIActualizada?.Invoke();
+
+
         }
 
         // Helpers 
@@ -108,6 +115,12 @@ namespace JuegoEscaperoom
 
         private static Image CargarImagenFondo(Habitacion hab) =>
             (Image)Properties.Resources.ResourceManager.GetObject(hab.ToString());
+
+
+        public void LimpiarCambios()
+        {
+            CambiosSinGuardar = false;
+        }
     }
 
     public enum AcertijoResultado { Disponible, YaResuelto, Bloqueado }

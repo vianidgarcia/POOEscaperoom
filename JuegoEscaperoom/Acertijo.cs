@@ -24,6 +24,7 @@ namespace JuegoEscaperoom
             public bool Resuelto { get; private set; } = false;
             public int Intentos { get; private set; } = 0;
             public Habitacion? HabitacionDestino { get; protected set; }
+            public bool EsVictoriaFinal { get; set; } = false;
             public abstract bool ValidarRespuesta(string respuesta);
 
             public bool Resolver(string respuesta)

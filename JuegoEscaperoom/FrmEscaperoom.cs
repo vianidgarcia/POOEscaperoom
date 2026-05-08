@@ -64,6 +64,7 @@ namespace JuegoEscaperoom
 
         private void OnJuegoTerminado()
         {
+            PersistenciaPartida.BorrarPartida();
             MessageBox.Show("¡La puerta de salida se ha desbloqueado! ¡He escapado!", "¡Felicidades!");
             ReiniciarJuego();
         }
@@ -75,7 +76,7 @@ namespace JuegoEscaperoom
 
             if (acertijo == null) return;
 
-            switch (_controlador.EvaluarClic(acertijo))
+            switch (_controlador.EvaluarClick(acertijo))
             {
                 case AcertijoResultado.YaResuelto:
                     MostrarDialogoAnimado($"Ya revisé {acertijo.NombreObjeto}. No hay nada más aquí.");
@@ -187,7 +188,10 @@ namespace JuegoEscaperoom
             if (respuesta == DialogResult.Yes)
                 _controlador.IniciarPartidaNueva();
             else
+            {
+                _controlador.LimpiarCambios(); // pone CambiosSinGuardar = false
                 this.Close();
+            }
         }
     }
 }

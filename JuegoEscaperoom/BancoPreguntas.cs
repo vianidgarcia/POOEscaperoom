@@ -35,9 +35,9 @@ namespace JuegoEscaperoom
                 //acertijo aleatorio para la caja fuerte
                 var acertijosCaja = new List<Acertijo>
             {
-                new AcertijoNumerico("Caja Fuerte", "Si 1=5, 2=25, 3=125, ¿cuánto es 5?", 5,"No te compliques, lee la primera igualdad.", "Nota con Manchas")
+                new AcertijoNumerico("Caja Fuerte", "Si 1=5, 2=25, 3=125, ¿cuánto es 5?", 1,"No te compliques, lee la primera igualdad.", "Nota con Manchas")
                 { Area = new Rectangle(620, 310, 50, 40) },
-                new AcertijoNumerico("Caja Fuerte", "Código de 4 dígitos: El primero es la mitad del segundo, el tercero es el doble del cuarto. La suma es 15. (Pista: 2463)", 2463, "Prueba con el número de la pista.", "Nota con Manchas")
+                new AcertijoNumerico("Caja Fuerte", "Código de 4 dígitos: El primero es la mitad del segundo, el tercero es el doble del cuarto. La suma es 15.", 2463, "Prueba con el número de la pista.", "Nota con Manchas")
                 { Area = new Rectangle(620, 310, 50, 40) }
             };
 
@@ -118,7 +118,7 @@ namespace JuegoEscaperoom
                     "Llave Maestra",
                     ""
                     )
-                      { Area = new Rectangle(252, 29, 521, 325) }
+                      { EsVictoriaFinal = true, Area = new Rectangle(252, 29, 521, 325) }
                 };
             
             }

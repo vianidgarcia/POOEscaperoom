@@ -56,23 +56,6 @@ namespace JuegoEscaperoom
         {
             HabitacionActual = nuevaHabitacion;
         }
-        public bool ProcesarVictoria(Acertijo acertijo)
-        {
-            RegistrarObjetoResuelto(acertijo.NombreObjeto);
-            SumarPuntos(100); 
-
-        if (!string.IsNullOrEmpty(acertijo.ItemRecompensa)) 
-        {
-                AgregarAlInventario(acertijo.ItemRecompensa);
-        }
-
-            if (acertijo.HabitacionDestino.HasValue)
-            {
-                CambiarHabitacion(acertijo.HabitacionDestino.Value);
-                 return true;
-            }
-
-            return false;
-        }
+      
     }
 }
