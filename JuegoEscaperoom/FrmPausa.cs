@@ -12,25 +12,26 @@ namespace JuegoEscaperoom
 
     public partial class FrmPausa : Form
     {
-        private readonly EstadoJuego _estado;
+        private readonly ControladorJuego _controlador;
         public event Action SolicitarSalida;
 
         public bool PartidaGuardada { get; private set; } = false;
 
-        public FrmPausa(EstadoJuego estado)
+        public FrmPausa(ControladorJuego controlador)
         {
-            _estado = estado;
+            _controlador = controlador;
             InitializeComponent();
             ConfigurarVista();
         }
 
         private void ConfigurarVista()
         {
-            lblPuntaje.Text = $"Puntos de Lógica: {_estado.Puntaje}";
-            lblHabitacion.Text = $"Ubicación: {_estado.HabitacionActual}";
-            lblInventarioResumen.Text = _estado.Inventario.Count == 0
+            var estado = _controlador.Estado;
+            lblPuntaje.Text = $"Puntos de Lógica: {estado.Puntaje}";
+            lblHabitacion.Text = $"Ubicación: {estado.HabitacionActual}";
+            lblInventarioResumen.Text = estado.Inventario.Count == 0
                 ? "Sin pistas u objetos."
-                : "Objetos: " + string.Join(" | ", _estado.Inventario);
+                : "Objetos: " + string.Join(" | ", estado.Inventario);
         }
 
         private void btnContinuar_Click(object sender, EventArgs e)
@@ -43,7 +44,7 @@ namespace JuegoEscaperoom
         {
             try
             {
-                PersistenciaPartida.GuardarPartida(_estado);
+                _controlador.GuardarPartida();
                 PartidaGuardada = true;
                 MessageBox.Show("Progreso guardado.", "Sistema",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);

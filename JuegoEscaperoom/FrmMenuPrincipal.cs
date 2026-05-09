@@ -15,6 +15,7 @@ namespace JuegoEscaperoom
         public FrmMenuPrincipal()
         {
             InitializeComponent();
+            VerificarBotonCargar();
         }
 
         private void btnNueva_Click(object sender, EventArgs e)
@@ -51,12 +52,17 @@ namespace JuegoEscaperoom
             juego.ShowDialog();
 
             Show();
+           VerificarBotonCargar();
+        }
 
+        private void VerificarBotonCargar()
+        {
             var btnCargar = Controls.OfType<Button>()
                 .FirstOrDefault(b => b.Text.Contains("Cargar"));
             if (btnCargar != null)
                 btnCargar.Enabled = PersistenciaPartida.ExistePartida();
         }
+
 
         private void btnSalir_Click(object sender, EventArgs e)
         {

@@ -98,7 +98,7 @@ namespace JuegoEscaperoom
 
         private void btnPausa_Click(object sender, EventArgs e)
         {
-            using var frmPausa = new FrmPausa(_controlador.Estado);
+            using var frmPausa = new FrmPausa(_controlador);
             frmPausa.SolicitarSalida += () =>
             {
                 frmPausa.Close();
