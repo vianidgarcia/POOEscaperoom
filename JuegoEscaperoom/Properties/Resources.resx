@@ -118,37 +118,154 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Biblioteca" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Biblioteca.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btn_abajo_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btn_abajo_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Cocina" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Cocina.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btn_abajo_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btn_abajo_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Cuarto" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Cuarto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btn_arriba_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btn_arriba_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Fusible Gastado" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Fusible Gastado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btn_arriba_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btn_arriba_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Llave Maestra" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Llave Maestra.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btn_derecha_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btn_derecha_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Nota con Manchas" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Nota con Manchas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btn_derecha_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btn_derecha_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="personaje" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\personaje.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btn_izquierda_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btn_izquierda_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="personaje_alex" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\personaje_alex.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="btn_izquierda_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\btn_izquierda_on.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="personaje_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\personaje_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="chiaki_confundida" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\chiaki_confundida.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Salida" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Salida.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="chiaki_curiosa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\chiaki_curiosa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Tijeras Oxidadas" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Tijeras Oxidadas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="chiaki_despreocupada" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\chiaki_despreocupada.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="chiaki_fullbody" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\chiaki_fullbody.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="chiaki_pensando" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\chiaki_pensando.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="chiaki_sorprendida" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\chiaki_sorprendida.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="chiaki_tranquila" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\chiaki_tranquila.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gundham_confundido" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gundham_confundido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gundham_despreocupado" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gundham_despreocupado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gundham_dramatico" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gundham_dramatico.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gundham_feliz" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gundham_feliz.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gundham_fullbody" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gundham_fullbody.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gundham_relajado" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gundham_relajado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gundham_serio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gundham_serio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hiyoko_burlona" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hiyoko_burlona.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hiyoko_curiosa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hiyoko_curiosa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hiyoko_despreocupada" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hiyoko_despreocupada.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hiyoko_feliz" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hiyoko_feliz.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hiyoko_fullbody" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hiyoko_fullbody.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hiyoko_pretenciosa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hiyoko_pretenciosa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hiyoko_sorprendida" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hiyoko_sorprendida.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HUD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HUD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="kuma_curioso" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kuma_curioso.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="kuma_despreocupado" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kuma_despreocupado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="kuma_feliz" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kuma_feliz.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="kuma_neutral" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kuma_neutral.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="kuma_riendo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kuma_riendo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="kuma_serio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kuma_serio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="nagito_confiado" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nagito_confiado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="nagito_despreocupado" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nagito_despreocupado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="nagito_dramatico" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nagito_dramatico.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="nagito_feliz" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nagito_feliz.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="nagito_fullbody" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nagito_fullbody.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="nagito_intenso" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nagito_intenso.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="nagito_pensando" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nagito_pensando.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="puntero" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\puntero.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zona_chiaki" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zona_chiaki.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zona_gundham" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zona_gundham.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zona_hiyoko" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zona_hiyoko.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zona_intro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zona_intro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zona_junko" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zona_junko.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zona_nagito" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zona_nagito.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

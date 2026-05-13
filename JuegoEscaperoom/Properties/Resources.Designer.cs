@@ -63,9 +63,9 @@ namespace JuegoEscaperoom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Biblioteca {
+        internal static System.Drawing.Bitmap btn_abajo_normal {
             get {
-                object obj = ResourceManager.GetObject("Biblioteca", resourceCulture);
+                object obj = ResourceManager.GetObject("btn_abajo_normal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace JuegoEscaperoom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Cocina {
+        internal static System.Drawing.Bitmap btn_abajo_on {
             get {
-                object obj = ResourceManager.GetObject("Cocina", resourceCulture);
+                object obj = ResourceManager.GetObject("btn_abajo_on", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace JuegoEscaperoom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Cuarto {
+        internal static System.Drawing.Bitmap btn_arriba_normal {
             get {
-                object obj = ResourceManager.GetObject("Cuarto", resourceCulture);
+                object obj = ResourceManager.GetObject("btn_arriba_normal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace JuegoEscaperoom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Fusible_Gastado {
+        internal static System.Drawing.Bitmap btn_arriba_on {
             get {
-                object obj = ResourceManager.GetObject("Fusible Gastado", resourceCulture);
+                object obj = ResourceManager.GetObject("btn_arriba_on", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace JuegoEscaperoom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Llave_Maestra {
+        internal static System.Drawing.Bitmap btn_derecha_normal {
             get {
-                object obj = ResourceManager.GetObject("Llave Maestra", resourceCulture);
+                object obj = ResourceManager.GetObject("btn_derecha_normal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace JuegoEscaperoom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Nota_con_Manchas {
+        internal static System.Drawing.Bitmap btn_derecha_on {
             get {
-                object obj = ResourceManager.GetObject("Nota con Manchas", resourceCulture);
+                object obj = ResourceManager.GetObject("btn_derecha_on", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +123,9 @@ namespace JuegoEscaperoom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap personaje {
+        internal static System.Drawing.Bitmap btn_izquierda_normal {
             get {
-                object obj = ResourceManager.GetObject("personaje", resourceCulture);
+                object obj = ResourceManager.GetObject("btn_izquierda_normal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,9 @@ namespace JuegoEscaperoom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap personaje_alex {
+        internal static System.Drawing.Bitmap btn_izquierda_on {
             get {
-                object obj = ResourceManager.GetObject("personaje_alex", resourceCulture);
+                object obj = ResourceManager.GetObject("btn_izquierda_on", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +143,9 @@ namespace JuegoEscaperoom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap personaje_icon {
+        internal static System.Drawing.Bitmap chiaki_confundida {
             get {
-                object obj = ResourceManager.GetObject("personaje_icon", resourceCulture);
+                object obj = ResourceManager.GetObject("chiaki_confundida", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +153,9 @@ namespace JuegoEscaperoom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Salida {
+        internal static System.Drawing.Bitmap chiaki_curiosa {
             get {
-                object obj = ResourceManager.GetObject("Salida", resourceCulture);
+                object obj = ResourceManager.GetObject("chiaki_curiosa", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +163,399 @@ namespace JuegoEscaperoom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Tijeras_Oxidadas {
+        internal static System.Drawing.Bitmap chiaki_despreocupada {
             get {
-                object obj = ResourceManager.GetObject("Tijeras Oxidadas", resourceCulture);
+                object obj = ResourceManager.GetObject("chiaki_despreocupada", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap chiaki_fullbody {
+            get {
+                object obj = ResourceManager.GetObject("chiaki_fullbody", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap chiaki_pensando {
+            get {
+                object obj = ResourceManager.GetObject("chiaki_pensando", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap chiaki_sorprendida {
+            get {
+                object obj = ResourceManager.GetObject("chiaki_sorprendida", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap chiaki_tranquila {
+            get {
+                object obj = ResourceManager.GetObject("chiaki_tranquila", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gundham_confundido {
+            get {
+                object obj = ResourceManager.GetObject("gundham_confundido", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gundham_despreocupado {
+            get {
+                object obj = ResourceManager.GetObject("gundham_despreocupado", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gundham_dramatico {
+            get {
+                object obj = ResourceManager.GetObject("gundham_dramatico", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gundham_feliz {
+            get {
+                object obj = ResourceManager.GetObject("gundham_feliz", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gundham_fullbody {
+            get {
+                object obj = ResourceManager.GetObject("gundham_fullbody", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gundham_relajado {
+            get {
+                object obj = ResourceManager.GetObject("gundham_relajado", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gundham_serio {
+            get {
+                object obj = ResourceManager.GetObject("gundham_serio", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hiyoko_burlona {
+            get {
+                object obj = ResourceManager.GetObject("hiyoko_burlona", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hiyoko_curiosa {
+            get {
+                object obj = ResourceManager.GetObject("hiyoko_curiosa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hiyoko_despreocupada {
+            get {
+                object obj = ResourceManager.GetObject("hiyoko_despreocupada", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hiyoko_feliz {
+            get {
+                object obj = ResourceManager.GetObject("hiyoko_feliz", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hiyoko_fullbody {
+            get {
+                object obj = ResourceManager.GetObject("hiyoko_fullbody", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hiyoko_pretenciosa {
+            get {
+                object obj = ResourceManager.GetObject("hiyoko_pretenciosa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hiyoko_sorprendida {
+            get {
+                object obj = ResourceManager.GetObject("hiyoko_sorprendida", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HUD {
+            get {
+                object obj = ResourceManager.GetObject("HUD", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap kuma_curioso {
+            get {
+                object obj = ResourceManager.GetObject("kuma_curioso", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap kuma_despreocupado {
+            get {
+                object obj = ResourceManager.GetObject("kuma_despreocupado", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap kuma_feliz {
+            get {
+                object obj = ResourceManager.GetObject("kuma_feliz", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap kuma_neutral {
+            get {
+                object obj = ResourceManager.GetObject("kuma_neutral", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap kuma_riendo {
+            get {
+                object obj = ResourceManager.GetObject("kuma_riendo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap kuma_serio {
+            get {
+                object obj = ResourceManager.GetObject("kuma_serio", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap nagito_confiado {
+            get {
+                object obj = ResourceManager.GetObject("nagito_confiado", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap nagito_despreocupado {
+            get {
+                object obj = ResourceManager.GetObject("nagito_despreocupado", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap nagito_dramatico {
+            get {
+                object obj = ResourceManager.GetObject("nagito_dramatico", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap nagito_feliz {
+            get {
+                object obj = ResourceManager.GetObject("nagito_feliz", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap nagito_fullbody {
+            get {
+                object obj = ResourceManager.GetObject("nagito_fullbody", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap nagito_intenso {
+            get {
+                object obj = ResourceManager.GetObject("nagito_intenso", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap nagito_pensando {
+            get {
+                object obj = ResourceManager.GetObject("nagito_pensando", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap puntero {
+            get {
+                object obj = ResourceManager.GetObject("puntero", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zona_chiaki {
+            get {
+                object obj = ResourceManager.GetObject("zona_chiaki", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zona_gundham {
+            get {
+                object obj = ResourceManager.GetObject("zona_gundham", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zona_hiyoko {
+            get {
+                object obj = ResourceManager.GetObject("zona_hiyoko", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zona_intro {
+            get {
+                object obj = ResourceManager.GetObject("zona_intro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zona_junko {
+            get {
+                object obj = ResourceManager.GetObject("zona_junko", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zona_nagito {
+            get {
+                object obj = ResourceManager.GetObject("zona_nagito", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
