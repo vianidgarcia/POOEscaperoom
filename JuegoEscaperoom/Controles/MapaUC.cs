@@ -14,7 +14,7 @@ namespace JuegoEscaperoom.Controles
     public partial class MapaUC : UserControl
     {
         private FormPrincipal _form;
-        private Zona _zonaActual = BancoZonas.ObtenerZonaHiyoko();
+        private List<Zona> _zonaActual = BancoZonas.ObtenerTodasLasZonas();
 
         public MapaUC(FormPrincipal form)
         {
@@ -22,12 +22,53 @@ namespace JuegoEscaperoom.Controles
             _form = form;
         }
 
-        private void btnPrueba_Click(object sender, EventArgs e)
+        private void pbxHiyoko_Click(object sender, EventArgs e)
         {
             if (_form != null)
             {
-                _form.MostrarControl(new MinijuegoSecuenciaUC(_form, _zonaActual));
+                Zona zona = _zonaActual.FirstOrDefault(z => z.Id == "hiyoko");
+                if (zona != null)
+                {
+                    _form.MostrarControl(new ZonaUC(_form, zona));
+                }
             }
         }
+
+        private void pbxGundham_Click(object sender, EventArgs e)
+        {
+            if (_form != null)
+            {
+                Zona zona = _zonaActual.FirstOrDefault(z => z.Id == "gundham");
+                if (zona != null)
+                {
+                    _form.MostrarControl(new ZonaUC(_form, zona));
+                }
+            }
+        }
+
+        private void pbxNagito_Click(object sender, EventArgs e)
+        {
+            if (_form != null)
+            {
+                Zona zona = _zonaActual.FirstOrDefault(z => z.Id == "nagito");
+                if (zona != null)
+                {
+                    _form.MostrarControl(new ZonaUC(_form, zona));
+                }
+            }
+        }
+
+        private void pbxChiaki_Click(object sender, EventArgs e)
+        {
+            if (_form != null)
+            {
+                Zona zona = _zonaActual.FirstOrDefault(z => z.Id == "chiaki");
+                if (zona != null)
+                {
+                    _form.MostrarControl(new ZonaUC(_form, zona));
+                }
+            }
+        }
+
     }
 }

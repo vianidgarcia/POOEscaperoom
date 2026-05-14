@@ -12,8 +12,8 @@ namespace JuegoEscaperoom.Clases
         {
             CrearZonaHiyoko(),
             CrearZonaGundham(),
-            //CrearZonaChiaki(),
-            //CrearZonaNagito()
+            CrearZonaChiaki(),
+            CrearZonaNagito()
         };
 
         public static Zona ObtenerZonaHiyoko() => CrearZonaHiyoko();
@@ -58,8 +58,8 @@ namespace JuegoEscaperoom.Clases
             {
                 new() { Hablante = personaje, Texto = "Que haces aqui, torpe?",                                          ExpresionAUsar = "burlona" },
                 new() { Hablante = personaje, Texto = "Si quieres pasar, demuestra que tienes algo de ritmo.",           ExpresionAUsar = "seria"   },
-                new() { Hablante = personaje, Texto = "El bon odori tiene un orden sagrado. Cada paso en su momento.",   ExpresionAUsar = "seria"  },
-                new() { Hablante = personaje, Texto = "Listo para intentarlo?",                                           ExpresionAUsar = "burlona" },
+                new() { Hablante = personaje, Texto = "El bon odori tiene un orden sagrado. Cada paso en su momento.",   ExpresionAUsar = "pretenciosa"  },
+                new() { Hablante = personaje, Texto = "Listo para intentarlo?",                                           ExpresionAUsar = "curiosa" },
             };
 
             var acertijo = new AcertijoSecuencia(
@@ -79,11 +79,13 @@ namespace JuegoEscaperoom.Clases
             personaje.AgregarExpresion("dramatico", Properties.Resources.gundham_dramatico);
             personaje.AgregarExpresion("serio", Properties.Resources.gundham_serio);
             personaje.AgregarExpresion("relajado", Properties.Resources.gundham_relajado);
+            personaje.AgregarExpresion("confundido", Properties.Resources.gundham_confundido);
 
             var dialogos = new List<Dialogo>
             {
                 new() { Hablante = personaje, Texto = "Mortal! Has osado entrar al dominio de los Cuatro Jinetes Oscuros.",    ExpresionAUsar = "dramatico" },
                 new() { Hablante = personaje, Texto = "Mis cuatro guardianes obedecen un orden cosmico inamovible.",           ExpresionAUsar = "serio"     },
+                new() { Hablante = personaje, Texto = "Eh? Que quieres entender de lo que hablo?",           ExpresionAUsar = "confundido"     },
                 new() { Hablante = personaje, Texto = "Si los invocas en el orden correcto... considerare dejarte pasar.",     ExpresionAUsar = "relajado"  },
             };
 
@@ -97,22 +99,24 @@ namespace JuegoEscaperoom.Clases
                 personaje, dialogos, acertijo, "Fragmento de Esperanza");
         }
 
-        /*
+        
         private static Zona CrearZonaChiaki()
         {
             var personaje = new Personaje("Chiaki Nanami", "");
             personaje.AgregarExpresion("tranquila", Properties.Resources.chiaki_tranquila);
             personaje.AgregarExpresion("curiosa", Properties.Resources.chiaki_curiosa);
             personaje.AgregarExpresion("pensando", Properties.Resources.chiaki_pensando);
+            personaje.AgregarExpresion("sorprendida", Properties.Resources.chiaki_sorprendida);
 
             var dialogos = new List<Dialogo>
             {
                 new() { Hablante = personaje, Texto = "...Ah, hola.",                                                         ExpresionAUsar = "tranquila" },
                 new() { Hablante = personaje, Texto = "Todo juego tiene un patron. Si lo memorizas, siempre puedes ganar.",   ExpresionAUsar = "curiosa"   },
                 new() { Hablante = personaje, Texto = "Te voy a mostrar algo. Solo tienes que recordarlo exactamente.",        ExpresionAUsar = "pensando"  },
+                new() { Hablante = personaje, Texto = "¿Listo para intentarlo?",                                                   ExpresionAUsar = "sorprendida" },
             };
 
-            var acertijo = new AcertijoRetro(
+            var acertijo = new AcertijoSecuencia(
                 "Memoriza el patron y luego recrealo.",
                 "Tienes 3 segundos para observarlo.");
 
@@ -136,27 +140,16 @@ namespace JuegoEscaperoom.Clases
                 new() { Hablante = personaje, Texto = "Permiteme hacerte unas preguntas. Para alguien con esperanza, no seran problema.", ExpresionAUsar = "intenso" },
             };
 
-            var acertijo = new AcertijoLogica(
+            var acertijo = new AcertijoSecuencia(
                 "Responde las tres preguntas correctamente.",
                 "La logica es suficiente.",
-                new[]
-                {
-                    new PreguntaLogica(
-                        "Si todos mienten excepto uno, y ese uno dice que todos mienten, miente?",
-                        new[] { "Miente", "Dice la verdad", "Es imposible saberlo", "Las dos cosas" }, 2),
-                    new PreguntaLogica(
-                        "Tengo hermanas que tienen un hermano. Cuantos hermanos tengo?",
-                        new[] { "Ninguno", "Uno", "Depende", "Los mismos que ellas" }, 1),
-                    new PreguntaLogica(
-                        "La esperanza nace del despair. Si eliminas el despair, que queda?",
-                        new[] { "Mas esperanza", "Nada", "El vacio", "La pregunta misma" }, 1)
-                });
+               3);
 
             return new Zona("nagito", "Biblioteca de la isla",
                 Properties.Resources.zona_nagito,
                 Properties.Resources.nagito_fullbody,
                 personaje, dialogos, acertijo, "Fragmento de Esperanza");
         }
-        */
+        
     }
 }

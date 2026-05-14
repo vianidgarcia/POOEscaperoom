@@ -23,6 +23,7 @@ namespace JuegoEscaperoom
             InitializeComponent();
             ConfigurarVentana();
             IniciarJuego();
+           
         }
 
         private void ConfigurarVentana()
@@ -63,7 +64,6 @@ namespace JuegoEscaperoom
         {
             _controlActual?.Dispose();
 
-            nuevoControl.Dock = DockStyle.Fill;
             this.Controls.Clear();
             this.Controls.Add(nuevoControl);
             _controlActual = nuevoControl;

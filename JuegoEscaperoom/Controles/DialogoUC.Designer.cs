@@ -29,40 +29,84 @@
         private void InitializeComponent()
         {
             lblDialogo = new Label();
+            pnlDialogo = new Panel();
+            pbxHudBarra = new PictureBox();
+            pbxHudDatos = new PictureBox();
             pbxSprite = new PictureBox();
+            pnlDialogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbxHudBarra).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbxHudDatos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbxSprite).BeginInit();
             SuspendLayout();
             // 
             // lblDialogo
             // 
-            lblDialogo.Anchor = AnchorStyles.Bottom;
-            lblDialogo.AutoSize = true;
+            lblDialogo.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            lblDialogo.BackColor = SystemColors.ActiveCaptionText;
             lblDialogo.Font = new Font("FOT-Rodin Pro B", 17.25F, FontStyle.Bold, GraphicsUnit.Point, 128);
             lblDialogo.ForeColor = SystemColors.ButtonHighlight;
-            lblDialogo.Location = new Point(91, 434);
+            lblDialogo.Location = new Point(16, 15);
             lblDialogo.Name = "lblDialogo";
-            lblDialogo.Size = new Size(89, 29);
+            lblDialogo.Size = new Size(1206, 142);
             lblDialogo.TabIndex = 1;
             lblDialogo.Text = "Dialog";
             // 
+            // pnlDialogo
+            // 
+            pnlDialogo.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            pnlDialogo.AutoSize = true;
+            pnlDialogo.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            pnlDialogo.BackColor = SystemColors.ActiveCaptionText;
+            pnlDialogo.Controls.Add(lblDialogo);
+            pnlDialogo.Cursor = Cursors.Hand;
+            pnlDialogo.Location = new Point(122, 613);
+            pnlDialogo.Name = "pnlDialogo";
+            pnlDialogo.Size = new Size(1244, 175);
+            pnlDialogo.TabIndex = 2;
+            // 
+            // pbxHudBarra
+            // 
+            pbxHudBarra.Image = Properties.Resources.HUDbarra;
+            pbxHudBarra.Location = new Point(0, 0);
+            pbxHudBarra.Name = "pbxHudBarra";
+            pbxHudBarra.Size = new Size(255, 788);
+            pbxHudBarra.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbxHudBarra.TabIndex = 3;
+            pbxHudBarra.TabStop = false;
+            // 
+            // pbxHudDatos
+            // 
+            pbxHudDatos.Image = Properties.Resources.HUDdatos;
+            pbxHudDatos.Location = new Point(957, 0);
+            pbxHudDatos.Name = "pbxHudDatos";
+            pbxHudDatos.Size = new Size(409, 145);
+            pbxHudDatos.SizeMode = PictureBoxSizeMode.Zoom;
+            pbxHudDatos.TabIndex = 4;
+            pbxHudDatos.TabStop = false;
+            // 
             // pbxSprite
             // 
-            pbxSprite.Dock = DockStyle.Fill;
             pbxSprite.Location = new Point(0, 0);
             pbxSprite.Name = "pbxSprite";
-            pbxSprite.Size = new Size(960, 540);
-            pbxSprite.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbxSprite.TabIndex = 2;
+            pbxSprite.Size = new Size(1366, 788);
+            pbxSprite.SizeMode = PictureBoxSizeMode.Zoom;
+            pbxSprite.TabIndex = 5;
             pbxSprite.TabStop = false;
             // 
             // DialogoUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(lblDialogo);
+            BackColor = Color.Transparent;
+            Controls.Add(pnlDialogo);
+            Controls.Add(pbxHudDatos);
+            Controls.Add(pbxHudBarra);
             Controls.Add(pbxSprite);
             Name = "DialogoUC";
-            Size = new Size(960, 540);
+            Size = new Size(1366, 788);
+            pnlDialogo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pbxHudBarra).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbxHudDatos).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbxSprite).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -70,6 +114,9 @@
 
         #endregion
         private Label lblDialogo;
+        private Panel pnlDialogo;
+        private PictureBox pbxHudBarra;
+        private PictureBox pbxHudDatos;
         private PictureBox pbxSprite;
     }
 }

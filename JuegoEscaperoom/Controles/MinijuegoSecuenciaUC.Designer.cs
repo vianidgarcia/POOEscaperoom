@@ -123,7 +123,7 @@
             Controls.Add(pbxAbajo);
             Controls.Add(pbxArriba);
             Name = "MinijuegoSecuenciaUC";
-            Size = new Size(790, 433);
+            Size = new Size(960, 540);
             ((System.ComponentModel.ISupportInitialize)pbxArriba).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbxAbajo).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbxIzquierda).EndInit();

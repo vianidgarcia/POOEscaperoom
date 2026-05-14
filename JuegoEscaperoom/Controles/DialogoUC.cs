@@ -40,10 +40,10 @@ namespace JuegoEscaperoom.Controles
 
             this.BackColor = Color.Transparent;
             this.DoubleBuffered = true;
-            
+
             // Clic en cualquier parte del HUD avanza el diálogo
             this.MouseClick += (s, e) => SiguienteDialogo();
-            pbxHUD.MouseClick += (s, e) => SiguienteDialogo();
+            pnlDialogo.MouseClick += (s, e) => SiguienteDialogo();
             lblDialogo.Click += (s, e) => SiguienteDialogo();
 
             this.KeyDown += (s, e) =>
@@ -52,16 +52,16 @@ namespace JuegoEscaperoom.Controles
                     SiguienteDialogo();
             };
 
-            this.HandleCreated += (s, e) =>
+            pbxHudBarra.Paint += (s, e) =>
             {
-                pbxHUD.Image = Properties.Resources.HUD;
-                pbxHUD.SizeMode = PictureBoxSizeMode.StretchImage;
-                pbxHUD.Dock = DockStyle.Fill;
-
-                
-                pbxHUD.BringToFront();
-                pbxSprite.BringToFront();
-                lblDialogo.BringToFront();
+                e.Graphics.TranslateTransform(25, 600); 
+                e.Graphics.RotateTransform(-90);
+                e.Graphics.DrawString(
+                    _nombreActual,
+                    new Font("FOT-Rodin Pro B", 25, FontStyle.Bold),
+                    Brushes.Black,
+                    0, 0);
+                e.Graphics.ResetTransform();
             };
 
         }
@@ -70,15 +70,13 @@ namespace JuegoEscaperoom.Controles
         {
             base.OnLoad(e);
 
-            pbxHUD.Image = Properties.Resources.HUD;
-            pbxHUD.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbxHUD.Dock = DockStyle.Fill;
-
-            
+            pbxHudDatos.Image = Properties.Resources.HUDdatos;
+            pbxHudDatos.SizeMode = PictureBoxSizeMode.StretchImage;
 
             pbxSprite.SendToBack();
-            pbxHUD.BringToFront();
-            lblDialogo.BringToFront();
+            pbxHudBarra.BringToFront();
+            pbxHudDatos.BringToFront();
+            pnlDialogo.BringToFront();
 
             this.Focus();
             SiguienteDialogo();
@@ -145,24 +143,7 @@ namespace JuegoEscaperoom.Controles
 
         public Control ControlRaiz => this;
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            base.OnPaint(e);
-
-            // Rotar el canvas 90 grados
-            e.Graphics.TranslateTransform(55, 430);
-            e.Graphics.RotateTransform(-90);
-
-            e.Graphics.DrawString(
-                _nombreActual,                          
-                new Font("FOT-Rodin Pro B", 10, FontStyle.Bold),  
-                Brushes.Black,                         
-                0, 0                                   
-            );
-
-            // Restaurar el canvas
-            e.Graphics.ResetTransform();
-        }
+        
 
     }
 }

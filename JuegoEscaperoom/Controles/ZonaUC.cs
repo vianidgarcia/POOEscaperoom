@@ -41,7 +41,7 @@ namespace JuegoEscaperoom.Controles
             // Sprite del personaje
             pbxSprite.Image = _zona.SpritePersonaje;
             pbxSprite.SizeMode = PictureBoxSizeMode.Zoom;
-            pbxSprite.Cursor = Cursors.Hand; // o tu cursor personalizado
+            pbxSprite.Cursor = Cursors.Hand; 
 
             pbxSprite.MouseClick += OnSpriteClick;
 
@@ -68,7 +68,7 @@ namespace JuegoEscaperoom.Controles
             var ucDialogo = new DialogoUC(_form, _zona);
 
             // Posicionar en la parte inferior, centrado
-           
+
 
             ucDialogo.DialogosTerminados += OnDialogosTerminados;
 
@@ -97,7 +97,7 @@ namespace JuegoEscaperoom.Controles
                 _zona.Acertijo, null);
 
             var ucDialogo = new DialogoUC(_form, zonaTemp);
-            
+
 
             this.Controls.Add(ucDialogo);
             ucDialogo.BringToFront();
@@ -117,6 +117,16 @@ namespace JuegoEscaperoom.Controles
             };
 
             _form.MostrarControl(minijuego);*/
+        }
+
+        private void pbxSprite_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+                _form.MostrarControl(new MapaUC(_form));
         }
     }
 }

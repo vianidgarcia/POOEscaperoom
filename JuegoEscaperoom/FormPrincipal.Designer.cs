@@ -28,10 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "FormPrincipal";
+            SuspendLayout();
+            // 
+            // FormPrincipal
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1386, 788);
+            FormBorderStyle = FormBorderStyle.None;
+            Name = "FormPrincipal";
+            ShowIcon = false;
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Escaperoom";
+            ResumeLayout(false);
         }
 
         #endregion

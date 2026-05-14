@@ -29,24 +29,38 @@
         private void InitializeComponent()
         {
             pbxSprite = new PictureBox();
+            btnVolver = new Button();
             ((System.ComponentModel.ISupportInitialize)pbxSprite).BeginInit();
             SuspendLayout();
             // 
-            // pbxPersonaje
+            // pbxSprite
             // 
-            pbxSprite.Location = new Point(316, 189);
-            pbxSprite.Name = "pbxPersonaje";
-            pbxSprite.Size = new Size(378, 756);
+            pbxSprite.BackColor = Color.Transparent;
+            pbxSprite.Location = new Point(653, 72);
+            pbxSprite.Name = "pbxSprite";
+            pbxSprite.Size = new Size(345, 626);
             pbxSprite.TabIndex = 0;
             pbxSprite.TabStop = false;
+            pbxSprite.Click += pbxSprite_Click;
+            // 
+            // btnVolver
+            // 
+            btnVolver.Location = new Point(20, 21);
+            btnVolver.Name = "btnVolver";
+            btnVolver.Size = new Size(103, 61);
+            btnVolver.TabIndex = 1;
+            btnVolver.Text = "Volv";
+            btnVolver.UseVisualStyleBackColor = true;
+            btnVolver.Click += btnVolver_Click;
             // 
             // ZonaUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnVolver);
             Controls.Add(pbxSprite);
             Name = "ZonaUC";
-            Size = new Size(1920, 1080);
+            Size = new Size(1368, 788);
             ((System.ComponentModel.ISupportInitialize)pbxSprite).EndInit();
             ResumeLayout(false);
         }
@@ -54,5 +68,6 @@
         #endregion
 
         private PictureBox pbxSprite;
+        private Button btnVolver;
     }
 }

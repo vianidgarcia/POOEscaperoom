@@ -37,7 +37,7 @@
             BackgroundImage = Properties.Resources.zona_intro;
             BackgroundImageLayout = ImageLayout.Stretch;
             Name = "IntroUC";
-            Size = new Size(960, 540);
+            Size = new Size(1366, 768);
             ResumeLayout(false);
         }
 

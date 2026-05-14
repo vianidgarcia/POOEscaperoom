@@ -183,6 +183,16 @@ namespace JuegoEscaperoom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap chiaki_icon {
+            get {
+                object obj = ResourceManager.GetObject("chiaki_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap chiaki_pensando {
             get {
                 object obj = ResourceManager.GetObject("chiaki_pensando", resourceCulture);
@@ -263,6 +273,16 @@ namespace JuegoEscaperoom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap gundham_icon {
+            get {
+                object obj = ResourceManager.GetObject("gundham_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap gundham_relajado {
             get {
                 object obj = ResourceManager.GetObject("gundham_relajado", resourceCulture);
@@ -333,6 +353,16 @@ namespace JuegoEscaperoom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap hiyoko_icon {
+            get {
+                object obj = ResourceManager.GetObject("hiyoko_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap hiyoko_pretenciosa {
             get {
                 object obj = ResourceManager.GetObject("hiyoko_pretenciosa", resourceCulture);
@@ -356,6 +386,26 @@ namespace JuegoEscaperoom.Properties {
         internal static System.Drawing.Bitmap HUD {
             get {
                 object obj = ResourceManager.GetObject("HUD", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HUDbarra {
+            get {
+                object obj = ResourceManager.GetObject("HUDbarra", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HUDdatos {
+            get {
+                object obj = ResourceManager.GetObject("HUDdatos", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -423,6 +473,16 @@ namespace JuegoEscaperoom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mapafoto {
+            get {
+                object obj = ResourceManager.GetObject("mapafoto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap nagito_confiado {
             get {
                 object obj = ResourceManager.GetObject("nagito_confiado", resourceCulture);
@@ -466,6 +526,16 @@ namespace JuegoEscaperoom.Properties {
         internal static System.Drawing.Bitmap nagito_fullbody {
             get {
                 object obj = ResourceManager.GetObject("nagito_fullbody", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap nagito_icon {
+            get {
+                object obj = ResourceManager.GetObject("nagito_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
