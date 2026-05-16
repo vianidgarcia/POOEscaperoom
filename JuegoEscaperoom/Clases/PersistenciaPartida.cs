@@ -10,35 +10,64 @@ namespace JuegoEscaperoom.Clases
 {
     public static class PersistenciaPartida
     {
-        private static readonly string RutaGuardado = Path.Combine(
-            AppDomain.CurrentDomain.BaseDirectory, "guardado.json");
+        private static readonly string RutaCarpetaPartidas = Path.Combine(
+            AppDomain.CurrentDomain.BaseDirectory, "Partidas");
 
         private static readonly JsonSerializerOptions Opciones =
             new() { WriteIndented = true };
 
+        public static bool TalentoYaExiste(string talento)
+        {
+            return ListarPartidasGuardadas()
+                .Any(p => p.TalentoJugador.Equals(talento, StringComparison.OrdinalIgnoreCase));
+        }
         public static void GuardarPartida(EstadoJuego estado)
         {
+            if (!Directory.Exists(RutaCarpetaPartidas))
+                Directory.CreateDirectory(RutaCarpetaPartidas);
             string json = JsonSerializer.Serialize(estado, Opciones);
-            File.WriteAllText(RutaGuardado, json);
+            string nombreArchivo = $"{estado.SlotId}.json";
+            string rutaArchivo = Path.Combine(RutaCarpetaPartidas, nombreArchivo);
+            File.WriteAllText(rutaArchivo, json);
         }
 
-        public static EstadoJuego CargarPartida()
+        public static List<EstadoJuego> ListarPartidasGuardadas()
         {
-            if (!File.Exists(RutaGuardado))
+            if (!Directory.Exists(RutaCarpetaPartidas))
+                return new List<EstadoJuego>();
+
+            var archivos = Directory.GetFiles(RutaCarpetaPartidas, "*.json");
+            var partidas = new List<EstadoJuego>();
+
+            foreach (var archivo in archivos)
+            {
+                string json = File.ReadAllText(archivo);
+                var estado = JsonSerializer.Deserialize<EstadoJuego>(json);
+                if (estado != null)
+                    partidas.Add(estado);
+            }
+
+            return partidas;
+        }
+
+        public static EstadoJuego CargarPartida(string slotId)
+        {
+            string rutaArchivo = Path.Combine(RutaCarpetaPartidas, $"{slotId}.json");
+            if (!File.Exists(rutaArchivo))
                 throw new FileNotFoundException(
-                    "No se encontró el archivo de guardado.", RutaGuardado);
+                    $"No se encontró una partida para el talento '{slotId}'.", RutaCarpetaPartidas);
 
-            string json = File.ReadAllText(RutaGuardado);
-            return JsonSerializer.Deserialize<EstadoJuego>(json)
-                ?? throw new InvalidDataException("El archivo de guardado está vacío o corrupto.");
+            EstadoJuego estado = JsonSerializer.Deserialize<EstadoJuego>(File.ReadAllText(rutaArchivo)) 
+                ?? throw new FileNotFoundException(
+                    $"No se encontró una partida para el talento '{slotId}'.", RutaCarpetaPartidas);
+            return estado;
         }
 
-        public static bool ExistePartida() => File.Exists(RutaGuardado);
-
-        public static void BorrarPartida()
+        public static void EliminarPartida(string slotId)
         {
-            if (ExistePartida())
-                File.Delete(RutaGuardado);
+            string rutaArchivo = Path.Combine(RutaCarpetaPartidas, $"{slotId}.json");
+            if (File.Exists(rutaArchivo))
+                File.Delete(rutaArchivo);
         }
     }
 }

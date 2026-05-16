@@ -21,9 +21,10 @@ namespace JuegoEscaperoom.Controles
         private readonly Zona _zona;
         private ServicioDialogo _servicioDialogo;
         private int _indiceActual = 0;
+        private bool _esperandoInput = false;
 
         public event Action<Zona>? DialogosTerminados;
-
+        public event Action<Action<string>>? InputTalentoSolicitado;
         public DialogoUC()
         {
             InitializeComponent();
@@ -85,6 +86,7 @@ namespace JuegoEscaperoom.Controles
         
         private void SiguienteDialogo()
         {
+            if (_esperandoInput) return;
             if (_servicioDialogo.EstaEscribiendo)
             {
                 _servicioDialogo.Completar();
@@ -110,7 +112,7 @@ namespace JuegoEscaperoom.Controles
                 _audio.ReproducirVoz(dialogo.Hablante.RutaVoz);
 
             _servicioDialogo.Animar(dialogo.Texto);
-            //dialogo.EfectoEspecial?.Invoke(this);
+            dialogo.EfectoEspecial?.Invoke(this);
         }
 
         public void CambiarExpresion(Image imagen)
@@ -136,6 +138,17 @@ namespace JuegoEscaperoom.Controles
             _audio.DetenerVoz();
             this.Parent?.Controls.Remove(this);
             this.Dispose();
+        }
+
+        public void MostrarInputTalento(Action<string> callback)
+        {
+            _esperandoInput = true;
+            InputTalentoSolicitado?.Invoke(talento =>
+            {
+                _esperandoInput = false;
+                callback(talento);
+                SiguienteDialogo();
+            });
         }
 
         public void IrAPantalla(Control pantalla) =>

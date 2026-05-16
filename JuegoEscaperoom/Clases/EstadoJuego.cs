@@ -11,21 +11,23 @@ namespace JuegoEscaperoom.Clases
     public class EstadoJuego
     {
         public int Puntaje { get; private set; } = 0;
-        public string NombreJugador { get; set; } = "";
+        public string TalentoJugador { get; set; } = "";
         public List<string> ZonasCompletadas { get; private set; } = new();
         public List<string> FragmentosEsperanza { get; private set; } = new();
         public DateTime FechaGuardado { get; set; } = DateTime.Now;
 
+        public string SlotId => $"{TalentoJugador}_{FechaGuardado:yyyyMMddHHmmss}";
+
         public EstadoJuego() { }
 
         [JsonConstructor]
-        public EstadoJuego(int puntaje, string nombreJugador,
+        public EstadoJuego(int puntaje, string talentoJugador,
                            List<string> zonasCompletadas,
                            List<string> fragmentosEsperanza,
                            DateTime fechaGuardado)
         {
             Puntaje = puntaje;
-            NombreJugador = nombreJugador;
+            TalentoJugador = talentoJugador;
             ZonasCompletadas = zonasCompletadas ?? new();
             FragmentosEsperanza = fragmentosEsperanza ?? new();
             FechaGuardado = fechaGuardado;

@@ -21,6 +21,8 @@ namespace JuegoEscaperoom.Interfaces
         void CerrarDialogo();
 
         Control ControlRaiz { get; }
+
+        void MostrarInputTalento(Action<string> onTalentoIngresado) { }
     }
 }
 

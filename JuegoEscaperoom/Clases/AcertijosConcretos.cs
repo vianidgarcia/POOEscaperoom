@@ -55,5 +55,33 @@ namespace JuegoEscaperoom.Clases
 
         public override bool ValidarRespuesta(string _) => Aciertos >= RondasParaGanar;
     }
+
+    public class AcertijoOpcionMultiple : Acertijo
+    {
+        public List<string> Opciones { get; }
+        private readonly int _indiceCorrecto;
+        public AcertijoOpcionMultiple(string pregunta, List<string> opciones, int indiceCorrecto, string pista = "")
+        {
+            Pregunta = pregunta;
+            Opciones = opciones;
+            Pista = pista;
+            _indiceCorrecto = indiceCorrecto;
+        }
+        public override bool ValidarRespuesta(string respuesta) =>
+            int.TryParse(respuesta, out int indice) && indice == _indiceCorrecto;
+    }
+
+    public class AcertijoLogica : Acertijo
+    {
+        private readonly Func<string, bool> _validador;
+        public AcertijoLogica(string pregunta, Func<string, bool> validador, string pista = "")
+        {
+            Pregunta = pregunta;
+            Pista = pista;
+            _validador = validador;
+           
+        }
+        public override bool ValidarRespuesta(string respuesta) => _validador(respuesta);
+    }
 }
 

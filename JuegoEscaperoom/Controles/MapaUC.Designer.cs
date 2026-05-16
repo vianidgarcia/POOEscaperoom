@@ -43,6 +43,7 @@
             // pbxGundham
             // 
             pbxGundham.BackColor = Color.Transparent;
+            pbxGundham.Cursor = Cursors.Hand;
             pbxGundham.Image = Properties.Resources.gundham_icon;
             pbxGundham.Location = new Point(314, 413);
             pbxGundham.Name = "pbxGundham";
@@ -55,6 +56,7 @@
             // pbxNagito
             // 
             pbxNagito.BackColor = Color.Transparent;
+            pbxNagito.Cursor = Cursors.Hand;
             pbxNagito.Image = Properties.Resources.nagito_icon;
             pbxNagito.Location = new Point(581, 137);
             pbxNagito.Name = "pbxNagito";
@@ -67,6 +69,7 @@
             // pbxHiyoko
             // 
             pbxHiyoko.BackColor = Color.Transparent;
+            pbxHiyoko.Cursor = Cursors.Hand;
             pbxHiyoko.Image = Properties.Resources.hiyoko_icon;
             pbxHiyoko.Location = new Point(880, 168);
             pbxHiyoko.Name = "pbxHiyoko";
@@ -79,6 +82,7 @@
             // pbxChiaki
             // 
             pbxChiaki.BackColor = Color.Transparent;
+            pbxChiaki.Cursor = Cursors.Hand;
             pbxChiaki.Image = Properties.Resources.chiaki_icon;
             pbxChiaki.Location = new Point(880, 427);
             pbxChiaki.Name = "pbxChiaki";

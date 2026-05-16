@@ -107,16 +107,16 @@ namespace JuegoEscaperoom.Controles
         private void OnDialogosTerminados(Zona zona)
         {
             // Navega al minijuego correspondiente según el id de la zona
-            /*UserControl minijuego = zona.Id switch
+            UserControl minijuego = zona.Id switch
             {
-                "hiyoko" => new UcMinijuegoBaile(_form, zona),
-                "gundham" => new UcMinijuegoSecuencia(_form, zona),
-                "chiaki" => new UcMinijuegoRetro(_form, zona),
-                "nagito" => new UcMinijuegoLogica(_form, zona),
+                "hiyoko" => new MinijuegoSecuenciaUC(_form, zona),
+                "gundham" => new MinijuegoSecuenciaUC(_form, zona),
+                "chiaki" => new MinijuegoSecuenciaUC(_form, zona),
+                "nagito" => new MinijuegoSecuenciaUC(_form, zona),
                 _ => throw new InvalidOperationException($"Zona desconocida: {zona.Id}")
             };
 
-            _form.MostrarControl(minijuego);*/
+            _form.MostrarControl(minijuego);
         }
 
         private void pbxSprite_Click(object sender, EventArgs e)

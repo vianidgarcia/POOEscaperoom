@@ -30,7 +30,13 @@ namespace JuegoEscaperoom.Controles
             this.BackgroundImageLayout = ImageLayout.Stretch;
 
 
-            var zonaIntro = BancoZonas.CrearZonaIntro();
+            var zonaIntro = BancoZonas.CrearZonaIntro( talento =>
+            {
+                _form.Controlador.Estado.TalentoJugador = talento;
+            },
+            obtenerTalento: () => _form.Controlador.Estado.TalentoJugador,
+            onRegistrar: () => PersistenciaPartida.GuardarPartida(_form.Controlador.Estado)
+            );
             AbrirDialogo(zonaIntro);
         }
 
@@ -38,11 +44,39 @@ namespace JuegoEscaperoom.Controles
         {
             var dialogo = new DialogoUC(_form, zona);
             dialogo.Dock = DockStyle.Fill;
+            dialogo.InputTalentoSolicitado += Dialogo_InputTalentoSolicitado;
             dialogo.DialogosTerminados += OnIntroTerminada;
 
             this.Controls.Add(dialogo);
             dialogo.BringToFront();
             dialogo.Focus();
+        }
+
+        private void Dialogo_InputTalentoSolicitado(Action<string> obj)
+        {
+            TextBox textBox = new TextBox
+            {
+                Font = new Font("FOT-Rodin Pro B", 20, FontStyle.Bold),
+                Location = new Point(300, 500),
+                Size = new Size(400, 50)
+            };
+
+            this.Controls.Add(textBox);
+            textBox.BringToFront();
+            textBox.Focus();
+
+            textBox.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    string talento = textBox.Text.Trim();
+                    if (!string.IsNullOrEmpty(talento))
+                    {
+                        obj(talento);
+                        this.Controls.Remove(textBox);
+                    }
+                }
+            };
         }
 
         private void OnIntroTerminada(Zona _)

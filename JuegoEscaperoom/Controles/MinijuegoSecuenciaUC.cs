@@ -48,6 +48,7 @@ namespace JuegoEscaperoom.Controles
             _acertijo = (AcertijoSecuencia)zona.Acertijo;
             _audio = form.Audio;
             this.Dock = DockStyle.Fill;
+            
         }
 
         protected override void OnLoad(EventArgs e)
@@ -191,6 +192,7 @@ namespace JuegoEscaperoom.Controles
 
         private void RondaCompletada()
         {
+            
             _acertijo.RegistrarAcierto();
             MostrarEstado($"Ronda {_acertijo.Aciertos} / {_acertijo.RondasParaGanar}");
 
@@ -198,6 +200,9 @@ namespace JuegoEscaperoom.Controles
             {
                 _audio.ReproducirEfecto("Audios/efecto_revelaacertijo.wav");
                 MinijuegoCompletado?.Invoke(_zona);
+               _form.Controlador.ProcesarVictoriaZona(_zona);
+                MostrarEstado("Ganaste hermano, dele pa otra zona");
+                
                 return;
             }
 
@@ -221,7 +226,7 @@ namespace JuegoEscaperoom.Controles
                 "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (res == DialogResult.Yes)
-                _form.MostrarControl(new MapaUC(_form));
+                _form.MostrarControl(new ZonaUC(_form, _zona));
         }
 
         private void MostrarEstado(string texto) => lblEstado.Text = texto;

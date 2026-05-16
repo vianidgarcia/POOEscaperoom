@@ -42,7 +42,7 @@ namespace JuegoEscaperoom
             SuscribirEventosControlador();
 
             // Primera pantalla: introducción de Monokuma
-            MostrarControl(new IntroUC(this));
+            MostrarControl(new MenuUC(this));
         }
 
         private void SuscribirEventosControlador()
@@ -68,6 +68,13 @@ namespace JuegoEscaperoom
             this.Controls.Add(nuevoControl);
             _controlActual = nuevoControl;
             nuevoControl.BringToFront();
+        }
+
+        public void IniciarConEstadoCargado(EstadoJuego estado)
+        {
+            var zonas = BancoZonas.ObtenerTodasLasZonas();
+            Controlador = new ControladorJuego(estado, zonas);
+            MostrarControl(new MapaUC(this));
         }
 
         // ── Cierre limpio 

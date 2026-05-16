@@ -18,7 +18,7 @@ namespace JuegoEscaperoom.Clases
 
         public static Zona ObtenerZonaHiyoko() => CrearZonaHiyoko();
 
-        public static Zona CrearZonaIntro()
+        public static Zona CrearZonaIntro(Action<string> talentoCallback, Func<string> obtenerTalento, Action onRegistrar)
         {
             var monokuma = new Personaje("Monokuma", "");
             monokuma.AgregarExpresion("neutral", Properties.Resources.kuma_neutral);
@@ -36,8 +36,17 @@ namespace JuegoEscaperoom.Clases
                 new() { Hablante = monokuma, Texto = "Bienvenido a la Isla Jabberwock. Preciosa, verdad? Lástima que no puedas irte.", ExpresionAUsar = "serio" },
                 new() { Hablante = monokuma, Texto = "Aquí encontrarás a algunos estudiantes muy interesantes. Cada uno tiene algo para ti.", ExpresionAUsar = "despreocupado" },
                 new() { Hablante = monokuma, Texto = "Pero antes de empezar, necesito registrarte oficialmente en el e-Handbook.", ExpresionAUsar = "curioso"},
-                new() { Hablante = monokuma, Texto = "Dime... cual es tu talento, Super Estudiante?", ExpresionAUsar = "riendo" },
-                new() { Hablante = monokuma, Texto = "Perfecto. Queda registrado en el e-Handbook. Que empiece el show!",ExpresionAUsar = "serio" },
+                new() { Hablante = monokuma, Texto = "Dime... cual es tu talento, Super Estudiante?", ExpresionAUsar = "riendo", EfectoEspecial = uc => uc.MostrarInputTalento(talentoCallback)},
+                new() { Hablante = monokuma, ExpresionAUsar = "feliz", EfectoEspecial = (escena) =>
+                    {
+                        string talento = obtenerTalento();
+                        bool duplicado = PersistenciaPartida.TalentoYaExiste(talento);
+                        string reaccion = duplicado
+                            ? $"Espera... ¿otro Súper {talento}? Esto se pone interesante. ¡Upupupu!"
+                            : $"¡Súper {talento}! Qué título tan... peculiar. ¡Upupupu!";
+                        escena.CambiarTextoDialogo(reaccion);
+                    }},
+                new() { Hablante = monokuma, Texto = "Perfecto. Queda registrado en el e-Handbook. Que empiece el show!",ExpresionAUsar = "serio", EfectoEspecial= (escena) => onRegistrar()} 
             };
 
             return new Zona("intro", "Introduccion",
