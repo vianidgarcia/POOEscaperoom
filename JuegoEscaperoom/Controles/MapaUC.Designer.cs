@@ -34,6 +34,7 @@
             pbxChiaki = new PictureBox();
             lblContadorFragmentos = new Label();
             lblExpresion = new Label();
+            btnPausa = new Button();
             ((System.ComponentModel.ISupportInitialize)pbxGundham).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbxNagito).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbxHiyoko).BeginInit();
@@ -114,12 +115,23 @@
             lblExpresion.TabIndex = 6;
             lblExpresion.Text = "Selecciona en el mapa la zona a realizar";
             // 
+            // btnPausa
+            // 
+            btnPausa.Location = new Point(93, 236);
+            btnPausa.Name = "btnPausa";
+            btnPausa.Size = new Size(118, 87);
+            btnPausa.TabIndex = 8;
+            btnPausa.Text = "pause";
+            btnPausa.UseVisualStyleBackColor = true;
+            btnPausa.Click += btnPausa_Click;
+            // 
             // MapaUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.mapafoto;
             BackgroundImageLayout = ImageLayout.Zoom;
+            Controls.Add(btnPausa);
             Controls.Add(lblExpresion);
             Controls.Add(lblContadorFragmentos);
             Controls.Add(pbxChiaki);
@@ -143,5 +155,6 @@
         private PictureBox pbxChiaki;
         private Label lblContadorFragmentos;
         private Label lblExpresion;
+        private Button btnPausa;
     }
 }

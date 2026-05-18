@@ -38,7 +38,8 @@ namespace JuegoEscaperoom.Clases
         public Zona(string id, string nombreVisible, Image imagenFondo,
                     Image spritePersonaje, Personaje personaje, List<Dialogo> dialogos)
             : this(id, nombreVisible, imagenFondo, spritePersonaje, personaje, dialogos, null!, null)
-        { }
+        { 
+        }
 
 
         public void MarcarComoCompletada() => Completada = true;

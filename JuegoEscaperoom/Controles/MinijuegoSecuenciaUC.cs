@@ -221,6 +221,12 @@ namespace JuegoEscaperoom.Controles
 
         private void SalirSinCompletar()
         {
+            if (_zona.Completada) 
+                {
+                _form.MostrarControl(new ZonaUC(_form, _zona));
+                return;
+            }
+
             var res = MessageBox.Show(
                 "Si sales perderás el progreso de este minijuego. ¿Seguro?",
                 "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);

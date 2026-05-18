@@ -110,9 +110,9 @@ namespace JuegoEscaperoom.Controles
             UserControl minijuego = zona.Id switch
             {
                 "hiyoko" => new MinijuegoSecuenciaUC(_form, zona),
-                "gundham" => new MinijuegoSecuenciaUC(_form, zona),
+                "gundham" => new MinijuegoPreguntasUC(_form, zona, BancoZonas.ObtenerPreguntasGundham()),
                 "chiaki" => new MinijuegoSecuenciaUC(_form, zona),
-                "nagito" => new MinijuegoSecuenciaUC(_form, zona),
+                "nagito" => new MinijuegoPreguntasUC(_form, zona, BancoZonas.ObtenerPreguntasNagito()),
                 _ => throw new InvalidOperationException($"Zona desconocida: {zona.Id}")
             };
 

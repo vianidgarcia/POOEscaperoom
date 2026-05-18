@@ -32,8 +32,8 @@ namespace JuegoEscaperoom.Controles
 
         private void ActualizarEstadoZonas()
         {
-            
-        lblContadorFragmentos.Text = $"Fragmentos: {_form.Controlador.Estado.FragmentosEsperanza.Count} / 4";
+
+            lblContadorFragmentos.Text = $"Fragmentos: {_form.Controlador.Estado.FragmentosEsperanza.Count} / 4";
         }
 
         private void pbxHiyoko_Click(object sender, EventArgs e)
@@ -58,6 +58,12 @@ namespace JuegoEscaperoom.Controles
         {
             var zona = _zonas.FirstOrDefault(z => z.Id == "nagito");
             if (zona != null) _form.MostrarControl(new ZonaUC(_form, zona));
+        }
+
+
+        private void btnPausa_Click(object sender, EventArgs e)
+        {
+            _form.MostrarControl(new PausaUC(_form));
         }
     }
 }

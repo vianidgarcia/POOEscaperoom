@@ -143,6 +143,16 @@ namespace JuegoEscaperoom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cham_p {
+            get {
+                object obj = ResourceManager.GetObject("cham_p", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap chiaki_confundida {
             get {
                 object obj = ResourceManager.GetObject("chiaki_confundida", resourceCulture);
@@ -413,6 +423,16 @@ namespace JuegoEscaperoom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap jum_p {
+            get {
+                object obj = ResourceManager.GetObject("jum_p", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap kuma_curioso {
             get {
                 object obj = ResourceManager.GetObject("kuma_curioso", resourceCulture);
@@ -466,6 +486,16 @@ namespace JuegoEscaperoom.Properties {
         internal static System.Drawing.Bitmap kuma_serio {
             get {
                 object obj = ResourceManager.GetObject("kuma_serio", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap maga_z {
+            get {
+                object obj = ResourceManager.GetObject("maga_z", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -566,6 +596,16 @@ namespace JuegoEscaperoom.Properties {
         internal static System.Drawing.Bitmap puntero {
             get {
                 object obj = ResourceManager.GetObject("puntero", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap san_d {
+            get {
+                object obj = ResourceManager.GetObject("san_d", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

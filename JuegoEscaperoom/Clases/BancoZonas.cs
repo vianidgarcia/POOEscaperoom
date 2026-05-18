@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JuegoEscaperoom.Clases.JuegoEscaperoom.Clases;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -98,14 +99,10 @@ namespace JuegoEscaperoom.Clases
                 new() { Hablante = personaje, Texto = "Si los invocas en el orden correcto... considerare dejarte pasar.",     ExpresionAUsar = "relajado"  },
             };
 
-            var acertijo = new AcertijoSecuencia(
-                "Invoca a los hamsteres en el orden ritual correcto.",
-                "El orden: Cham-P, San-D, Maga-Z, Jum-P.");
-
             return new Zona("gundham", "Establos del fin del mundo",
                 Properties.Resources.zona_gundham,
                 Properties.Resources.gundham_fullbody,
-                personaje, dialogos, acertijo, "Fragmento de Esperanza");
+                personaje, dialogos, null, "Fragmento de Esperanza");
         }
 
         
@@ -149,16 +146,60 @@ namespace JuegoEscaperoom.Clases
                 new() { Hablante = personaje, Texto = "Permiteme hacerte unas preguntas. Para alguien con esperanza, no seran problema.", ExpresionAUsar = "intenso" },
             };
 
-            var acertijo = new AcertijoSecuencia(
-                "Responde las tres preguntas correctamente.",
-                "La logica es suficiente.",
-               3);
 
             return new Zona("nagito", "Biblioteca de la isla",
                 Properties.Resources.zona_nagito,
                 Properties.Resources.nagito_fullbody,
-                personaje, dialogos, acertijo, "Fragmento de Esperanza");
+                personaje, dialogos, null, "Fragmento de Esperanza");
         }
-        
+
+        public static List<AcertijoOpcionMultiple> ObtenerPreguntasGundham()
+        {
+            var preguntas = new List<AcertijoOpcionMultiple>
+    {
+        new("Este jinete es el más pequeño pero el más feroz. Sus colmillos pueden partir el acero.",
+            new List<string> { "Cham-P", "San-D", "Maga-Z", "Jum-P" },
+            0, "Su nombre empieza con C.",
+            new List<Image?> {
+                Properties.Resources.cham_p,
+                Properties.Resources.san_d,
+                Properties.Resources.maga_z,
+                Properties.Resources.jum_p
+            }),
+
+        new("Este guardián controla las tormentas de arena del desierto eterno.",
+            new List<string> { "Jum-P", "Cham-P", "San-D", "Maga-Z" },
+            2, "Su nombre evoca la arena.",
+            new List<Image?> {
+                Properties.Resources.jum_p,
+                Properties.Resources.cham_p,
+                Properties.Resources.san_d,
+                Properties.Resources.maga_z
+            }),
+
+        new("El más sabio de los cuatro. Domina la magia oscura ancestral.",
+            new List<string> { "San-D", "Maga-Z", "Jum-P", "Cham-P" },
+            1, "Su nombre suena a magia.",
+            new List<Image?> {
+                Properties.Resources.san_d,
+                Properties.Resources.maga_z,
+                Properties.Resources.jum_p,
+                Properties.Resources.cham_p
+            }),
+    };
+            return preguntas.OrderBy(_ => Random.Shared.Next()).ToList();
+        }
+
+        public static List<AcertijoOpcionMultiple> ObtenerPreguntasNagito()
+        {
+            var preguntas = new List<AcertijoOpcionMultiple>
+    {
+        new("Si todos mienten excepto uno...", new List<string> { "Miente", "Dice la verdad", "Es imposible saberlo", "Las dos cosas" }, 2),
+        new("Tengo hermanas que tienen un hermano...", new List<string> { "Ninguno", "Uno", "Depende", "Los mismos que ellas" }, 1),
+        new("La esperanza nace del despair...", new List<string> { "Más esperanza", "Nada", "El vacío", "La pregunta misma" }, 1)
+    };
+            return preguntas.OrderBy(_ => Random.Shared.Next()).ToList();
+        }
+
     }
 }
