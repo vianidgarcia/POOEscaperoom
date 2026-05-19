@@ -26,8 +26,6 @@ namespace JuegoEscaperoom.Clases
         public override bool ValidarRespuesta(string _) => Aciertos >= RondasParaGanar;
     }
 
-    namespace JuegoEscaperoom.Clases
-    {
         public class AcertijoOpcionMultiple : Acertijo
         {
             public List<string> Opciones { get; }
@@ -51,7 +49,31 @@ namespace JuegoEscaperoom.Clases
             public override bool ValidarRespuesta(string respuesta) =>
                 int.TryParse(respuesta, out int indice) && indice == _indiceCorrecto;
         }
+
+
+    public class AcertijoMemorama : Acertijo
+    {
+        public int RondasParaGanar { get; private set; } = 0;
+
+        public int RondasGanadas { get; private set; } = 0;
+
+        public AcertijoMemorama(string pregunta, string pista = "", int rondasParaGanar = 3)
+        {
+            Pregunta = pregunta;
+          
+            Pista = pista;
+            RondasParaGanar = rondasParaGanar;
+           
+        }
+
+        public void RegistrarRondaGanada() => RondasGanadas++;
+
+        public override bool ValidarRespuesta(string respuesta)
+        {
+            // La validación real se haría en el control del memorama, aquí solo se simula
+            return RondasGanadas == RondasParaGanar;
+        }
+    }
     }
 
-}
 

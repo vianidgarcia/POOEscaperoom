@@ -1,5 +1,4 @@
 ﻿using JuegoEscaperoom.Clases;
-using JuegoEscaperoom.Clases.JuegoEscaperoom.Clases;
 using JuegoEscaperoom.Properties;
 using System;
 using System.Collections.Generic;

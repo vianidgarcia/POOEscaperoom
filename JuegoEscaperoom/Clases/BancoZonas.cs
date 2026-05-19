@@ -1,4 +1,4 @@
-﻿using JuegoEscaperoom.Clases.JuegoEscaperoom.Clases;
+﻿using JuegoEscaperoom.Clases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -122,7 +122,7 @@ namespace JuegoEscaperoom.Clases
                 new() { Hablante = personaje, Texto = "¿Listo para intentarlo?",                                                   ExpresionAUsar = "sorprendida" },
             };
 
-            var acertijo = new AcertijoSecuencia(
+            var acertijo = new AcertijoMemorama(
                 "Memoriza el patron y luego recrealo.",
                 "Tienes 3 segundos para observarlo.");
 

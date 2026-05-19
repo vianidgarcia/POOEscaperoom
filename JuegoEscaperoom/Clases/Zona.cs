@@ -14,14 +14,13 @@ namespace JuegoEscaperoom.Clases
         public Image SpritePersonaje { get; }
         public Personaje Personaje { get; }
         public IReadOnlyList<Dialogo> Dialogos { get; }
-        public Acertijo Acertijo { get; }
+        public Acertijo? Acertijo { get; }
         public string? FragmentoEsperanza { get; }
-
-        public bool Completada { get; private set; } = false;
+            public bool Completada { get; private set; } = false;
 
         public Zona(string id, string nombreVisible, Image imagenFondo,
                     Image spritePersonaje, Personaje personaje,
-                    List<Dialogo> dialogos, Acertijo acertijo,
+                    List<Dialogo> dialogos, Acertijo? acertijo = null,
                     string? fragmentoEsperanza = null)
         {
             Id = id;

@@ -70,7 +70,7 @@ namespace JuegoEscaperoom.Controles
             CargarImagenesBotones();
 
             btnEmpezar.Click += (s, ev) => IniciarRonda();
-            btnSalir.Click += (s, ev) => SalirSinCompletar();
+            btnSalir.Click += (s, ev) => Salir();
 
             tmrSecuencia.Interval = 600;
             tmrSecuencia.Tick += MostrarSiguienteDireccion;
@@ -219,7 +219,7 @@ namespace JuegoEscaperoom.Controles
             CargarImagenesBotones();
         }
 
-        private void SalirSinCompletar()
+        private void Salir()
         {
             if (_zona.Completada) 
                 {
