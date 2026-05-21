@@ -14,6 +14,7 @@ namespace JuegoEscaperoom.Controles
 {
     public partial class DialogoUC : UserControl, IEscenaGrafica
     {
+
         private string _nombreActual = "";
         private readonly FormPrincipal _form;
         private readonly ServicioAudio _audio;
@@ -42,7 +43,6 @@ namespace JuegoEscaperoom.Controles
             this.BackColor = Color.Transparent;
             this.DoubleBuffered = true;
 
-            // Clic en cualquier parte del HUD avanza el diálogo
             this.MouseClick += (s, e) => SiguienteDialogo();
             pnlDialogo.MouseClick += (s, e) => SiguienteDialogo();
             lblDialogo.Click += (s, e) => SiguienteDialogo();
@@ -55,7 +55,7 @@ namespace JuegoEscaperoom.Controles
 
             pbxHudBarra.Paint += (s, e) =>
             {
-                e.Graphics.TranslateTransform(25, 600); 
+                e.Graphics.TranslateTransform(25, 600);
                 e.Graphics.RotateTransform(-90);
                 e.Graphics.DrawString(
                     _nombreActual,
@@ -71,8 +71,8 @@ namespace JuegoEscaperoom.Controles
         {
             base.OnLoad(e);
 
-            pbxHudDatos.Image = Properties.Resources.HUDdatos;
-            pbxHudDatos.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbxHudBarra.Parent = pbxSprite;
+            pbxHudDatos.Parent = pbxSprite;
 
             pbxSprite.SendToBack();
             pbxHudBarra.BringToFront();
@@ -83,7 +83,7 @@ namespace JuegoEscaperoom.Controles
             SiguienteDialogo();
         }
 
-        
+
         private void SiguienteDialogo()
         {
             if (_esperandoInput) return;
@@ -108,10 +108,9 @@ namespace JuegoEscaperoom.Controles
             var expresion = dialogo.Hablante.ObtenerExpresion(dialogo.ExpresionAUsar);
             if (expresion != null) CambiarExpresion(expresion);
 
-            if (!string.IsNullOrEmpty(dialogo.Hablante.RutaVoz))
-                _audio.ReproducirVoz(dialogo.Hablante.RutaVoz);
-
             _servicioDialogo.Animar(dialogo.Texto);
+            
+            _audio.ReproducirEfecto("Audios/efecto_pasardialogo.wav");
             dialogo.EfectoEspecial?.Invoke(this);
         }
 
@@ -156,7 +155,7 @@ namespace JuegoEscaperoom.Controles
 
         public Control ControlRaiz => this;
 
-        
+
 
     }
 }

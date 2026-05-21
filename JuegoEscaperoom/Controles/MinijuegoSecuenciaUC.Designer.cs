@@ -46,40 +46,44 @@
             // 
             // pbxArriba
             // 
-            pbxArriba.Location = new Point(285, 236);
+            pbxArriba.BackColor = Color.Transparent;
+            pbxArriba.Location = new Point(389, 450);
             pbxArriba.Name = "pbxArriba";
-            pbxArriba.Size = new Size(100, 100);
+            pbxArriba.Size = new Size(250, 250);
             pbxArriba.TabIndex = 0;
             pbxArriba.TabStop = false;
             // 
             // pbxAbajo
             // 
-            pbxAbajo.Location = new Point(425, 236);
+            pbxAbajo.BackColor = Color.Transparent;
+            pbxAbajo.Location = new Point(658, 450);
             pbxAbajo.Name = "pbxAbajo";
-            pbxAbajo.Size = new Size(100, 100);
+            pbxAbajo.Size = new Size(250, 250);
             pbxAbajo.TabIndex = 1;
             pbxAbajo.TabStop = false;
             // 
             // pbxIzquierda
             // 
-            pbxIzquierda.Location = new Point(139, 236);
+            pbxIzquierda.BackColor = Color.Transparent;
+            pbxIzquierda.Location = new Point(116, 450);
             pbxIzquierda.Name = "pbxIzquierda";
-            pbxIzquierda.Size = new Size(100, 100);
+            pbxIzquierda.Size = new Size(250, 250);
             pbxIzquierda.TabIndex = 2;
             pbxIzquierda.TabStop = false;
             // 
             // pbxDerecha
             // 
-            pbxDerecha.Location = new Point(568, 236);
+            pbxDerecha.BackColor = Color.Transparent;
+            pbxDerecha.Location = new Point(930, 450);
             pbxDerecha.Name = "pbxDerecha";
-            pbxDerecha.Size = new Size(100, 100);
+            pbxDerecha.Size = new Size(250, 250);
             pbxDerecha.TabIndex = 3;
             pbxDerecha.TabStop = false;
             // 
             // lblEstado
             // 
             lblEstado.AutoSize = true;
-            lblEstado.Location = new Point(16, 47);
+            lblEstado.Location = new Point(275, 68);
             lblEstado.Name = "lblEstado";
             lblEstado.Size = new Size(55, 15);
             lblEstado.TabIndex = 4;
@@ -87,18 +91,18 @@
             // 
             // btnEmpezar
             // 
-            btnEmpezar.Location = new Point(16, 12);
+            btnEmpezar.Location = new Point(77, 64);
             btnEmpezar.Name = "btnEmpezar";
-            btnEmpezar.Size = new Size(75, 23);
+            btnEmpezar.Size = new Size(167, 120);
             btnEmpezar.TabIndex = 5;
             btnEmpezar.Text = "butEmp";
             btnEmpezar.UseVisualStyleBackColor = true;
             // 
             // btnSalir
             // 
-            btnSalir.Location = new Point(699, 12);
+            btnSalir.Location = new Point(1119, 68);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(75, 23);
+            btnSalir.Size = new Size(167, 120);
             btnSalir.TabIndex = 6;
             btnSalir.Text = "butSal";
             btnSalir.UseVisualStyleBackColor = true;
@@ -109,6 +113,7 @@
             // 
             // tmrApagar
             // 
+            tmrApagar.Interval = 30;
             tmrApagar.Tick += tmrApagar_Tick;
             // 
             // MinijuegoSecuenciaUC
@@ -122,8 +127,9 @@
             Controls.Add(pbxIzquierda);
             Controls.Add(pbxAbajo);
             Controls.Add(pbxArriba);
+            DoubleBuffered = true;
             Name = "MinijuegoSecuenciaUC";
-            Size = new Size(960, 540);
+            Size = new Size(1368, 788);
             ((System.ComponentModel.ISupportInitialize)pbxArriba).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbxAbajo).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbxIzquierda).EndInit();

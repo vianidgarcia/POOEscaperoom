@@ -17,6 +17,7 @@ namespace JuegoEscaperoom
         public ServicioAudio Audio { get; } = new();
         public ControladorJuego Controlador { get; private set; }
         private UserControl? _controlActual;
+        private static ServicioLocalizacion L => ServicioLocalizacion.Instancia;
 
         public FormPrincipal()
         {
@@ -39,25 +40,10 @@ namespace JuegoEscaperoom
             var zonas = BancoZonas.ObtenerTodasLasZonas();
             Controlador = new ControladorJuego(estado, zonas);
 
-            SuscribirEventosControlador();
 
-            // Primera pantalla: introducción de Monokuma
             MostrarControl(new MenuUC(this));
         }
 
-        private void SuscribirEventosControlador()
-        {
-            Controlador.JunkoDesbloqueada += () =>
-            {
-                // El mapa se encarga de mostrar a Junko disponible
-                // No navegamos aquí — el jugador decide cuándo ir
-            };
-
-            Controlador.JuegoTerminado += () =>
-            {
-                MostrarControl(new CreditosUC(this));
-            };
-        }
 
         // ── Navegación 
         public void MostrarControl(UserControl nuevoControl)
@@ -82,16 +68,15 @@ namespace JuegoEscaperoom
         {
             if (Controlador.CambiosSinGuardar)
             {
-                var res = MessageBox.Show(
-                    "¿Guardar progreso antes de salir?",
-                    "Guardar", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                var res = MessageBox.Show(L.Obtener("ui.cierre.confirmarGuardar"),
+                    L.Obtener("ui.cierre.tituloGuardar"), MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
                 if (res == DialogResult.Yes)
                 {
                     try { Controlador.GuardarPartida(); }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Error al guardar: {ex.Message}");
+                        MessageBox.Show(L.Formato("ui.cierre.errorGuardar", ex.Message));
                         e.Cancel = true;
                         return;
                     }

@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Policy;
@@ -18,7 +17,7 @@ namespace JuegoEscaperoom.Clases
 
         // Eventos hacia la UI
         public event Action<Zona>? ZonaCompletada;
-        public event Action? JunkoDesbloqueada;
+        public event Action? ZonaFinalDesbloqueada;
         public event Action? JuegoTerminado;
 
         public bool CambiosSinGuardar { get; private set; } = false;
@@ -43,14 +42,14 @@ namespace JuegoEscaperoom.Clases
             _estado.RegistrarZonaCompletada(zona.Id);
             _estado.SumarPuntos(100);
 
-            if (!string.IsNullOrEmpty(zona.FragmentoEsperanza))
-                _estado.AgregarFragmento(zona.FragmentoEsperanza);
+            if (zona.DaFragmento)
+                _estado.AgregarFragmento();
 
             CambiosSinGuardar = true;
             ZonaCompletada?.Invoke(zona);
 
-            if (_estado.PuedeIrAJunko)
-                JunkoDesbloqueada?.Invoke();
+            if (_estado.PuedeIrAZonaFinal)
+                ZonaFinalDesbloqueada?.Invoke();
         }
 
         public void ProcesarVictoriaFinal()
@@ -61,6 +60,5 @@ namespace JuegoEscaperoom.Clases
 
         // Persistencia
         public void GuardarPartida() => PersistenciaPartida.GuardarPartida(_estado);
-        public void LimpiarCambios() => CambiosSinGuardar = false;
     }
 }

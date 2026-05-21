@@ -9,15 +9,13 @@ namespace JuegoEscaperoom.Clases
     public class Personaje
     {
         public string Nombre { get; }
-        public string RutaVoz { get; }
 
         private readonly Dictionary<string, Image> _expresiones = new();
         public IReadOnlyDictionary<string, Image> Expresiones => _expresiones;
 
-        public Personaje(string nombre, string rutaVoz)
+        public Personaje(string nombre)
         {
             Nombre = nombre;
-            RutaVoz = rutaVoz;
         }
 
         public void AgregarExpresion(string clave, Image imagen)

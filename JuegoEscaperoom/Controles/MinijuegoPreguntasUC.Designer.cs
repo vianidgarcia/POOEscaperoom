@@ -172,6 +172,7 @@
             Controls.Add(btnOpcion1);
             Controls.Add(btnSalir);
             Controls.Add(btnEmpezar);
+            DoubleBuffered = true;
             Name = "MinijuegoPreguntasUC";
             Size = new Size(1368, 788);
             ((System.ComponentModel.ISupportInitialize)pbxOpcion1).EndInit();

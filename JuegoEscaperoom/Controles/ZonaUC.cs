@@ -13,6 +13,7 @@ namespace JuegoEscaperoom.Controles
 {
     public partial class ZonaUC : UserControl
     {
+        private static ServicioLocalizacion L => ServicioLocalizacion.Instancia;
         private readonly FormPrincipal _form;
         private readonly Zona _zona;
 
@@ -41,22 +42,24 @@ namespace JuegoEscaperoom.Controles
             // Sprite del personaje
             pbxSprite.Image = _zona.SpritePersonaje;
             pbxSprite.SizeMode = PictureBoxSizeMode.Zoom;
-            pbxSprite.Cursor = Cursors.Hand; 
+            pbxSprite.Cursor = Cursors.Hand;
 
             pbxSprite.MouseClick += OnSpriteClick;
 
-            // Música de la zona si el personaje tiene
-            if (!string.IsNullOrEmpty(_zona.Personaje.RutaVoz))
-                _form.Audio.ReproducirMusica($"Audio/{_zona.Personaje.RutaVoz}");
         }
 
         private void OnSpriteClick(object? sender, MouseEventArgs e)
-        {
+          {
             if (this.Controls.OfType<DialogoUC>().Any()) return;
 
             if (_zona.Completada)
             {
-                MostrarDialogoRevisita();
+                if (_zona.DialogosPista != null && _form.Controlador.Estado.PuedeIrAZonaFinal)
+                {
+                    MostrarDialogoPista();
+                }
+                else
+                    MostrarDialogoRevisita();
                 return;
             }
 
@@ -67,15 +70,30 @@ namespace JuegoEscaperoom.Controles
         {
             var ucDialogo = new DialogoUC(_form, _zona);
 
-            // Posicionar en la parte inferior, centrado
-
-
             ucDialogo.DialogosTerminados += OnDialogosTerminados;
 
             this.Controls.Add(ucDialogo);
             ucDialogo.BringToFront();
             ucDialogo.Focus();
         }
+
+        private void MostrarDialogoPista()
+        {
+            var personaje = _zona.Personaje;
+            var dialogoPista = new List<Dialogo> { };
+            dialogoPista = _zona.DialogosPista!.ToList();
+
+            // Zona temporal solo para el diálogo de pista
+            var zonaTemp = new Zona(
+                _zona.Id, _zona.NombreVisible, _zona.ImagenFondo,
+                _zona.SpritePersonaje, personaje, dialogoPista,
+                _zona.Acertijo, null);
+            var ucDialogo = new DialogoUC(_form, zonaTemp);
+            this.Controls.Add(ucDialogo);
+            ucDialogo.BringToFront();
+            ucDialogo.Focus();
+        }
+
 
         private void MostrarDialogoRevisita()
         {
@@ -85,7 +103,7 @@ namespace JuegoEscaperoom.Controles
                 new()
                 {
                     Hablante       = personaje,
-                    Texto          = "Ya resolviste mi desafío. No tengo nada más para ti.",
+                    Texto          = L.Obtener("ui.zonaRevisita"),
                     ExpresionAUsar = personaje.Expresiones.Keys.FirstOrDefault() ?? ""
                 }
             };
@@ -113,6 +131,7 @@ namespace JuegoEscaperoom.Controles
                 "gundham" => new MinijuegoPreguntasUC(_form, zona, BancoZonas.ObtenerPreguntasGundham()),
                 "chiaki" => new MinijuegoMemoramaUC(_form, zona),
                 "nagito" => new MinijuegoPreguntasUC(_form, zona, BancoZonas.ObtenerPreguntasNagito()),
+                "monokuma_final" => new MinijuegoCodigoUC(_form, zona), 
                 _ => throw new InvalidOperationException($"Zona desconocida: {zona.Id}")
             };
 
@@ -126,7 +145,7 @@ namespace JuegoEscaperoom.Controles
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-                _form.MostrarControl(new MapaUC(_form));
+            _form.MostrarControl(new MapaUC(_form));
         }
     }
 }

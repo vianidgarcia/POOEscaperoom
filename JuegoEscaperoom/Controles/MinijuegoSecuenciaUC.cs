@@ -13,6 +13,7 @@ namespace JuegoEscaperoom.Controles
 {
     public partial class MinijuegoSecuenciaUC : UserControl
     {
+        private static ServicioLocalizacion L => ServicioLocalizacion.Instancia;
         private readonly FormPrincipal _form;
         private readonly Zona _zona;
         private readonly AcertijoSecuencia _acertijo;
@@ -48,7 +49,7 @@ namespace JuegoEscaperoom.Controles
             _acertijo = (AcertijoSecuencia)zona.Acertijo;
             _audio = form.Audio;
             this.Dock = DockStyle.Fill;
-            
+
         }
 
         protected override void OnLoad(EventArgs e)
@@ -75,7 +76,10 @@ namespace JuegoEscaperoom.Controles
             tmrSecuencia.Interval = 600;
             tmrSecuencia.Tick += MostrarSiguienteDireccion;
 
-            MostrarEstado($"Ronda 0 / {_acertijo.RondasParaGanar} — Presiona Empezar");
+            // Textos localizados y textos de botones
+            MostrarEstado(L.Formato("ui.secuencia.estadoInicial", 0, _acertijo.RondasParaGanar));
+            btnEmpezar.Text = L.Obtener("ui.minijuego.empezar");
+            btnSalir.Text = L.Obtener("ui.minijuego.salir");
 
             this.Focus();
         }
@@ -123,7 +127,7 @@ namespace JuegoEscaperoom.Controles
             _indiceMostrar = 0;
             _mostrandoSecuencia = true;
             _secuenciaActual = GenerarSecuencia(4);
-            MostrarEstado("Memoriza la secuencia...");
+            MostrarEstado(L.Obtener("ui.secuencia.memorizando"));
             tmrSecuencia.Start();
         }
 
@@ -153,7 +157,7 @@ namespace JuegoEscaperoom.Controles
                 // Termina la demostración
                 tmrSecuencia.Stop();
                 _mostrandoSecuencia = false;
-                MostrarEstado("¡Tu turno! Repite la secuencia.");
+                MostrarEstado(L.Obtener("ui.secuencia.turnoJugador"));
                 this.Focus();
                 CargarImagenesBotones();
             }
@@ -192,22 +196,22 @@ namespace JuegoEscaperoom.Controles
 
         private void RondaCompletada()
         {
-            
+
             _acertijo.RegistrarAcierto();
-            MostrarEstado($"Ronda {_acertijo.Aciertos} / {_acertijo.RondasParaGanar}");
+            MostrarEstado(L.Formato("ui.secuencia.rondasGanadas", _acertijo.Aciertos, _acertijo.RondasParaGanar));
 
             if (_acertijo.Resolver(""))
             {
                 _audio.ReproducirEfecto("Audios/efecto_revelaacertijo.wav");
                 MinijuegoCompletado?.Invoke(_zona);
-               _form.Controlador.ProcesarVictoriaZona(_zona);
-                MostrarEstado("Ganaste hermano, dele pa otra zona");
-                
+                _form.Controlador.ProcesarVictoriaZona(_zona);
+                MostrarEstado(L.Obtener("ui.secuencia.ganaste"));
+
                 return;
             }
 
             btnEmpezar.Enabled = true;
-            MostrarEstado($"¡Correcto! Ronda {_acertijo.Aciertos} / {_acertijo.RondasParaGanar} — Siguiente ronda");
+            MostrarEstado(L.Formato("ui.secuencia.correcto", _acertijo.Aciertos, _acertijo.RondasParaGanar));
             CargarImagenesBotones();
         }
 
@@ -215,21 +219,22 @@ namespace JuegoEscaperoom.Controles
         {
             _indiceJugador = 0;
             btnEmpezar.Enabled = true;
-            MostrarEstado("Secuencia incorrecta. Intenta de nuevo.");
+            MostrarEstado(L.Obtener("ui.secuencia.incorrecto"));
             CargarImagenesBotones();
         }
 
         private void Salir()
         {
-            if (_zona.Completada) 
-                {
+            if (_zona.Completada)
+            {
                 _form.MostrarControl(new ZonaUC(_form, _zona));
                 return;
             }
 
             var res = MessageBox.Show(
-                "Si sales perderás el progreso de este minijuego. ¿Seguro?",
-                "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                L.Obtener("ui.minijuego.confirmarSalida"),
+                L.Obtener("ui.minijuego.tituloSalida"),
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (res == DialogResult.Yes)
                 _form.MostrarControl(new ZonaUC(_form, _zona));

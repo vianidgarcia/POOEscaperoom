@@ -13,7 +13,8 @@ namespace JuegoEscaperoom.Clases
         public int Puntaje { get; private set; } = 0;
         public string TalentoJugador { get; set; } = "";
         public List<string> ZonasCompletadas { get; private set; } = new();
-        public List<string> FragmentosEsperanza { get; private set; } = new();
+        public int FragmentosObtenidos { get; private set; } = 0;
+
         public DateTime FechaGuardado { get; set; } = DateTime.Now;
 
         public string SlotId => $"{TalentoJugador}_{FechaGuardado:yyyyMMddHHmmss}";
@@ -23,13 +24,13 @@ namespace JuegoEscaperoom.Clases
         [JsonConstructor]
         public EstadoJuego(int puntaje, string talentoJugador,
                            List<string> zonasCompletadas,
-                           List<string> fragmentosEsperanza,
+                           int fragmentosObtenidos,
                            DateTime fechaGuardado)
         {
             Puntaje = puntaje;
             TalentoJugador = talentoJugador;
             ZonasCompletadas = zonasCompletadas ?? new();
-            FragmentosEsperanza = fragmentosEsperanza ?? new();
+            FragmentosObtenidos = fragmentosObtenidos;
             FechaGuardado = fechaGuardado;
         }
 
@@ -44,17 +45,12 @@ namespace JuegoEscaperoom.Clases
                 ZonasCompletadas.Add(idZona);
         }
 
-        public void AgregarFragmento(string fragmento)
-        {
-            if (!string.IsNullOrEmpty(fragmento) &&
-                !FragmentosEsperanza.Contains(fragmento))
-                FragmentosEsperanza.Add(fragmento);
-        }
-
         public bool ZonaCompletada(string idZona) =>
             ZonasCompletadas.Contains(idZona);
 
-        public bool PuedeIrAJunko => FragmentosEsperanza.Count >= 4;
+        public void AgregarFragmento() => FragmentosObtenidos++;
+
+        public bool PuedeIrAZonaFinal => FragmentosObtenidos >= 4;
     }
 }
 

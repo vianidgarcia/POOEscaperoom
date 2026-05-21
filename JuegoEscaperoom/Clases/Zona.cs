@@ -15,13 +15,14 @@ namespace JuegoEscaperoom.Clases
         public Personaje Personaje { get; }
         public IReadOnlyList<Dialogo> Dialogos { get; }
         public Acertijo? Acertijo { get; }
-        public string? FragmentoEsperanza { get; }
-            public bool Completada { get; private set; } = false;
+        public bool DaFragmento { get; }
+        public bool Completada { get; private set; } = false;
+        public IReadOnlyList<Dialogo>? DialogosPista { get; }
 
         public Zona(string id, string nombreVisible, Image imagenFondo,
                     Image spritePersonaje, Personaje personaje,
                     List<Dialogo> dialogos, Acertijo? acertijo = null,
-                    string? fragmentoEsperanza = null)
+                    string? fragmentoEsperanza = null, List<Dialogo> dialogosPista = null)
         {
             Id = id;
             NombreVisible = nombreVisible;
@@ -30,7 +31,9 @@ namespace JuegoEscaperoom.Clases
             Personaje = personaje;
             Dialogos = dialogos.AsReadOnly();
             Acertijo = acertijo;
-            FragmentoEsperanza = fragmentoEsperanza;
+            DaFragmento = fragmentoEsperanza != null;
+            DialogosPista = dialogosPista?.AsReadOnly();
+
         }
 
         // Constructor alternativo para zonas narrativas sin acertijo (ej. intro)
@@ -39,7 +42,6 @@ namespace JuegoEscaperoom.Clases
             : this(id, nombreVisible, imagenFondo, spritePersonaje, personaje, dialogos, null!, null)
         { 
         }
-
 
         public void MarcarComoCompletada() => Completada = true;
     }

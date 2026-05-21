@@ -102,6 +102,7 @@
             Controls.Add(pbxHudDatos);
             Controls.Add(pbxHudBarra);
             Controls.Add(pbxSprite);
+            DoubleBuffered = true;
             Name = "DialogoUC";
             Size = new Size(1366, 788);
             pnlDialogo.ResumeLayout(false);

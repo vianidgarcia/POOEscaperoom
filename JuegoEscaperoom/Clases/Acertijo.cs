@@ -23,10 +23,5 @@ namespace JuegoEscaperoom
             Resuelto = true;
             return true;
         }
-        protected static string Normalizar(string texto) =>
-        texto?.Trim().ToLowerInvariant()
-                .Replace("á", "a").Replace("é", "e")
-                .Replace("í", "i").Replace("ó", "o")
-                .Replace("ú", "u") ?? "";
     }
 }

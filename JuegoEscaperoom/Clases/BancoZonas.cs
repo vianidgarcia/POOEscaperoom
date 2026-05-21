@@ -1,14 +1,18 @@
 ﻿using JuegoEscaperoom.Clases;
+using JuegoEscaperoom.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
 namespace JuegoEscaperoom.Clases
 {
     public static class BancoZonas
     {
+        private static ServicioLocalizacion L => ServicioLocalizacion.Instancia;
+
         public static List<Zona> ObtenerTodasLasZonas() => new()
         {
             CrearZonaHiyoko(),
@@ -19,36 +23,25 @@ namespace JuegoEscaperoom.Clases
 
         public static Zona ObtenerZonaHiyoko() => CrearZonaHiyoko();
 
-        public static Zona CrearZonaIntro(Action<string> talentoCallback, Func<string> obtenerTalento, Action onRegistrar)
+        public static Zona CrearZonaIntro(
+            Action<string> talentoCallback,
+            Func<string> obtenerTalento,
+            Action onRegistrar)
         {
-            var monokuma = new Personaje("Monokuma", "");
-            monokuma.AgregarExpresion("neutral", Properties.Resources.kuma_neutral);
-            monokuma.AgregarExpresion("riendo", Properties.Resources.kuma_riendo);
-            monokuma.AgregarExpresion("feliz", Properties.Resources.kuma_feliz);
-            monokuma.AgregarExpresion("serio", Properties.Resources.kuma_serio);
-            monokuma.AgregarExpresion("curioso", Properties.Resources.kuma_curioso);
-            monokuma.AgregarExpresion("despreocupado", Properties.Resources.kuma_despreocupado);
-
-            var dialogos = new List<Dialogo>
-            {
-                new() { Hablante = monokuma, Texto = "...", ExpresionAUsar = "neutral" },
-                new() { Hablante = monokuma, Texto = "Vaya, vaya. Parece que tenemos un nuevo participante.", ExpresionAUsar = "riendo" },
-                new() { Hablante = monokuma, Texto = "Permíteme presentarme. Soy Monokuma, tu adorable anfitrión en esta hermosa isla.", ExpresionAUsar = "feliz" },
-                new() { Hablante = monokuma, Texto = "Bienvenido a la Isla Jabberwock. Preciosa, verdad? Lástima que no puedas irte.", ExpresionAUsar = "serio" },
-                new() { Hablante = monokuma, Texto = "Aquí encontrarás a algunos estudiantes muy interesantes. Cada uno tiene algo para ti.", ExpresionAUsar = "despreocupado" },
-                new() { Hablante = monokuma, Texto = "Pero antes de empezar, necesito registrarte oficialmente en el e-Handbook.", ExpresionAUsar = "curioso"},
-                new() { Hablante = monokuma, Texto = "Dime... cual es tu talento, Super Estudiante?", ExpresionAUsar = "riendo", EfectoEspecial = uc => uc.MostrarInputTalento(talentoCallback)},
-                new() { Hablante = monokuma, ExpresionAUsar = "feliz", EfectoEspecial = (escena) =>
+            var monokuma = CrearPersonajeMonokuma();
+            var dialogos = ConstruirDialogos("monokuma_intro", monokuma,
+                efectos: new Dictionary<string, Action<IEscenaGrafica>>
+                {
+                    ["input_talento"] = uc => uc.MostrarInputTalento(talentoCallback),
+                    ["reaccion_talento"] = escena =>
                     {
                         string talento = obtenerTalento();
                         bool duplicado = PersistenciaPartida.TalentoYaExiste(talento);
-                        string reaccion = duplicado
-                            ? $"Espera... ¿otro Súper {talento}? Esto se pone interesante. ¡Upupupu!"
-                            : $"¡Súper {talento}! Qué título tan... peculiar. ¡Upupupu!";
+                        string reaccion = L.ObtenerReaccionTalento(talento, duplicado);
                         escena.CambiarTextoDialogo(reaccion);
-                    }},
-                new() { Hablante = monokuma, Texto = "Perfecto. Queda registrado en el e-Handbook. Que empiece el show!",ExpresionAUsar = "serio", EfectoEspecial= (escena) => onRegistrar()} 
-            };
+                    },
+                    ["registrar"] = _ => onRegistrar()
+                });
 
             return new Zona("intro", "Introduccion",
                 Properties.Resources.zona_intro,
@@ -58,148 +51,231 @@ namespace JuegoEscaperoom.Clases
 
         private static Zona CrearZonaHiyoko()
         {
-            var personaje = new Personaje("Hiyoko Saionji", "");
+            var personaje = new Personaje("Hiyoko Saionji");
             personaje.AgregarExpresion("normal", Properties.Resources.hiyoko_pretenciosa);
             personaje.AgregarExpresion("burlona", Properties.Resources.hiyoko_burlona);
             personaje.AgregarExpresion("seria", Properties.Resources.hiyoko_despreocupada);
             personaje.AgregarExpresion("curiosa", Properties.Resources.hiyoko_curiosa);
 
-            var dialogos = new List<Dialogo>
-            {
-                new() { Hablante = personaje, Texto = "Que haces aqui, torpe?",                                          ExpresionAUsar = "burlona" },
-                new() { Hablante = personaje, Texto = "Si quieres pasar, demuestra que tienes algo de ritmo.",           ExpresionAUsar = "seria"   },
-                new() { Hablante = personaje, Texto = "El bon odori tiene un orden sagrado. Cada paso en su momento.",   ExpresionAUsar = "pretenciosa"  },
-                new() { Hablante = personaje, Texto = "Listo para intentarlo?",                                           ExpresionAUsar = "curiosa" },
-            };
-
-            var acertijo = new AcertijoSecuencia(
-                "Repite la secuencia de pasos que marca Hiyoko.",
-                "Observa el orden de los botones."
-                );
+            var dialogos = ConstruirDialogos("hiyoko", personaje);
+            var acertijo = ConstruirAcertijoSecuencia("hiyoko");
 
             return new Zona("hiyoko", "Escenario de danza",
                 Properties.Resources.zona_hiyoko,
                 Properties.Resources.hiyoko_fullbody,
-                personaje, dialogos, acertijo, "Fragmento de Esperanza");
+                personaje, dialogos, acertijo, L.Obtener("ui.fragmentoEsperanza"), ObtenerDialogosPistaHiyoko());
         }
 
         private static Zona CrearZonaGundham()
         {
-            var personaje = new Personaje("Gundham Tanaka", "");
+            var personaje = new Personaje("Gundham Tanaka");
             personaje.AgregarExpresion("dramatico", Properties.Resources.gundham_dramatico);
             personaje.AgregarExpresion("serio", Properties.Resources.gundham_serio);
             personaje.AgregarExpresion("relajado", Properties.Resources.gundham_relajado);
             personaje.AgregarExpresion("confundido", Properties.Resources.gundham_confundido);
 
-            var dialogos = new List<Dialogo>
-            {
-                new() { Hablante = personaje, Texto = "Mortal! Has osado entrar al dominio de los Cuatro Jinetes Oscuros.",    ExpresionAUsar = "dramatico" },
-                new() { Hablante = personaje, Texto = "Mis cuatro guardianes obedecen un orden cosmico inamovible.",           ExpresionAUsar = "serio"     },
-                new() { Hablante = personaje, Texto = "Eh? Que quieres entender de lo que hablo?",           ExpresionAUsar = "confundido"     },
-                new() { Hablante = personaje, Texto = "Si los invocas en el orden correcto... considerare dejarte pasar.",     ExpresionAUsar = "relajado"  },
-            };
+            var dialogos = ConstruirDialogos("gundham", personaje);
 
             return new Zona("gundham", "Establos del fin del mundo",
                 Properties.Resources.zona_gundham,
                 Properties.Resources.gundham_fullbody,
-                personaje, dialogos, null, "Fragmento de Esperanza");
+                personaje, dialogos, null, L.Obtener("ui.fragmentoEsperanza"), ObtenerDialogosPistaGundham());
         }
 
-        
         private static Zona CrearZonaChiaki()
         {
-            var personaje = new Personaje("Chiaki Nanami", "");
+            var personaje = new Personaje("Chiaki Nanami");
             personaje.AgregarExpresion("tranquila", Properties.Resources.chiaki_tranquila);
             personaje.AgregarExpresion("curiosa", Properties.Resources.chiaki_curiosa);
             personaje.AgregarExpresion("pensando", Properties.Resources.chiaki_pensando);
             personaje.AgregarExpresion("sorprendida", Properties.Resources.chiaki_sorprendida);
 
-            var dialogos = new List<Dialogo>
-            {
-                new() { Hablante = personaje, Texto = "...Ah, hola.",                                                         ExpresionAUsar = "tranquila" },
-                new() { Hablante = personaje, Texto = "Todo juego tiene un patron. Si lo memorizas, siempre puedes ganar.",   ExpresionAUsar = "curiosa"   },
-                new() { Hablante = personaje, Texto = "Te voy a mostrar algo. Solo tienes que recordarlo exactamente.",        ExpresionAUsar = "pensando"  },
-                new() { Hablante = personaje, Texto = "¿Listo para intentarlo?",                                                   ExpresionAUsar = "sorprendida" },
-            };
-
-            var acertijo = new AcertijoMemorama(
-                "Memoriza el patron y luego recrealo.",
-                "Tienes 3 segundos para observarlo.");
+            var dialogos = ConstruirDialogos("chiaki", personaje);
+            var acertijo = ConstruirAcertijoMemorama("chiaki");
 
             return new Zona("chiaki", "Sala de arcade",
                 Properties.Resources.zona_chiaki,
                 Properties.Resources.chiaki_fullbody,
-                personaje, dialogos, acertijo, "Fragmento de Esperanza");
+                personaje, dialogos, acertijo, L.Obtener("ui.fragmentoEsperanza"), ObtenerDialogosPistaChiaki());
         }
 
         private static Zona CrearZonaNagito()
         {
-            var personaje = new Personaje("Nagito Komaeda", "");
+            var personaje = new Personaje("Nagito Komaeda");
             personaje.AgregarExpresion("sonriente", Properties.Resources.nagito_feliz);
             personaje.AgregarExpresion("pensativo", Properties.Resources.nagito_pensando);
             personaje.AgregarExpresion("intenso", Properties.Resources.nagito_intenso);
 
-            var dialogos = new List<Dialogo>
-            {
-                new() { Hablante = personaje, Texto = "Oh... no esperaba visita. Aunque la suerte siempre encuentra su camino.",       ExpresionAUsar = "sonriente" },
-                new() { Hablante = personaje, Texto = "La logica es la unica esperanza verdadera, no crees?",                          ExpresionAUsar = "pensativo" },
-                new() { Hablante = personaje, Texto = "Permiteme hacerte unas preguntas. Para alguien con esperanza, no seran problema.", ExpresionAUsar = "intenso" },
-            };
-
+            var dialogos = ConstruirDialogos("nagito", personaje);
 
             return new Zona("nagito", "Biblioteca de la isla",
                 Properties.Resources.zona_nagito,
                 Properties.Resources.nagito_fullbody,
-                personaje, dialogos, null, "Fragmento de Esperanza");
+                personaje, dialogos, null, L.Obtener("ui.fragmentoEsperanza"), ObtenerDialogosPistaNagito());
         }
 
-        public static List<AcertijoOpcionMultiple> ObtenerPreguntasGundham()
+        public static List<AcertijoOpcionMultiple> ObtenerPreguntasGundham() =>
+            ConstruirPreguntasOpcionMultiple("gundham");
+
+        public static List<AcertijoOpcionMultiple> ObtenerPreguntasNagito() =>
+            ConstruirPreguntasOpcionMultiple("nagito");
+
+
+        private static List<Dialogo> ConstruirDialogos(
+            string zonaId,
+            Personaje hablante,
+            Dictionary<string, Action<IEscenaGrafica>>? efectos = null)
         {
-            var preguntas = new List<AcertijoOpcionMultiple>
-    {
-        new("Este jinete es el más pequeño pero el más feroz. Sus colmillos pueden partir el acero.",
-            new List<string> { "Cham-P", "San-D", "Maga-Z", "Jum-P" },
-            0, "Su nombre empieza con C.",
-            new List<Image?> {
-                Properties.Resources.cham_p,
-                Properties.Resources.san_d,
-                Properties.Resources.maga_z,
-                Properties.Resources.jum_p
-            }),
+            var resultado = new List<Dialogo>();
+            var array = L.ObtenerDialogos(zonaId);
 
-        new("Este guardián controla las tormentas de arena del desierto eterno.",
-            new List<string> { "Jum-P", "Cham-P", "San-D", "Maga-Z" },
-            2, "Su nombre evoca la arena.",
-            new List<Image?> {
-                Properties.Resources.jum_p,
-                Properties.Resources.cham_p,
-                Properties.Resources.san_d,
-                Properties.Resources.maga_z
-            }),
+            foreach (var nodo in array)
+            {
+                string texto = nodo?["texto"]?.GetValue<string>() ?? "";
+                string expresion = nodo?["expresion"]?.GetValue<string>() ?? "";
+                string? claveEfecto = nodo?["efecto"]?.GetValue<string>();
 
-        new("El más sabio de los cuatro. Domina la magia oscura ancestral.",
-            new List<string> { "San-D", "Maga-Z", "Jum-P", "Cham-P" },
-            1, "Su nombre suena a magia.",
-            new List<Image?> {
-                Properties.Resources.san_d,
-                Properties.Resources.maga_z,
-                Properties.Resources.jum_p,
-                Properties.Resources.cham_p
-            }),
-    };
-            return preguntas.OrderBy(_ => Random.Shared.Next()).ToList();
+                Action<IEscenaGrafica>? efecto = null;
+                if (claveEfecto != null && efectos != null)
+                    efectos.TryGetValue(claveEfecto, out efecto);
+
+                resultado.Add(new Dialogo
+                {
+                    Hablante = hablante,
+                    Texto = texto,
+                    ExpresionAUsar = expresion,
+                    EfectoEspecial = efecto
+                });
+            }
+            return resultado;
         }
 
-        public static List<AcertijoOpcionMultiple> ObtenerPreguntasNagito()
+        private static AcertijoSecuencia ConstruirAcertijoSecuencia(string zonaId)
         {
-            var preguntas = new List<AcertijoOpcionMultiple>
-    {
-        new("Si todos mienten excepto uno...", new List<string> { "Miente", "Dice la verdad", "Es imposible saberlo", "Las dos cosas" }, 2),
-        new("Tengo hermanas que tienen un hermano...", new List<string> { "Ninguno", "Uno", "Depende", "Los mismos que ellas" }, 1),
-        new("La esperanza nace del despair...", new List<string> { "Más esperanza", "Nada", "El vacío", "La pregunta misma" }, 1)
-    };
-            return preguntas.OrderBy(_ => Random.Shared.Next()).ToList();
+            var nodo = L.ObtenerAcertijo(zonaId);
+            string pregunta = nodo?["pregunta"]?.GetValue<string>() ?? "";
+            string pista = nodo?["pista"]?.GetValue<string>() ?? "";
+            int rondas = nodo?["rondasParaGanar"]?.GetValue<int>() ?? 3;
+            return new AcertijoSecuencia(pregunta, pista, rondas);
         }
 
+        private static AcertijoMemorama ConstruirAcertijoMemorama(string zonaId)
+        {
+            var nodo = L.ObtenerAcertijo(zonaId);
+            string pregunta = nodo?["pregunta"]?.GetValue<string>() ?? "";
+            string pista = nodo?["pista"]?.GetValue<string>() ?? "";
+            int rondas = nodo?["rondasParaGanar"]?.GetValue<int>() ?? 3;
+            return new AcertijoMemorama(pregunta, pista, rondas);
+        }
+
+        private static List<AcertijoOpcionMultiple> ConstruirPreguntasOpcionMultiple(string zonaId)
+        {
+            var nodoZona = L.ObtenerAcertijo(zonaId);
+            var arrayPregs = nodoZona?["preguntas"]?.AsArray() ?? new JsonArray();
+            var resultado = new List<AcertijoOpcionMultiple>();
+
+            foreach (var p in arrayPregs)
+            {
+                string pregunta = p?["pregunta"]?.GetValue<string>() ?? "";
+                string pista = p?["pista"]?.GetValue<string>() ?? "";
+                int correcto = p?["indiceCorrecto"]?.GetValue<int>() ?? 0;
+
+                var opciones = new List<string>();
+                foreach (var op in p?["opciones"]?.AsArray() ?? new JsonArray())
+                    opciones.Add(op?.GetValue<string>() ?? "");
+
+                // Imágenes: se resuelven por nombre de recurso igual que antes
+                List<Image?>? imagenes = null;
+                var imgArray = p?["imagenesOpciones"]?.AsArray();
+                if (imgArray != null)
+                {
+                    imagenes = new List<Image?>();
+                    foreach (var img in imgArray)
+                    {
+                        string? key = img?.GetValue<string>();
+                        imagenes.Add(key != null
+                            ? Properties.Resources.ResourceManager.GetObject(key) as Image
+                            : null);
+                    }
+                }
+
+                resultado.Add(new AcertijoOpcionMultiple(pregunta, opciones, correcto, pista, imagenes));
+            }
+
+            return resultado.OrderBy(_ => Random.Shared.Next()).ToList();
+        }
+
+        private static Personaje CrearPersonajeMonokuma()
+        {
+            var m = new Personaje("Monokuma");
+            m.AgregarExpresion("neutral", Properties.Resources.kuma_neutral);
+            m.AgregarExpresion("riendo", Properties.Resources.kuma_riendo);
+            m.AgregarExpresion("feliz", Properties.Resources.kuma_feliz);
+            m.AgregarExpresion("serio", Properties.Resources.kuma_serio);
+            m.AgregarExpresion("curioso", Properties.Resources.kuma_curioso);
+            m.AgregarExpresion("despreocupado", Properties.Resources.kuma_despreocupado);
+            return m;
+        }
+
+        public static Zona CrearZonaMonokumaFinal()
+        {
+            var monokuma = CrearPersonajeMonokuma();
+            var dialogos = ConstruirDialogos("monokuma_final", monokuma);
+            var acertijo = ConstruirAcertijoCodigo("monokuma_final");
+
+            return new Zona("monokuma_final", "Puerta de Salida",
+                Properties.Resources.zona_junko,
+                Properties.Resources.kuma_serio,
+                monokuma, dialogos, acertijo, null );
+        }
+
+        // Diálogos de pista para cada personaje
+        // Se llaman desde ZonaUC cuando PuedeIrAJunko == true
+
+        public static List<Dialogo> ObtenerDialogosPistaHiyoko()
+        {
+            var personaje = new Personaje("Hiyoko Saionji");
+            personaje.AgregarExpresion("burlona", Properties.Resources.hiyoko_burlona);
+            personaje.AgregarExpresion("seria", Properties.Resources.hiyoko_despreocupada);
+            personaje.AgregarExpresion("curiosa", Properties.Resources.hiyoko_curiosa);
+            return ConstruirDialogos("hiyoko_pista", personaje);
+        }
+
+        public static List<Dialogo> ObtenerDialogosPistaGundham()
+        {
+            var personaje = new Personaje("Gundham Tanaka");
+            personaje.AgregarExpresion("serio", Properties.Resources.gundham_serio);
+            personaje.AgregarExpresion("dramatico", Properties.Resources.gundham_dramatico);
+            personaje.AgregarExpresion("relajado", Properties.Resources.gundham_relajado);
+            return ConstruirDialogos("gundham_pista", personaje);
+        }
+
+        public static List<Dialogo> ObtenerDialogosPistaChiaki()
+        {
+            var personaje = new Personaje("Chiaki Nanami");
+            personaje.AgregarExpresion("tranquila", Properties.Resources.chiaki_tranquila);
+            personaje.AgregarExpresion("curiosa", Properties.Resources.chiaki_curiosa);
+            personaje.AgregarExpresion("pensando", Properties.Resources.chiaki_pensando);
+            return ConstruirDialogos("chiaki_pista", personaje);
+        }
+
+        public static List<Dialogo> ObtenerDialogosPistaNagito()
+        {
+            var personaje = new Personaje("Nagito Komaeda");
+            personaje.AgregarExpresion("sonriente", Properties.Resources.nagito_feliz);
+            personaje.AgregarExpresion("pensativo", Properties.Resources.nagito_pensando);
+            personaje.AgregarExpresion("intenso", Properties.Resources.nagito_intenso);
+            return ConstruirDialogos("nagito_pista", personaje);
+        }
+
+        // Helper para construir AcertijoCodigo desde JSON
+        private static AcertijoCodigo ConstruirAcertijoCodigo(string zonaId)
+        {
+            var nodo = L.ObtenerAcertijo(zonaId);
+            string codigo = nodo?["codigo"]?.GetValue<string>() ?? "";
+            string pregunta = nodo?["pregunta"]?.GetValue<string>() ?? "";
+            string pista = nodo?["pista"]?.GetValue<string>() ?? "";
+            return new AcertijoCodigo(pregunta, codigo, pista);
+        }
     }
 }

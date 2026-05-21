@@ -28,10 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            btnIrMenuPrincipal = new Button();
+            SuspendLayout();
+            // 
+            // btnIrMenuPrincipal
+            // 
+            btnIrMenuPrincipal.BackColor = Color.FromArgb(5, 50, 116);
+            btnIrMenuPrincipal.FlatStyle = FlatStyle.Popup;
+            btnIrMenuPrincipal.Font = new Font("Dogica Pixel", 12F, FontStyle.Bold);
+            btnIrMenuPrincipal.ForeColor = SystemColors.ButtonHighlight;
+            btnIrMenuPrincipal.Location = new Point(489, 356);
+            btnIrMenuPrincipal.Margin = new Padding(0);
+            btnIrMenuPrincipal.Name = "btnIrMenuPrincipal";
+            btnIrMenuPrincipal.Size = new Size(391, 77);
+            btnIrMenuPrincipal.TabIndex = 0;
+            btnIrMenuPrincipal.Text = "Menu";
+            btnIrMenuPrincipal.UseVisualStyleBackColor = false;
+            btnIrMenuPrincipal.Click += btnIrMenuPrincipal_Click;
+            // 
+            // CreditosUC
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnIrMenuPrincipal);
+            Name = "CreditosUC";
+            Size = new Size(1368, 788);
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button btnIrMenuPrincipal;
     }
 }

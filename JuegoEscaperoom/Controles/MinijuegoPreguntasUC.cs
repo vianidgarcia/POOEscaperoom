@@ -14,6 +14,7 @@ namespace JuegoEscaperoom.Controles
 {
     public partial class MinijuegoPreguntasUC : UserControl
     {
+        private static ServicioLocalizacion L => ServicioLocalizacion.Instancia;
         private readonly FormPrincipal _form;
         private readonly Zona _zona;
         private readonly ServicioAudio _audio;
@@ -40,7 +41,7 @@ namespace JuegoEscaperoom.Controles
             this.BackgroundImage = _zona.ImagenFondo;
             this.BackgroundImageLayout = ImageLayout.Stretch;
 
-            MostrarEstado($"Pregunta 1 de {_preguntas.Count} — Presiona Empezar");
+            MostrarEstado(L.Formato("ui.preguntas.estadoInicial", 1, _preguntas.Count));
             OcultarPregunta();
 
             btnOpcion1.Click += (s, ev) => ValidarOpcion(0);
@@ -66,9 +67,10 @@ namespace JuegoEscaperoom.Controles
             btnOpcion2.Text = pregunta.Opciones[1];
             btnOpcion3.Text = pregunta.Opciones[2];
             btnOpcion4.Text = pregunta.Opciones[3];
-           
+
             CargarImagenesPregunta(pregunta);
-            MostrarEstado($"Pregunta {_indiceActual + 1} de {_preguntas.Count} — {MaxIntentos} intentos");
+            MostrarEstado(L.Formato("ui.preguntas.intentos",
+                _indiceActual + 1, _preguntas.Count, MaxIntentos));
             MostrarPregunta();
         }
         private void CargarImagenesPregunta(AcertijoOpcionMultiple pregunta)
@@ -111,13 +113,13 @@ namespace JuegoEscaperoom.Controles
             {
                 _audio.ReproducirEfecto("Audios/efecto_revelaacertijo.wav");
                 OcultarPregunta();
-                MostrarEstado($"¡Correcto! Has respondido todo. Puntos obtenidos: {_puntosGanados}");
+                MostrarEstado(L.Formato("ui.preguntas.ganaste", _puntosGanados));
                 MinijuegoCompletado?.Invoke(_zona);
                 _form.Controlador.ProcesarVictoriaZona(_zona);
                 return;
             }
 
-            MostrarEstado($"¡Correcto! +{puntos} puntos — Siguiente pregunta");
+            MostrarEstado(L.Formato("ui.preguntas.correcto", puntos));
             MostrarPreguntaActual();
         }
 
@@ -127,13 +129,13 @@ namespace JuegoEscaperoom.Controles
 
             if (intentosRestantes <= 0)
             {
-                MostrarEstado("Sin intentos. Pasando a la siguiente pregunta...");
+                MostrarEstado(L.Obtener("ui.preguntas.sinIntentos"));
                 _indiceActual++;
 
                 if (_indiceActual >= _preguntas.Count)
                 {
                     OcultarPregunta();
-                    MostrarEstado($"Minijuego terminado. Puntos obtenidos: {_puntosGanados}");
+                    MostrarEstado(L.Formato("ui.preguntas.terminado", _puntosGanados));
                     MinijuegoCompletado?.Invoke(_zona);
                     return;
                 }
@@ -142,7 +144,7 @@ namespace JuegoEscaperoom.Controles
                 return;
             }
 
-            MostrarEstado($"Incorrecto. Te quedan {intentosRestantes} intentos.");
+            MostrarEstado(L.Formato("ui.preguntas.incorrecto", intentosRestantes));
         }
 
         private void btnSalir_Click(object? sender, EventArgs e)
@@ -153,8 +155,9 @@ namespace JuegoEscaperoom.Controles
                 return;
             }
             var resultado = MessageBox.Show(
-                "Si regresas perderás el progreso de este minijuego. ¿Seguro?",
-                "Regresar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                L.Obtener("ui.minijuego.confirmarSalida"),
+                L.Obtener("ui.minijuego.tituloSalida"),
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (resultado == DialogResult.Yes)
                 _form.MostrarControl(new ZonaUC(_form, _zona));

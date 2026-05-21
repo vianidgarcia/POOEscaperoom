@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JuegoEscaperoom.Clases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,32 +13,78 @@ namespace JuegoEscaperoom.Controles
 {
     public partial class PausaUC : UserControl
     {
+        int r;
+        int g;
+        int b;
         private FormPrincipal _form;
         public PausaUC(FormPrincipal form)
         {
             InitializeComponent();
+            SuscribirControles();
             _form = form;
+        }
+        private static ServicioLocalizacion L => ServicioLocalizacion.Instancia;
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            btnGuardar.Text = L.Obtener("ui.pausa.guardar");
+            btnMenuPrincipal.Text = L.Obtener("ui.pausa.menuPrincipal");
+            btnContinuar.Text = L.Obtener("ui.pausa.continuar");
+        }
+
+        private void SuscribirControles()
+        {
+            // Efectos hover para los botones
+            btnContinuar.MouseEnter += MouseEnterButton;
+            btnContinuar.MouseLeave += MouseLeaveButton;
+            btnGuardar.MouseEnter += MouseEnterButton;
+            btnGuardar.MouseLeave += MouseLeaveButton;
+            btnMenuPrincipal.MouseEnter += MouseEnterButton;
+            btnMenuPrincipal.MouseLeave += MouseLeaveButton;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             _form.Controlador.GuardarPartida();
-                MessageBox.Show("Partida guardada exitosamente.", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(
+                L.Obtener("ui.pausa.guardadoExitoso"),
+                L.Obtener("ui.pausa.tituloGuardado"),
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnMenuPrincipal_Click(object sender, EventArgs e)
         {
             var resultado = MessageBox.Show(
-               "¿Seguro que quieres regresar al menú principal?",
-               "Regresar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
+                L.Obtener("ui.pausa.confirmarMenu"),
+                L.Obtener("ui.pausa.tituloConfirmar"),
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (resultado == DialogResult.Yes)
                 _form.MostrarControl(new MenuUC(_form));
         }
 
         private void btnContinuar_Click(object sender, EventArgs e)
         {
-                        _form.MostrarControl(new MapaUC(_form));
+            // Volver al mapa (o control previo). Se muestra el mapa principal.
+            _form.MostrarControl(new MapaUC(_form));
         }
+
+        private void MouseEnterButton(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            r = btn.BackColor.R;
+            g = btn.BackColor.G;
+            b = btn.BackColor.B;
+            btn.BackColor = Color.FromArgb(254, 200, 2);
+            btn.ForeColor = Color.Black;
+        }
+
+        private void MouseLeaveButton(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            btn.BackColor = Color.FromArgb(r, g, b); // Restaura el color original
+            btn.ForeColor = Color.White;
+        }
+
     }
 }

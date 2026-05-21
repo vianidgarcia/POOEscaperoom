@@ -1,0 +1,369 @@
+{
+  "ui": {
+    "menu": {
+      "nuevaPartida": "Nueva Partida",
+      "cargarPartida": "Cargar Partida",
+      "salir": "Salir",
+      "seleccionarIdioma": "Idioma"
+    },
+    "mapa": {
+      "instruccion": "Selecciona en el mapa la zona a realizar",
+      "fragmentos": "Fragmentos: {0} / 4",
+      "pausa": "Pausa"
+    },
+    "pausa": {
+      "guardar": "Guardar",
+      "menuPrincipal": "Menú Principal",
+      "continuar": "Continuar",
+      "guardadoExitoso": "Partida guardada exitosamente.",
+      "tituloGuardado": "Guardar",
+      "confirmarMenu": "¿Seguro que quieres regresar al menú principal?",
+      "tituloConfirmar": "Regresar"
+    },
+    "zonaRevisita": "Ya resolviste mi desafío. No tengo nada más para ti.",
+    "minijuego": {
+      "empezar": "Empezar",
+      "salir": "Salir",
+      "regresar": "Regresar",
+      "confirmarSalida": "Si sales perderás el progreso de este minijuego. ¿Seguro?",
+      "tituloSalida": "Salir",
+      "btnSi": "Sí",
+      "btnNo": "No"
+    },
+    "secuencia": {
+      "estadoInicial": "Ronda {0} / {1} — Presiona Empezar",
+      "memorizando": "Memoriza la secuencia...",
+      "turnoJugador": "¡Tu turno! Repite la secuencia.",
+      "correcto": "¡Correcto! Ronda {0} / {1} — Siguiente ronda",
+      "incorrecto": "Secuencia incorrecta. Intenta de nuevo.",
+      "ganaste": "¡Ganaste! Puedes ir a otra zona.",
+      "rondasGanadas": "Ronda {0} / {1}"
+    },
+    "memorama": {
+      "estadoInicial": "Presiona Empezar para comenzar.",
+      "empezando": "¡Empieza el memorama!",
+      "tiempoRestante": "Tiempo: {0}s",
+      "sigueIntentando": "¡Sigue intentando!",
+      "rondasGanadas": "Ronda {0} / {1} — Siguiente ronda",
+      "tiempoAgotado": "¡Se acabó el tiempo! Intenta de nuevo.",
+      "tituloTiempo": "Tiempo agotado",
+      "ganaste": "¡Ganaste! Puedes ir a otra zona.",
+      "felicitacionesRonda": "¡Felicidades, has ganado la ronda!"
+    },
+    "preguntas": {
+      "estadoInicial": "Pregunta {0} de {1} — Presiona Empezar",
+      "intentos": "Pregunta {0} de {1} — {2} intentos",
+      "correcto": "¡Correcto! +{0} puntos — Siguiente pregunta",
+      "incorrecto": "Incorrecto. Te quedan {0} intentos.",
+      "sinIntentos": "Sin intentos. Pasando a la siguiente pregunta...",
+      "terminado": "Minijuego terminado. Puntos obtenidos: {0}",
+      "ganaste": "¡Correcto! Has respondido todo. Puntos obtenidos: {0}"
+    },
+    "cierre": {
+      "confirmarGuardar": "¿Guardar progreso antes de salir?",
+      "tituloGuardar": "Guardar",
+      "errorGuardar": "Error al guardar: {0}"
+    },
+    "intro": {
+      "labelTalento": "Escribe tu talento y presiona Enter"
+    },
+    "cargarPartida": {
+      "titulo": "Cargar Partida",
+      "volver": "Volver",
+      "cargar": "Cargar",
+      "eliminar": "Eliminar",
+      "sinSeleccion": "Selecciona una partida primero.",
+      "tituloSinSeleccion": "Aviso",
+      "confirmarCarga": "Estás a punto de cargar la partida de {0} guardada el {1}. ¿Deseas continuar?",
+      "tituloConfirmarCarga": "Confirmar carga",
+      "confirmarEliminacion": "Estás a punto de eliminar la partida de {0} guardada el {1}. ¿Deseas continuar?",
+      "tituloConfirmarEliminacion": "Confirmar eliminación",
+      "eliminadaExitosa": "Partida eliminada exitosamente.",
+      "tituloEliminada": "Eliminación exitosa",
+      "errorCargar": "Error al cargar la partida. Intente nuevamente.",
+      "errorEliminar": "Error al eliminar la partida. Intente nuevamente.",
+      "tituloError": "Error"
+    },
+    "fragmentoEsperanza": "Fragmento de Esperanza"
+  },
+  "dialogos": {
+    "monokuma_intro": [
+      {
+        "texto": "...",
+        "expresion": "neutral",
+        "efecto": null
+      },
+      {
+        "texto": "Vaya, vaya. Parece que tenemos un nuevo participante.",
+        "expresion": "riendo",
+        "efecto": null
+      },
+      {
+        "texto": "Permíteme presentarme. Soy Monokuma, tu adorable anfitrión en esta hermosa isla.",
+        "expresion": "feliz",
+        "efecto": null
+      },
+      {
+        "texto": "Bienvenido a la Isla Jabberwock. Preciosa, verdad? Lástima que no puedas irte.",
+        "expresion": "serio",
+        "efecto": null
+      },
+      {
+        "texto": "Aquí encontrarás a algunos estudiantes muy interesantes. Cada uno tiene algo para ti.",
+        "expresion": "despreocupado",
+        "efecto": null
+      },
+      {
+        "texto": "Pero antes de empezar, necesito registrarte oficialmente en el e-Handbook.",
+        "expresion": "curioso",
+        "efecto": null
+      },
+      {
+        "texto": "Dime... cual es tu talento, Super Estudiante?",
+        "expresion": "riendo",
+        "efecto": "input_talento"
+      },
+      {
+        "texto": "",
+        "expresion": "feliz",
+        "efecto": "reaccion_talento"
+      },
+      {
+        "texto": "Perfecto. Queda registrado en el e-Handbook. Que empiece el show!",
+        "expresion": "serio",
+        "efecto": "registrar"
+      }
+    ],
+    "monokuma_talento_duplicado": "Espera... ¿otro Súper {0}? Esto se pone interesante. ¡Upupupu!",
+    "monokuma_talento_nuevo": "¡Súper {0}! Qué título tan... peculiar. ¡Upupupu!",
+    "hiyoko": [
+      {
+        "texto": "Que haces aqui, torpe?",
+        "expresion": "burlona",
+        "efecto": null
+      },
+      {
+        "texto": "Si quieres pasar, demuestra que tienes algo de ritmo.",
+        "expresion": "seria",
+        "efecto": null
+      },
+      {
+        "texto": "El bon odori tiene un orden sagrado. Cada paso en su momento.",
+        "expresion": "normal",
+        "efecto": null
+      },
+      {
+        "texto": "Listo para intentarlo?",
+        "expresion": "curiosa",
+        "efecto": null
+      }
+    ],
+    "gundham": [
+      {
+        "texto": "Mortal! Has osado entrar al dominio de los Cuatro Jinetes Oscuros.",
+        "expresion": "dramatico",
+        "efecto": null
+      },
+      {
+        "texto": "Mis cuatro guardianes obedecen un orden cosmico inamovible.",
+        "expresion": "serio",
+        "efecto": null
+      },
+      {
+        "texto": "Eh? Que quieres entender de lo que hablo?",
+        "expresion": "confundido",
+        "efecto": null
+      },
+      {
+        "texto": "Si los invocas en el orden correcto... considerare dejarte pasar.",
+        "expresion": "relajado",
+        "efecto": null
+      }
+    ],
+    "chiaki": [
+      {
+        "texto": "...Ah, hola.",
+        "expresion": "tranquila",
+        "efecto": null
+      },
+      {
+        "texto": "Todo juego tiene un patron. Si lo memorizas, siempre puedes ganar.",
+        "expresion": "curiosa",
+        "efecto": null
+      },
+      {
+        "texto": "Te voy a mostrar algo. Solo tienes que recordarlo exactamente.",
+        "expresion": "pensando",
+        "efecto": null
+      },
+      {
+        "texto": "¿Listo para intentarlo?",
+        "expresion": "sorprendida",
+        "efecto": null
+      }
+    ],
+    "nagito": [
+      {
+        "texto": "Oh... no esperaba visita. Aunque la suerte siempre encuentra su camino.",
+        "expresion": "sonriente",
+        "efecto": null
+      },
+      {
+        "texto": "La logica es la unica esperanza verdadera, no crees?",
+        "expresion": "pensativo",
+        "efecto": null
+      },
+      {
+        "texto": "Permiteme hacerte unas preguntas. Para alguien con esperanza, no seran problema.",
+        "expresion": "intenso",
+        "efecto": null
+      }
+    ],
+    "monokuma_final": [
+  { "texto": "Upupupu... así que llegaste hasta aquí.", "expresion": "riendo", "efecto": null },
+  { "texto": "Pensé que te rendirías. Pero aquí estás, con tus cuatro fragmentos de esperanza.", "expresion": "serio", "efecto": null },
+  { "texto": "Muy bien. La puerta de salida tiene un código de cuatro dígitos.", "expresion": "curioso", "efecto": null },
+  { "texto": "Cada uno de mis queridos estudiantes tiene uno. Visítalos en el sentido de las manecillas del reloj y obtendrás lo que buscas.", "expresion": "despreocupado", "efecto": null },
+  { "texto": "¿Podrás descifrarlos todos? ¡Upupupu!", "expresion": "riendo", "efecto": null }
+],
+"hiyoko_pista": [
+  { "texto": "¿Otra vez tú? Qué pesado.", "expresion": "burlona", "efecto": null },
+  { "texto": "Está bien, está bien. Mi número... son los pasos del primer movimiento del bon odori.", "expresion": "seria", "efecto": null },
+  { "texto": "Uno, dos, tres. ¿Lo entiendes, torpe? Tres pasos. Ese es mi número.", "expresion": "curiosa", "efecto": null }
+],
+"gundham_pista": [
+  { "texto": "Mortal... has regresado.", "expresion": "serio", "efecto": null },
+  { "texto": "Los Siete Sellos del Abismo fueron rotos por mis Cuatro Jinetes más los Tres Espíritus Ancestrales.", "expresion": "dramatico", "efecto": null },
+  { "texto": "Recuerda ese número. Siete. Es todo lo que necesitas saber.", "expresion": "relajado", "efecto": null }
+],
+"chiaki_pista": [
+  { "texto": "Ah, volviste.", "expresion": "tranquila", "efecto": null },
+  { "texto": "En todo juego hay un jugador número uno. El primero. El que empieza siempre.", "expresion": "curiosa", "efecto": null },
+  { "texto": "Mi número es ese. El primero. ¿Entiendes?", "expresion": "pensando", "efecto": null }
+],
+"nagito_pista": [
+  { "texto": "Oh... qué coincidencia que hayas regresado.", "expresion": "sonriente", "efecto": null },
+  { "texto": "Cuatro fragmentos de esperanza. Cuatro almas que confiaron en ti.", "expresion": "pensativo", "efecto": null },
+  { "texto": "La respuesta siempre estuvo en lo que ya tenías. Mi número es cuatro.", "expresion": "intenso", "efecto": null }
+]
+  },
+  "acertijos": {
+    "hiyoko": {
+      "zonaId": "hiyoko",
+      "tipo": "Secuencia",
+      "pregunta": "Repite la secuencia de pasos que marca Hiyoko.",
+      "pista": "Observa el orden de los botones.",
+      "rondasParaGanar": 3
+    },
+    "gundham": {
+      "zonaId": "gundham",
+      "tipo": "OpcionMultiple",
+      "preguntas": [
+        {
+          "pregunta": "Este jinete es el más pequeño pero el más feroz. Sus colmillos pueden partir el acero.",
+          "opciones": [
+            "Cham-P",
+            "San-D",
+            "Maga-Z",
+            "Jum-P"
+          ],
+          "indiceCorrecto": 0,
+          "pista": "Su nombre empieza con C.",
+          "imagenesOpciones": [
+            "cham_p",
+            "san_d",
+            "maga_z",
+            "jum_p"
+          ]
+        },
+        {
+          "pregunta": "Este guardián controla las tormentas de arena del desierto eterno.",
+          "opciones": [
+            "Jum-P",
+            "Cham-P",
+            "San-D",
+            "Maga-Z"
+          ],
+          "indiceCorrecto": 2,
+          "pista": "Su nombre evoca la arena.",
+          "imagenesOpciones": [
+            "jum_p",
+            "cham_p",
+            "san_d",
+            "maga_z"
+          ]
+        },
+        {
+          "pregunta": "El más sabio de los cuatro. Domina la magia oscura ancestral.",
+          "opciones": [
+            "San-D",
+            "Maga-Z",
+            "Jum-P",
+            "Cham-P"
+          ],
+          "indiceCorrecto": 1,
+          "pista": "Su nombre suena a magia.",
+          "imagenesOpciones": [
+            "san_d",
+            "maga_z",
+            "jum_p",
+            "cham_p"
+          ]
+        }
+      ]
+    },
+    "chiaki": {
+      "zonaId": "chiaki",
+      "tipo": "Memorama",
+      "pregunta": "Memoriza el patron y luego recrealo.",
+      "pista": "Tienes 3 segundos para observarlo.",
+      "rondasParaGanar": 3
+    },
+    "nagito": {
+      "zonaId": "nagito",
+      "tipo": "OpcionMultiple",
+      "preguntas": [
+        {
+          "pregunta": "Si todos mienten excepto uno...",
+          "opciones": [
+            "Miente",
+            "Dice la verdad",
+            "Es imposible saberlo",
+            "Las dos cosas"
+          ],
+          "indiceCorrecto": 2,
+          "pista": ""
+        },
+        {
+          "pregunta": "Tengo hermanas que tienen un hermano...",
+          "opciones": [
+            "Ninguno",
+            "Uno",
+            "Depende",
+            "Los mismos que ellas"
+          ],
+          "indiceCorrecto": 1,
+          "pista": ""
+        },
+        {
+          "pregunta": "La esperanza nace del despair...",
+          "opciones": [
+            "Más esperanza",
+            "Nada",
+            "El vacío",
+            "La pregunta misma"
+          ],
+          "indiceCorrecto": 1,
+          "pista": ""
+        }
+      ]
+    },
+    "monokuma_final": {
+  "zonaId": "monokuma_final",
+  "tipo": "Codigo",
+  "codigo": "3714",
+  "pregunta": "Ingresa el código de cuatro dígitos.",
+  "pista": "Sigue las manecillas del reloj en el mapa."
+  }
+}
+}

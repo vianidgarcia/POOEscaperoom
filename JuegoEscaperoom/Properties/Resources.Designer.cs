@@ -293,6 +293,26 @@ namespace JuegoEscaperoom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fondoMenu {
+            get {
+                object obj = ResourceManager.GetObject("fondoMenu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fondomenu2 {
+            get {
+                object obj = ResourceManager.GetObject("fondomenu2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap gundham_confundido {
             get {
                 object obj = ResourceManager.GetObject("gundham_confundido", resourceCulture);
@@ -566,6 +586,16 @@ namespace JuegoEscaperoom.Properties {
         internal static System.Drawing.Bitmap mapafoto {
             get {
                 object obj = ResourceManager.GetObject("mapafoto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap monokuma_icon {
+            get {
+                object obj = ResourceManager.GetObject("monokuma_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

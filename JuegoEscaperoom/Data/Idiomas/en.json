@@ -1,0 +1,369 @@
+{
+  "ui": {
+    "menu": {
+      "nuevaPartida": "New Game",
+      "cargarPartida": "Load Game",
+      "salir": "Exit",
+      "seleccionarIdioma": "Language"
+    },
+    "mapa": {
+      "instruccion": "Select a zone on the map",
+      "fragmentos": "Fragments: {0} / 4",
+      "pausa": "Pause"
+    },
+    "pausa": {
+      "guardar": "Save",
+      "menuPrincipal": "Main Menu",
+      "continuar": "Continue",
+      "guardadoExitoso": "Game saved successfully.",
+      "tituloGuardado": "Save",
+      "confirmarMenu": "Are you sure you want to return to the main menu?",
+      "tituloConfirmar": "Return"
+    },
+    "zonaRevisita": "You already solved my challenge. I have nothing more for you.",
+    "minijuego": {
+      "empezar": "Start",
+      "salir": "Exit",
+      "regresar": "Back",
+      "confirmarSalida": "If you leave you will lose this minigame's progress. Sure?",
+      "tituloSalida": "Exit",
+      "btnSi": "Yes",
+      "btnNo": "No"
+    },
+    "secuencia": {
+      "estadoInicial": "Round {0} / {1} — Press Start",
+      "memorizando": "Memorize the sequence...",
+      "turnoJugador": "Your turn! Repeat the sequence.",
+      "correcto": "Correct! Round {0} / {1} — Next round",
+      "incorrecto": "Wrong sequence. Try again.",
+      "ganaste": "You win! You can go to another zone.",
+      "rondasGanadas": "Round {0} / {1}"
+    },
+    "memorama": {
+      "estadoInicial": "Press Start to begin.",
+      "empezando": "Memory game starts!",
+      "tiempoRestante": "Time: {0}s",
+      "sigueIntentando": "Keep trying!",
+      "rondasGanadas": "Round {0} / {1} — Next round",
+      "tiempoAgotado": "Time's up! Try again.",
+      "tituloTiempo": "Time's up",
+      "ganaste": "You win! You can go to another zone.",
+      "felicitacionesRonda": "Congratulations, you won the round!"
+    },
+    "preguntas": {
+      "estadoInicial": "Question {0} of {1} — Press Start",
+      "intentos": "Question {0} of {1} — {2} attempts",
+      "correcto": "Correct! +{0} points — Next question",
+      "incorrecto": "Wrong. {0} attempts remaining.",
+      "sinIntentos": "No attempts left. Moving to next question...",
+      "terminado": "Minigame over. Points earned: {0}",
+      "ganaste": "Correct! You answered everything. Points earned: {0}"
+    },
+    "cierre": {
+      "confirmarGuardar": "Save progress before exiting?",
+      "tituloGuardar": "Save",
+      "errorGuardar": "Error saving: {0}"
+    },
+    "intro": {
+      "labelTalento": "Type your talent and press Enter"
+    },
+    "cargarPartida": {
+      "titulo": "Load Game",
+      "volver": "Back",
+      "cargar": "Load",
+      "eliminar": "Delete",
+      "sinSeleccion": "Select a save file first.",
+      "tituloSinSeleccion": "Notice",
+      "confirmarCarga": "You are about to load the save of {0} from {1}. Continue?",
+      "tituloConfirmarCarga": "Confirm load",
+      "confirmarEliminacion": "You are about to delete the save of {0} from {1}. Continue?",
+      "tituloConfirmarEliminacion": "Confirm deletion",
+      "eliminadaExitosa": "Save deleted successfully.",
+      "tituloEliminada": "Deletion successful",
+      "errorCargar": "Error loading save. Please try again.",
+      "errorEliminar": "Error deleting save. Please try again.",
+      "tituloError": "Error"
+    },
+    "fragmentoEsperanza": "Hope Fragment"
+  },
+  "dialogos": {
+    "monokuma_intro": [
+      {
+        "texto": "...",
+        "expresion": "neutral",
+        "efecto": null
+      },
+      {
+        "texto": "Well, well. Looks like we have a new participant.",
+        "expresion": "riendo",
+        "efecto": null
+      },
+      {
+        "texto": "Allow me to introduce myself. I'm Monokuma, your adorable host on this beautiful island.",
+        "expresion": "feliz",
+        "efecto": null
+      },
+      {
+        "texto": "Welcome to Jabberwock Island. Beautiful, isn't it? Too bad you can't leave.",
+        "expresion": "serio",
+        "efecto": null
+      },
+      {
+        "texto": "Here you'll find some very interesting students. Each one has something for you.",
+        "expresion": "despreocupado",
+        "efecto": null
+      },
+      {
+        "texto": "But before we begin, I need to officially register you in the e-Handbook.",
+        "expresion": "curioso",
+        "efecto": null
+      },
+      {
+        "texto": "Tell me... what's your talent, Super Student?",
+        "expresion": "riendo",
+        "efecto": "input_talento"
+      },
+      {
+        "texto": "",
+        "expresion": "feliz",
+        "efecto": "reaccion_talento"
+      },
+      {
+        "texto": "Perfect. Registered in the e-Handbook. Let the show begin!",
+        "expresion": "serio",
+        "efecto": "registrar"
+      }
+    ],
+    "monokuma_talento_duplicado": "Wait... another Super {0}? This is getting interesting. Upupupu!",
+    "monokuma_talento_nuevo": "Super {0}! What a... peculiar title. Upupupu!",
+    "hiyoko": [
+      {
+        "texto": "What are you doing here, klutz?",
+        "expresion": "burlona",
+        "efecto": null
+      },
+      {
+        "texto": "If you want to pass, prove you have some rhythm.",
+        "expresion": "seria",
+        "efecto": null
+      },
+      {
+        "texto": "The bon odori has a sacred order. Every step in its moment.",
+        "expresion": "normal",
+        "efecto": null
+      },
+      {
+        "texto": "Ready to try?",
+        "expresion": "curiosa",
+        "efecto": null
+      }
+    ],
+    "gundham": [
+      {
+        "texto": "Mortal! You have dared enter the domain of the Four Dark Devas.",
+        "expresion": "dramatico",
+        "efecto": null
+      },
+      {
+        "texto": "My four guardians obey an immovable cosmic order.",
+        "expresion": "serio",
+        "efecto": null
+      },
+      {
+        "texto": "Huh? You want to understand what I'm talking about?",
+        "expresion": "confundido",
+        "efecto": null
+      },
+      {
+        "texto": "If you summon them in the correct order... I will consider letting you pass.",
+        "expresion": "relajado",
+        "efecto": null
+      }
+    ],
+    "chiaki": [
+      {
+        "texto": "...Oh, hi.",
+        "expresion": "tranquila",
+        "efecto": null
+      },
+      {
+        "texto": "Every game has a pattern. If you memorize it, you can always win.",
+        "expresion": "curiosa",
+        "efecto": null
+      },
+      {
+        "texto": "I'll show you something. You just have to remember it exactly.",
+        "expresion": "pensando",
+        "efecto": null
+      },
+      {
+        "texto": "Ready to try?",
+        "expresion": "sorprendida",
+        "efecto": null
+      }
+    ],
+    "nagito": [
+      {
+        "texto": "Oh... I wasn't expecting a visitor. Though luck always finds its way.",
+        "expresion": "sonriente",
+        "efecto": null
+      },
+      {
+        "texto": "Logic is the only true hope, don't you think?",
+        "expresion": "pensativo",
+        "efecto": null
+      },
+      {
+        "texto": "Allow me to ask you a few questions. For someone with hope, they won't be a problem.",
+        "expresion": "intenso",
+        "efecto": null
+      }
+    ]
+    ,"monokuma_final": [
+  { "texto": "Upupupu... so you made it this far.", "expresion": "riendo", "efecto": null },
+  { "texto": "I thought you'd give up. But here you are, with your four hope fragments.", "expresion": "serio", "efecto": null },
+  { "texto": "Very well. The exit door has a four-digit code.", "expresion": "curioso", "efecto": null },
+  { "texto": "Each of my dear students has one digit. Visit them clockwise and you'll get what you need.", "expresion": "despreocupado", "efecto": null },
+  { "texto": "Can you figure them all out? Upupupu!", "expresion": "riendo", "efecto": null }
+],
+"hiyoko_pista": [
+  { "texto": "You again? How annoying.", "expresion": "burlona", "efecto": null },
+  { "texto": "Fine, fine. My number... it's the steps of the first bon odori movement.", "expresion": "seria", "efecto": null },
+  { "texto": "One, two, three. Get it, klutz? Three steps. That's my number.", "expresion": "curiosa", "efecto": null }
+],
+"gundham_pista": [
+  { "texto": "Mortal... you have returned.", "expresion": "serio", "efecto": null },
+  { "texto": "The Seven Seals of the Abyss were broken by my Four Devas and the Three Ancestral Spirits.", "expresion": "dramatico", "efecto": null },
+  { "texto": "Remember that number. Seven. That is all you need to know.", "expresion": "relajado", "efecto": null }
+],
+"chiaki_pista": [
+  { "texto": "Oh, you're back.", "expresion": "tranquila", "efecto": null },
+  { "texto": "In every game there's a player number one. The first. The one who always starts.", "expresion": "curiosa", "efecto": null },
+  { "texto": "My number is that one. The first. Do you understand?", "expresion": "pensando", "efecto": null }
+],
+"nagito_pista": [
+  { "texto": "Oh... what a coincidence that you returned.", "expresion": "sonriente", "efecto": null },
+  { "texto": "Four hope fragments. Four souls that trusted you.", "expresion": "pensativo", "efecto": null },
+  { "texto": "The answer was always in what you already had. My number is four.", "expresion": "intenso", "efecto": null }
+]
+  },
+  "acertijos": {
+    "hiyoko": {
+      "zonaId": "hiyoko",
+      "tipo": "Secuencia",
+      "pregunta": "Repeat the sequence of steps that Hiyoko shows.",
+      "pista": "Watch the order of the buttons.",
+      "rondasParaGanar": 3
+    },
+    "gundham": {
+      "zonaId": "gundham",
+      "tipo": "OpcionMultiple",
+      "preguntas": [
+        {
+          "pregunta": "This rider is the smallest but the most ferocious. Its fangs can split steel.",
+          "opciones": [
+            "Cham-P",
+            "San-D",
+            "Maga-Z",
+            "Jum-P"
+          ],
+          "indiceCorrecto": 0,
+          "pista": "Its name starts with C.",
+          "imagenesOpciones": [
+            "cham_p",
+            "san_d",
+            "maga_z",
+            "jum_p"
+          ]
+        },
+        {
+          "pregunta": "This guardian controls the sandstorms of the eternal desert.",
+          "opciones": [
+            "Jum-P",
+            "Cham-P",
+            "San-D",
+            "Maga-Z"
+          ],
+          "indiceCorrecto": 2,
+          "pista": "Its name evokes sand.",
+          "imagenesOpciones": [
+            "jum_p",
+            "cham_p",
+            "san_d",
+            "maga_z"
+          ]
+        },
+        {
+          "pregunta": "The wisest of the four. Masters ancestral dark magic.",
+          "opciones": [
+            "San-D",
+            "Maga-Z",
+            "Jum-P",
+            "Cham-P"
+          ],
+          "indiceCorrecto": 1,
+          "pista": "Its name sounds like magic.",
+          "imagenesOpciones": [
+            "san_d",
+            "maga_z",
+            "jum_p",
+            "cham_p"
+          ]
+        }
+      ]
+    },
+    "chiaki": {
+      "zonaId": "chiaki",
+      "tipo": "Memorama",
+      "pregunta": "Memorize the pattern and recreate it.",
+      "pista": "You have 3 seconds to observe it.",
+      "rondasParaGanar": 3
+    },
+    "nagito": {
+      "zonaId": "nagito",
+      "tipo": "OpcionMultiple",
+      "preguntas": [
+        {
+          "pregunta": "If everyone lies except one...",
+          "opciones": [
+            "Lies",
+            "Tells the truth",
+            "Impossible to know",
+            "Both"
+          ],
+          "indiceCorrecto": 2,
+          "pista": ""
+        },
+        {
+          "pregunta": "I have sisters who have a brother...",
+          "opciones": [
+            "None",
+            "One",
+            "Depends",
+            "The same as them"
+          ],
+          "indiceCorrecto": 1,
+          "pista": ""
+        },
+        {
+          "pregunta": "Hope is born from despair...",
+          "opciones": [
+            "More hope",
+            "Nothing",
+            "The void",
+            "The question itself"
+          ],
+          "indiceCorrecto": 1,
+          "pista": ""
+        }
+      ]
+    },
+    "monokuma_final": {
+  "zonaId": "monokuma_final",
+  "tipo": "Codigo",
+  "codigo": "3714",
+  "pregunta": "Enter the four-digit code.",
+  "pista": "Follow the clockwise direction on the map."
+}
+  }
+}

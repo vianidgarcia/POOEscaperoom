@@ -35,10 +35,12 @@
             lblContadorFragmentos = new Label();
             lblExpresion = new Label();
             btnPausa = new Button();
+            pbxMonokuma = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pbxGundham).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbxNagito).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbxHiyoko).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbxChiaki).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbxMonokuma).BeginInit();
             SuspendLayout();
             // 
             // pbxGundham
@@ -108,22 +110,35 @@
             // 
             lblExpresion.AutoSize = true;
             lblExpresion.BackColor = Color.Transparent;
-            lblExpresion.Font = new Font("FOT-Rodin Pro B", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblExpresion.Font = new Font("Dogica", 16F, FontStyle.Bold);
             lblExpresion.Location = new Point(67, 46);
             lblExpresion.Name = "lblExpresion";
-            lblExpresion.Size = new Size(507, 30);
+            lblExpresion.Size = new Size(890, 22);
             lblExpresion.TabIndex = 6;
             lblExpresion.Text = "Selecciona en el mapa la zona a realizar";
             // 
             // btnPausa
             // 
-            btnPausa.Location = new Point(93, 236);
+            btnPausa.Location = new Point(1152, 46);
             btnPausa.Name = "btnPausa";
-            btnPausa.Size = new Size(118, 87);
+            btnPausa.Size = new Size(158, 87);
             btnPausa.TabIndex = 8;
             btnPausa.Text = "pause";
             btnPausa.UseVisualStyleBackColor = true;
             btnPausa.Click += btnPausa_Click;
+            // 
+            // pbxMonokuma
+            // 
+            pbxMonokuma.BackColor = Color.Transparent;
+            pbxMonokuma.Cursor = Cursors.Hand;
+            pbxMonokuma.Image = Properties.Resources.monokuma_icon;
+            pbxMonokuma.Location = new Point(681, 488);
+            pbxMonokuma.Name = "pbxMonokuma";
+            pbxMonokuma.Size = new Size(83, 67);
+            pbxMonokuma.SizeMode = PictureBoxSizeMode.Zoom;
+            pbxMonokuma.TabIndex = 9;
+            pbxMonokuma.TabStop = false;
+            pbxMonokuma.Click += pbxMonokuma_Click;
             // 
             // MapaUC
             // 
@@ -131,6 +146,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.mapafoto;
             BackgroundImageLayout = ImageLayout.Zoom;
+            Controls.Add(pbxMonokuma);
             Controls.Add(btnPausa);
             Controls.Add(lblExpresion);
             Controls.Add(lblContadorFragmentos);
@@ -138,12 +154,14 @@
             Controls.Add(pbxHiyoko);
             Controls.Add(pbxNagito);
             Controls.Add(pbxGundham);
+            DoubleBuffered = true;
             Name = "MapaUC";
             Size = new Size(1368, 788);
             ((System.ComponentModel.ISupportInitialize)pbxGundham).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbxNagito).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbxHiyoko).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbxChiaki).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbxMonokuma).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -156,5 +174,6 @@
         private Label lblContadorFragmentos;
         private Label lblExpresion;
         private Button btnPausa;
+        private PictureBox pbxMonokuma;
     }
 }

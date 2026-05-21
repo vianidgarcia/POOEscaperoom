@@ -13,6 +13,7 @@ namespace JuegoEscaperoom.Controles
 {
     public partial class MapaUC : UserControl
     {
+        private static ServicioLocalizacion L => ServicioLocalizacion.Instancia;
         private readonly FormPrincipal _form;
         private readonly List<Zona> _zonas;
 
@@ -22,18 +23,34 @@ namespace JuegoEscaperoom.Controles
             _form = form;
             _zonas = form.Controlador.Zonas.ToList();
             this.Dock = DockStyle.Fill;
+            pbxMonokuma.Visible = false;
+            pbxMonokuma.Enabled = false;
+
         }
 
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+
+            pbxMonokuma.Visible = _form.Controlador.Estado.PuedeIrAZonaFinal;
+            pbxMonokuma.Enabled = _form.Controlador.Estado.PuedeIrAZonaFinal;
+
+            _form.Controlador.ZonaFinalDesbloqueada += () =>
+            {
+                pbxMonokuma.Visible = true;
+                pbxMonokuma.Enabled = true;
+            };
             ActualizarEstadoZonas();
+            // Textos localizados
+            lblExpresion.Text = L.Obtener("ui.mapa.instruccion");
+            btnPausa.Text = L.Obtener("ui.mapa.pausa");
+
         }
 
         private void ActualizarEstadoZonas()
         {
-
-            lblContadorFragmentos.Text = $"Fragmentos: {_form.Controlador.Estado.FragmentosEsperanza.Count} / 4";
+            lblContadorFragmentos.Text = L.Formato("ui.mapa.fragmentos",
+                _form.Controlador.Estado.FragmentosObtenidos);
         }
 
         private void pbxHiyoko_Click(object sender, EventArgs e)
@@ -63,7 +80,21 @@ namespace JuegoEscaperoom.Controles
 
         private void btnPausa_Click(object sender, EventArgs e)
         {
-            _form.MostrarControl(new PausaUC(_form));
+            PausaUC pausa = new PausaUC(_form);
+
+            this.Controls.Add(pausa);
+            pausa.Location = new Point(
+                (this.ClientSize.Width - pausa.Width) / 2,
+                (this.ClientSize.Height - pausa.Height) / 2);
+            pausa.BringToFront();
+            pausa.Focus();
+
+        }
+
+        private void pbxMonokuma_Click(object sender, EventArgs e)
+        {
+            var zona = BancoZonas.CrearZonaMonokumaFinal();
+            _form.MostrarControl(new ZonaUC(_form, zona));
         }
     }
 }

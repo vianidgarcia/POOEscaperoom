@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -60,10 +59,8 @@ namespace JuegoEscaperoom.Clases
         public AcertijoMemorama(string pregunta, string pista = "", int rondasParaGanar = 3)
         {
             Pregunta = pregunta;
-          
             Pista = pista;
             RondasParaGanar = rondasParaGanar;
-           
         }
 
         public void RegistrarRondaGanada() => RondasGanadas++;
@@ -74,6 +71,21 @@ namespace JuegoEscaperoom.Clases
             return RondasGanadas == RondasParaGanar;
         }
     }
+
+    public class AcertijoCodigo : Acertijo
+    {
+        private readonly string _codigoCorrecto;
+
+        public AcertijoCodigo(string pregunta, string codigo, string pista = "")
+        {
+            Pregunta = pregunta;
+            Pista = pista;
+            _codigoCorrecto = codigo.Trim();
+        }
+
+        public override bool ValidarRespuesta(string respuesta) =>
+            respuesta.Trim() == _codigoCorrecto;
     }
+}
 
 

@@ -35,43 +35,59 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(119, 43);
+            btnGuardar.BackColor = Color.FromArgb(5, 50, 116);
+            btnGuardar.FlatStyle = FlatStyle.Popup;
+            btnGuardar.Font = new Font("Dogica Pixel", 9F, FontStyle.Bold);
+            btnGuardar.ForeColor = SystemColors.ControlLightLight;
+            btnGuardar.Location = new Point(35, 43);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(200, 120);
+            btnGuardar.Size = new Size(200, 72);
             btnGuardar.TabIndex = 0;
             btnGuardar.Text = "Guarda";
-            btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.UseVisualStyleBackColor = false;
             btnGuardar.Click += btnGuardar_Click;
             // 
             // btnMenuPrincipal
             // 
-            btnMenuPrincipal.Location = new Point(117, 189);
+            btnMenuPrincipal.BackColor = Color.FromArgb(5, 50, 116);
+            btnMenuPrincipal.FlatStyle = FlatStyle.Popup;
+            btnMenuPrincipal.Font = new Font("Dogica Pixel", 9F, FontStyle.Bold);
+            btnMenuPrincipal.ForeColor = SystemColors.ControlLightLight;
+            btnMenuPrincipal.Location = new Point(35, 143);
             btnMenuPrincipal.Name = "btnMenuPrincipal";
-            btnMenuPrincipal.Size = new Size(186, 95);
+            btnMenuPrincipal.Size = new Size(200, 71);
             btnMenuPrincipal.TabIndex = 1;
             btnMenuPrincipal.Text = "Menuprin";
-            btnMenuPrincipal.UseVisualStyleBackColor = true;
+            btnMenuPrincipal.UseVisualStyleBackColor = false;
             btnMenuPrincipal.Click += btnMenuPrincipal_Click;
             // 
             // btnContinuar
             // 
-            btnContinuar.Location = new Point(119, 321);
+            btnContinuar.BackColor = Color.FromArgb(5, 50, 116);
+            btnContinuar.FlatStyle = FlatStyle.Popup;
+            btnContinuar.Font = new Font("Dogica Pixel", 9F, FontStyle.Bold);
+            btnContinuar.ForeColor = SystemColors.ControlLightLight;
+            btnContinuar.Location = new Point(35, 246);
             btnContinuar.Name = "btnContinuar";
-            btnContinuar.Size = new Size(186, 95);
+            btnContinuar.Size = new Size(200, 71);
             btnContinuar.TabIndex = 2;
             btnContinuar.Text = "Continua";
-            btnContinuar.UseVisualStyleBackColor = true;
+            btnContinuar.UseVisualStyleBackColor = false;
             btnContinuar.Click += btnContinuar_Click;
             // 
             // PausaUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(20, 54, 159);
+            BackgroundImageLayout = ImageLayout.None;
+            BorderStyle = BorderStyle.Fixed3D;
             Controls.Add(btnContinuar);
             Controls.Add(btnMenuPrincipal);
             Controls.Add(btnGuardar);
+            DoubleBuffered = true;
             Name = "PausaUC";
-            Size = new Size(1368, 788);
+            Size = new Size(274, 356);
             ResumeLayout(false);
         }
 

@@ -17,6 +17,7 @@ namespace JuegoEscaperoom.Controles
         private Zona _zona;
         private AcertijoMemorama _acertijo;
         private ServicioAudio _audio;
+        private static ServicioLocalizacion L => ServicioLocalizacion.Instancia;
 
         List<int> paresNumeros = new List<int> { 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6 };
         string primerSeleccion = null;
@@ -35,41 +36,41 @@ namespace JuegoEscaperoom.Controles
             _zona = zona;
             _acertijo = (AcertijoMemorama)zona.Acertijo;
             _audio = formPrincipal.Audio;
+            this.BackgroundImage = _zona.ImagenFondo;
             InitializeComponent();
             this.Dock = DockStyle.Fill;
+            
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            lblEstado.Text = L.Obtener("ui.memorama.estadoInicial");
+            btnEmpezar.Text = L.Obtener("ui.minijuego.empezar");
+            btnRegresar.Text = L.Obtener("ui.minijuego.salir");
+            lblTiempo.Text = L.Formato("ui.memorama.tiempoRestante", TiempoTotal);
+            _cartas = new List<PictureBox>
+            {
+                pbxCarta1, pbxCarta2, pbxCarta3, pbxCarta4,
+                pbxCarta5, pbxCarta6, pbxCarta7, pbxCarta8,
+                pbxCarta9, pbxCarta10, pbxCarta11, pbxCarta12
+            };
             CargarFoto();
         }
 
         private void CargarFoto()
         {
-            int columnas = 4;
-            int anchoTarjeta = 100;
-            int altoTarjeta = 100;
-            int espaciado = 10;
-            int offsetLeft = 200;
-            int offsetTop = 150;
-
-            for (int i = 0; i < 12; i++)
-            {
-                int col = i % columnas;
-                int fila = i / columnas;
-
-                PictureBox nuevaCarta = new PictureBox();
-                nuevaCarta.Width = anchoTarjeta;
-                nuevaCarta.Height = altoTarjeta;
-                nuevaCarta.Left = offsetLeft + col * (anchoTarjeta + espaciado);
-                nuevaCarta.Top = offsetTop + fila * (altoTarjeta + espaciado);
-                nuevaCarta.BackColor = Color.LightGray;
-                nuevaCarta.SizeMode = PictureBoxSizeMode.StretchImage;
-                nuevaCarta.Click += NuevaCarta_Click;
-                _cartas.Add(nuevaCarta);
-                this.Controls.Add(nuevaCarta);
+            foreach (PictureBox pbx in _cartas) 
+            { 
+              pbx.BackColor = Color.LightGray;
+                pbx.SizeMode = PictureBoxSizeMode.StretchImage;
+                pbx.Click += Carta_Click;
             }
 
             PrepararJuego();
         }
 
-        private void NuevaCarta_Click(object sender, EventArgs e)
+        private void Carta_Click(object sender, EventArgs e)
         {
             if (!tmrJuego.Enabled) return;
 
@@ -132,7 +133,7 @@ namespace JuegoEscaperoom.Controles
             }
             else
             {
-                lblEstado.Text = "Sigue Intentando!";
+                lblEstado.Text = L.Obtener("ui.memorama.sigueIntentando");
             }
 
             primerSeleccion = null;
@@ -150,20 +151,20 @@ namespace JuegoEscaperoom.Controles
             {
                 _acertijo.RegistrarRondaGanada();
                 tmrJuego.Stop();
-                lblEstado.Text = "¡Felicidades, has ganado la ronda!";
+                lblEstado.Text = L.Obtener("ui.memorama.felicitacionesRonda");
 
                 if (_acertijo.Resolver(""))
                 {
                     _audio.ReproducirEfecto("Audios/efecto_revelaacertijo.wav");
                     MinijuegoCompletado?.Invoke(_zona);
                     _form.Controlador.ProcesarVictoriaZona(_zona);
-                    lblEstado.Text = "Ganaste hermano, dele pa otra zona";
+                    lblEstado.Text = L.Obtener("ui.memorama.ganaste");
 
                     return;
                 }
 
                 btnEmpezar.Enabled = true;
-                lblEstado.Text = $"Ronda {_acertijo.RondasGanadas} / {_acertijo.RondasParaGanar} — Siguiente ronda";
+                lblEstado.Text = L.Formato("ui.memorama.rondasGanadas", _acertijo.RondasGanadas, _acertijo.RondasParaGanar);
             }
 
         }
@@ -171,8 +172,8 @@ namespace JuegoEscaperoom.Controles
         private void btnEmpezar_Click(object sender, EventArgs e)
         {
             btnEmpezar.Enabled = false;
-            lblEstado.Text = "Empieza el memorama!";
-            lblTiempo.Text = $"Tiempo: {TiempoTotal}s";
+            lblEstado.Text = L.Obtener("ui.memorama.empezando");
+            lblTiempo.Text = L.Formato("ui.memorama.tiempoRestante", TiempoTotal);
             TiempoTotal = 60;
             PrepararJuego();
             tmrJuego.Start();
@@ -187,8 +188,9 @@ namespace JuegoEscaperoom.Controles
             }
 
             var res = MessageBox.Show(
-                "Si sales perderás el progreso de este minijuego. ¿Seguro?",
-                "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                L.Obtener("ui.minijuego.confirmarSalida"),
+                L.Obtener("ui.minijuego.tituloSalida"),
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (res == DialogResult.Yes)
                 _form.MostrarControl(new ZonaUC(_form, _zona));
@@ -197,11 +199,11 @@ namespace JuegoEscaperoom.Controles
         private void tmrJuego_Tick(object sender, EventArgs e)
         {
             TiempoTotal--;
-            lblTiempo.Text = $"Tiempo: {TiempoTotal}s";
+            lblTiempo.Text = L.Formato("ui.memorama.tiempoRestante", TiempoTotal);
             if (TiempoTotal == 0)
             {
                 tmrJuego.Stop();
-                MessageBox.Show("¡Se acabó el tiempo! Intenta de nuevo.", "Tiempo agotado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(L.Obtener("ui.memorama.tiempoAgotado"), L.Obtener("ui.memorama.tituloTiempo"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnEmpezar.Enabled = true;
             }
         }
