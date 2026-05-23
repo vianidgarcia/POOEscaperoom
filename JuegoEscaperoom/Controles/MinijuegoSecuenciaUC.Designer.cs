@@ -34,8 +34,8 @@
             pbxIzquierda = new PictureBox();
             pbxDerecha = new PictureBox();
             lblEstado = new Label();
-            btnEmpezar = new Button();
-            btnSalir = new Button();
+            btnEmpezar = new BotonJuego();
+            btnSalir = new BotonJuego();
             tmrSecuencia = new System.Windows.Forms.Timer(components);
             tmrApagar = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)pbxArriba).BeginInit();
@@ -47,7 +47,7 @@
             // pbxArriba
             // 
             pbxArriba.BackColor = Color.Transparent;
-            pbxArriba.Location = new Point(389, 450);
+            pbxArriba.Location = new Point(416, 450);
             pbxArriba.Name = "pbxArriba";
             pbxArriba.Size = new Size(250, 250);
             pbxArriba.TabIndex = 0;
@@ -56,7 +56,7 @@
             // pbxAbajo
             // 
             pbxAbajo.BackColor = Color.Transparent;
-            pbxAbajo.Location = new Point(658, 450);
+            pbxAbajo.Location = new Point(685, 450);
             pbxAbajo.Name = "pbxAbajo";
             pbxAbajo.Size = new Size(250, 250);
             pbxAbajo.TabIndex = 1;
@@ -65,7 +65,7 @@
             // pbxIzquierda
             // 
             pbxIzquierda.BackColor = Color.Transparent;
-            pbxIzquierda.Location = new Point(116, 450);
+            pbxIzquierda.Location = new Point(143, 450);
             pbxIzquierda.Name = "pbxIzquierda";
             pbxIzquierda.Size = new Size(250, 250);
             pbxIzquierda.TabIndex = 2;
@@ -74,7 +74,7 @@
             // pbxDerecha
             // 
             pbxDerecha.BackColor = Color.Transparent;
-            pbxDerecha.Location = new Point(930, 450);
+            pbxDerecha.Location = new Point(957, 450);
             pbxDerecha.Name = "pbxDerecha";
             pbxDerecha.Size = new Size(250, 250);
             pbxDerecha.TabIndex = 3;
@@ -83,14 +83,21 @@
             // lblEstado
             // 
             lblEstado.AutoSize = true;
+            lblEstado.BackColor = Color.Transparent;
+            lblEstado.Font = new Font("FOT-Rodin Pro B", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblEstado.ForeColor = SystemColors.ButtonHighlight;
             lblEstado.Location = new Point(275, 68);
             lblEstado.Name = "lblEstado";
-            lblEstado.Size = new Size(55, 15);
+            lblEstado.Size = new Size(85, 20);
             lblEstado.TabIndex = 4;
             lblEstado.Text = "lblEstado";
             // 
             // btnEmpezar
             // 
+            btnEmpezar.BackColor = Color.FromArgb(5, 50, 116);
+            btnEmpezar.FlatStyle = FlatStyle.Popup;
+            btnEmpezar.Font = new Font("Dogica Pixel", 12F, FontStyle.Bold);
+            btnEmpezar.ForeColor = Color.White;
             btnEmpezar.Location = new Point(77, 64);
             btnEmpezar.Name = "btnEmpezar";
             btnEmpezar.Size = new Size(167, 120);
@@ -100,6 +107,10 @@
             // 
             // btnSalir
             // 
+            btnSalir.BackColor = Color.FromArgb(5, 50, 116);
+            btnSalir.FlatStyle = FlatStyle.Popup;
+            btnSalir.Font = new Font("Dogica Pixel", 12F, FontStyle.Bold);
+            btnSalir.ForeColor = Color.White;
             btnSalir.Location = new Point(1119, 68);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(167, 120);
@@ -145,8 +156,8 @@
         private PictureBox pbxIzquierda;
         private PictureBox pbxDerecha;
         private Label lblEstado;
-        private Button btnEmpezar;
-        private Button btnSalir;
+        private BotonJuego btnEmpezar;
+        private BotonJuego btnSalir;
         private System.Windows.Forms.Timer tmrSecuencia;
         private System.Windows.Forms.Timer tmrApagar;
     }

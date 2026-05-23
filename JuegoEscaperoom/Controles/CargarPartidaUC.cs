@@ -16,29 +16,16 @@ namespace JuegoEscaperoom.Controles
     {
         private FormPrincipal _formPrincipal;
         private static ServicioLocalizacion L => ServicioLocalizacion.Instancia;
-        int r;
-        int g;
-        int b;
+        
         public CargarPartidaUC(FormPrincipal formPrincipal)
         {
             InitializeComponent();
             _formPrincipal = formPrincipal;
                 this.Dock = DockStyle.Fill;
                 AplicarTextos();
-            SuscribirControles();
             this.DoubleBuffered = true;
         }
 
-        private void SuscribirControles()
-        {
-            // Efectos hover para los botones
-            btnVolver.MouseEnter += MouseEnterButton;
-            btnVolver.MouseLeave += MouseLeaveButton;
-            btnCargar.MouseEnter += MouseEnterButton;
-            btnCargar.MouseLeave += MouseLeaveButton;
-            btnEliminar.MouseEnter += MouseEnterButton;
-            btnEliminar.MouseLeave += MouseLeaveButton;
-        }
         private void AplicarTextos()
         {
             btnVolver.Text = L.Obtener("ui.cargarPartida.volver");
@@ -132,22 +119,6 @@ namespace JuegoEscaperoom.Controles
                     L.Obtener("ui.cargarPartida.tituloEliminada"),
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-        }
-             private void MouseEnterButton(object sender, EventArgs e)
-        {
-            Button btn = sender as Button;
-            r = btn.BackColor.R;
-            g = btn.BackColor.G;
-            b = btn.BackColor.B;
-            btn.BackColor = Color.FromArgb(254, 200, 2);
-            btn.ForeColor = Color.Black;
-        }
-
-        private void MouseLeaveButton(object sender, EventArgs e)
-        {
-            Button btn = sender as Button;
-            btn.BackColor = Color.FromArgb(r, g, b); // Restaura el color original
-            btn.ForeColor = Color.White;
         }
     }
 }

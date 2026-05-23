@@ -543,6 +543,16 @@ namespace JuegoEscaperoom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap kuma_fullbody {
+            get {
+                object obj = ResourceManager.GetObject("kuma_fullbody", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap kuma_neutral {
             get {
                 object obj = ResourceManager.GetObject("kuma_neutral", resourceCulture);

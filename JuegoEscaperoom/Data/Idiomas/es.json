@@ -20,7 +20,12 @@
       "confirmarMenu": "¿Seguro que quieres regresar al menú principal?",
       "tituloConfirmar": "Regresar"
     },
+    "opcionesJugar": {
+      "jugar": "¡Claro!",
+      "regresar": "Déjame pensarlo..."
+    },
     "zonaRevisita": "Ya resolviste mi desafío. No tengo nada más para ti.",
+    "volver": "Volver",
     "minijuego": {
       "empezar": "Empezar",
       "salir": "Salir",
@@ -58,6 +63,13 @@
       "sinIntentos": "Sin intentos. Pasando a la siguiente pregunta...",
       "terminado": "Minijuego terminado. Puntos obtenidos: {0}",
       "ganaste": "¡Correcto! Has respondido todo. Puntos obtenidos: {0}"
+    },
+    "codigo": {
+      "estadoInicial": "Ingresa el código de cuatro dígitos.",
+      "borrar": "Borrar",
+      "regresar": "Regresar",
+      "correcto": "¡Código correcto! La puerta se abre.",
+      "incorrecto": "Código incorrecto. Intenta de nuevo."
     },
     "cierre": {
       "confirmarGuardar": "¿Guardar progreso antes de salir?",
@@ -324,34 +336,34 @@
       "tipo": "OpcionMultiple",
       "preguntas": [
         {
-          "pregunta": "Si todos mienten excepto uno...",
+          "pregunta": "¿Qué es lo que pesa menos que una pluma, pero ni el hombre más fuerte del mundo puede sostenerlo por más de unos pocos minutos?",
           "opciones": [
-            "Miente",
-            "Dice la verdad",
-            "Es imposible saberlo",
-            "Las dos cosas"
+            "El humo",
+            "Una burbuja",
+            "El aliento",
+            "Una mirada"
           ],
           "indiceCorrecto": 2,
           "pista": ""
         },
         {
-          "pregunta": "Tengo hermanas que tienen un hermano...",
+          "pregunta": "Siempre voy corriendo, pero no tengo piernas. Tengo una cara, pero no tengo ojos. ¿Qué soy?",
           "opciones": [
-            "Ninguno",
-            "Uno",
-            "Depende",
-            "Los mismos que ellas"
+            "Un reloj",
+            "Un río",
+            "Un automóvil",
+            "El viento"
           ],
-          "indiceCorrecto": 1,
+          "indiceCorrecto": 0,
           "pista": ""
         },
         {
-          "pregunta": "La esperanza nace del despair...",
+          "pregunta": "Salimos por la noche sin que nadie nos llame, y nos perdemos durante el día sin que nadie nos haya robado. ¿Qué somos?",
           "opciones": [
-            "Más esperanza",
-            "Nada",
-            "El vacío",
-            "La pregunta misma"
+            "Las sombras",
+            "Las estrellas",
+            "Las lechuzas",
+            "Las pesadillas"
           ],
           "indiceCorrecto": 1,
           "pista": ""
@@ -361,7 +373,7 @@
     "monokuma_final": {
   "zonaId": "monokuma_final",
   "tipo": "Codigo",
-  "codigo": "3714",
+  "codigo": "3174",
   "pregunta": "Ingresa el código de cuatro dígitos.",
   "pista": "Sigue las manecillas del reloj en el mapa."
   }

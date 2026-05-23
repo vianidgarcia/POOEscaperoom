@@ -24,12 +24,9 @@ namespace JuegoEscaperoom.Controles
         private int _indiceActual = 0;
         private bool _esperandoInput = false;
 
+        public event Action<Zona>? UltimoDialogoMostrado;
         public event Action<Zona>? DialogosTerminados;
         public event Action<Action<string>>? InputTalentoSolicitado;
-        public DialogoUC()
-        {
-            InitializeComponent();
-        }
 
         public DialogoUC(FormPrincipal form, Zona zona)
         {
@@ -92,6 +89,8 @@ namespace JuegoEscaperoom.Controles
                 _servicioDialogo.Completar();
                 return;
             }
+            if (_indiceActual == _dialogos.Count - 1)
+                UltimoDialogoMostrado?.Invoke(_zona);
             if (_indiceActual >= _dialogos.Count)
             {
                 _audio.DetenerVoz();
@@ -124,21 +123,7 @@ namespace JuegoEscaperoom.Controles
             _servicioDialogo.Completar();
             _servicioDialogo.Animar(texto);
         }
-
-        public void ReproducirSonido(string rutaRelativa) =>
-            _audio.ReproducirEfecto(rutaRelativa);
-
-        public void ReproducirMusica(string rutaRelativa) =>
-            _audio.ReproducirMusica(rutaRelativa);
-
-        public void CerrarDialogo()
-        {
-            _servicioDialogo.Liberar();
-            _audio.DetenerVoz();
-            this.Parent?.Controls.Remove(this);
-            this.Dispose();
-        }
-
+        
         public void MostrarInputTalento(Action<string> callback)
         {
             _esperandoInput = true;
@@ -149,13 +134,6 @@ namespace JuegoEscaperoom.Controles
                 SiguienteDialogo();
             });
         }
-
-        public void IrAPantalla(Control pantalla) =>
-            _form.MostrarControl((UserControl)pantalla);
-
-        public Control ControlRaiz => this;
-
-
 
     }
 }

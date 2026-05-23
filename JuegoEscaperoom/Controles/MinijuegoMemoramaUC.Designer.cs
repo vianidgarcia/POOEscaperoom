@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            btnEmpezar = new Button();
-            btnRegresar = new Button();
+            btnEmpezar = new BotonJuego();
+            btnRegresar = new BotonJuego();
             lblEstado = new Label();
             lblTiempo = new Label();
             tmrJuego = new System.Windows.Forms.Timer(components);
@@ -62,7 +62,11 @@
             // 
             // btnEmpezar
             // 
-            btnEmpezar.Location = new Point(60, 59);
+            btnEmpezar.BackColor = Color.FromArgb(5, 50, 116);
+            btnEmpezar.FlatStyle = FlatStyle.Popup;
+            btnEmpezar.Font = new Font("Dogica Pixel", 12F, FontStyle.Bold);
+            btnEmpezar.ForeColor = Color.White;
+            btnEmpezar.Location = new Point(60, 38);
             btnEmpezar.Name = "btnEmpezar";
             btnEmpezar.Size = new Size(148, 78);
             btnEmpezar.TabIndex = 0;
@@ -72,7 +76,11 @@
             // 
             // btnRegresar
             // 
-            btnRegresar.Location = new Point(26, 669);
+            btnRegresar.BackColor = Color.FromArgb(5, 50, 116);
+            btnRegresar.FlatStyle = FlatStyle.Popup;
+            btnRegresar.Font = new Font("Dogica Pixel", 12F, FontStyle.Bold);
+            btnRegresar.ForeColor = Color.White;
+            btnRegresar.Location = new Point(60, 667);
             btnRegresar.Name = "btnRegresar";
             btnRegresar.Size = new Size(148, 78);
             btnRegresar.TabIndex = 1;
@@ -83,18 +91,24 @@
             // lblEstado
             // 
             lblEstado.AutoSize = true;
+            lblEstado.BackColor = Color.Transparent;
+            lblEstado.Font = new Font("FOT-Rodin Pro B", 12F, FontStyle.Bold);
+            lblEstado.ForeColor = SystemColors.ButtonHighlight;
             lblEstado.Location = new Point(66, 168);
             lblEstado.Name = "lblEstado";
-            lblEstado.Size = new Size(62, 15);
+            lblEstado.Size = new Size(95, 20);
             lblEstado.TabIndex = 2;
             lblEstado.Text = "textEstado";
             // 
             // lblTiempo
             // 
             lblTiempo.AutoSize = true;
+            lblTiempo.BackColor = Color.Transparent;
+            lblTiempo.Font = new Font("FOT-Rodin Pro B", 12F, FontStyle.Bold);
+            lblTiempo.ForeColor = SystemColors.ButtonHighlight;
             lblTiempo.Location = new Point(66, 210);
             lblTiempo.Name = "lblTiempo";
-            lblTiempo.Size = new Size(67, 15);
+            lblTiempo.Size = new Size(98, 20);
             lblTiempo.TabIndex = 3;
             lblTiempo.Text = "textTiempo";
             // 
@@ -241,8 +255,8 @@
 
         #endregion
 
-        private Button btnEmpezar;
-        private Button btnRegresar;
+        private BotonJuego btnEmpezar;
+        private BotonJuego btnRegresar;
         private Label lblEstado;
         private Label lblTiempo;
         private System.Windows.Forms.Timer tmrJuego;

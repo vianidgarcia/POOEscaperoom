@@ -20,7 +20,12 @@
       "confirmarMenu": "Tem certeza que deseja voltar ao menu principal?",
       "tituloConfirmar": "Voltar"
     },
+    "opcionesJugar": {
+      "jugar": "¡Por supuesto!",Por supuesto
+      "regresar": "melhor não...."
+    },
     "zonaRevisita": "Você já resolveu meu desafio. Não tenho mais nada para você.",
+    "volver": "Voltar",
     "minijuego": {
       "empezar": "Começar",
       "salir": "Sair",
@@ -58,6 +63,13 @@
       "sinIntentos": "Sem tentativas. Passando para a próxima pergunta...",
       "terminado": "Minijogo encerrado. Pontos obtidos: {0}",
       "ganaste": "Correto! Você respondeu tudo. Pontos obtidos: {0}"
+    },
+    "codigo": {
+      "estadoInicial": "Digite o código de quatro dígitos.",
+      "borrar": "Apagar",
+      "regresar": "Voltar",
+      "correcto": "Código correto! A porta se abre.",
+      "incorrecto": "Código incorreto. Tente novamente."
     },
     "cierre": {
       "confirmarGuardar": "Salvar progresso antes de sair?",
@@ -361,7 +373,7 @@
     "monokuma_final": {
   "zonaId": "monokuma_final",
   "tipo": "Codigo",
-  "codigo": "3714",
+  "codigo": "3174",
   "pregunta": "Digite o código de quatro dígitos.",
   "pista": "Siga o sentido horário no mapa."
 }

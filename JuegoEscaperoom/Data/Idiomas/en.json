@@ -20,7 +20,12 @@
       "confirmarMenu": "Are you sure you want to return to the main menu?",
       "tituloConfirmar": "Return"
     },
+    "opcionesJugar": {
+      "jugar": "Of course!",
+      "regresar": "Better not...."
+    },
     "zonaRevisita": "You already solved my challenge. I have nothing more for you.",
+    "volver": "Back",
     "minijuego": {
       "empezar": "Start",
       "salir": "Exit",
@@ -49,6 +54,13 @@
       "tituloTiempo": "Time's up",
       "ganaste": "You win! You can go to another zone.",
       "felicitacionesRonda": "Congratulations, you won the round!"
+    },
+    "codigo": {
+      "estadoInicial": "Enter the four-digit code.",
+      "borrar": "Delete",
+      "regresar": "Back",
+      "correcto": "Correct code! The door opens.",
+      "incorrecto": "Incorrect code. Try again."
     },
     "preguntas": {
       "estadoInicial": "Question {0} of {1} — Press Start",
@@ -361,7 +373,7 @@
     "monokuma_final": {
   "zonaId": "monokuma_final",
   "tipo": "Codigo",
-  "codigo": "3714",
+  "codigo": "3174",
   "pregunta": "Enter the four-digit code.",
   "pista": "Follow the clockwise direction on the map."
 }

@@ -225,7 +225,7 @@ namespace JuegoEscaperoom.Clases
 
             return new Zona("monokuma_final", "Puerta de Salida",
                 Properties.Resources.zona_junko,
-                Properties.Resources.kuma_serio,
+                Properties.Resources.kuma_fullbody,
                 monokuma, dialogos, acertijo, null );
         }
 

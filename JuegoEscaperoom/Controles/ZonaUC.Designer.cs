@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             pbxSprite = new PictureBox();
-            btnVolver = new Button();
+            btnVolver = new BotonJuego();
             ((System.ComponentModel.ISupportInitialize)pbxSprite).BeginInit();
             SuspendLayout();
             // 
@@ -45,9 +45,13 @@
             // 
             // btnVolver
             // 
+            btnVolver.BackColor = Color.FromArgb(5, 50, 116);
+            btnVolver.FlatStyle = FlatStyle.Popup;
+            btnVolver.Font = new Font("Dogica Pixel", 12F, FontStyle.Bold);
+            btnVolver.ForeColor = Color.White;
             btnVolver.Location = new Point(20, 21);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(103, 61);
+            btnVolver.Size = new Size(160, 90);
             btnVolver.TabIndex = 1;
             btnVolver.Text = "Volv";
             btnVolver.UseVisualStyleBackColor = true;
@@ -68,6 +72,6 @@
         #endregion
 
         private PictureBox pbxSprite;
-        private Button btnVolver;
+        private BotonJuego btnVolver;
     }
 }

@@ -12,16 +12,6 @@ namespace JuegoEscaperoom.Interfaces
 
         void CambiarTextoDialogo(string texto);
 
-        void ReproducirSonido(string rutaRelativa);
-
-        void ReproducirMusica(string rutaRelativa);
-
-        void IrAPantalla(Control pantalla);
-
-        void CerrarDialogo();
-
-        Control ControlRaiz { get; }
-
         void MostrarInputTalento(Action<string> onTalentoIngresado) { }
     }
 }

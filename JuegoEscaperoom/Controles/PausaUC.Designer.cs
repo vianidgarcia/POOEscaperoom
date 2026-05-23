@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnGuardar = new Button();
-            btnMenuPrincipal = new Button();
-            btnContinuar = new Button();
+            btnGuardar = new BotonJuego();
+            btnMenuPrincipal = new BotonJuego();
+            btnContinuar = new BotonJuego();
             SuspendLayout();
             // 
             // btnGuardar
@@ -93,8 +93,8 @@
 
         #endregion
 
-        private Button btnGuardar;
-        private Button btnMenuPrincipal;
-        private Button btnContinuar;
+        private BotonJuego btnGuardar;
+        private BotonJuego btnMenuPrincipal;
+        private BotonJuego btnContinuar;
     }
 }

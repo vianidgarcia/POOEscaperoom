@@ -46,12 +46,26 @@ namespace JuegoEscaperoom.Controles
             this.BackgroundImage = _zona.ImagenFondo;
             this.BackgroundImageLayout = ImageLayout.Stretch;
 
+
             lblCodigo.Text = "_ _ _ _";
-            lblEstado.Text = _acertijo.Pregunta;
+            lblEstado.Text = L.Obtener("ui.codigo.estadoInicial");
+            btnBorrar.Text = L.Obtener("ui.codigo.borrar");
+            btnRegresar.Text = L.Obtener("ui.codigo.regresar");
+
             btnBorrar.Click += (s, ev) => Borrar();
             btnRegresar.Click += (s, ev) => Regresar();
+            ConfigurarBotones();
 
-            // Suscribir los 10 botones numéricos
+
+        }
+
+        private void ConfigurarBotones()
+        {
+            List<BotonJuego> botones = new() { btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnBorrar, btnRegresar};
+            foreach (var btn in botones)
+            {
+                btn.R = 67; btn.G = 20; btn.B = 40;
+            }
             btn0.Click += (s, ev) => IngresarDigito("0");
             btn1.Click += (s, ev) => IngresarDigito("1");
             btn2.Click += (s, ev) => IngresarDigito("2");
@@ -62,8 +76,6 @@ namespace JuegoEscaperoom.Controles
             btn7.Click += (s, ev) => IngresarDigito("7");
             btn8.Click += (s, ev) => IngresarDigito("8");
             btn9.Click += (s, ev) => IngresarDigito("9");
-
-            
         }
 
         private void IngresarDigito(string digito)
@@ -99,7 +111,7 @@ namespace JuegoEscaperoom.Controles
             if (_acertijo.Resolver(_codigoIngresado))
             {
                 _audio.ReproducirEfecto("Audios/efecto_revelaacertijo.wav");
-                lblEstado.Text = "¡Código correcto! La puerta se abre...";
+                lblEstado.Text = L.Obtener("ui.codigo.correcto");
                 MinijuegoCompletado?.Invoke(_zona);
                 _form.Controlador.ProcesarVictoriaZona(_zona);
                 _form.Controlador.ProcesarVictoriaFinal();
@@ -108,7 +120,7 @@ namespace JuegoEscaperoom.Controles
             else
             {
                 _audio.ReproducirEfecto("Audios/efecto_triste.wav");
-                lblEstado.Text = "Código incorrecto. Intenta de nuevo.";
+                lblEstado.Text = L.Obtener("ui.codigo.incorrecto");
                 _codigoIngresado = "";
                 ActualizarDisplay();
             }
@@ -118,5 +130,7 @@ namespace JuegoEscaperoom.Controles
         {
             _form.MostrarControl(new ZonaUC(_form, _zona));
         }
+
+        
     }
 }

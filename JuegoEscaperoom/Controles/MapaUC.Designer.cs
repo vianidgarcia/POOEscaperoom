@@ -34,7 +34,7 @@
             pbxChiaki = new PictureBox();
             lblContadorFragmentos = new Label();
             lblExpresion = new Label();
-            btnPausa = new Button();
+            btnPausa = new BotonJuego();
             pbxMonokuma = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pbxGundham).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbxNagito).BeginInit();
@@ -119,9 +119,13 @@
             // 
             // btnPausa
             // 
-            btnPausa.Location = new Point(1152, 46);
+            btnPausa.BackColor = Color.FromArgb(5, 50, 116);
+            btnPausa.FlatStyle = FlatStyle.Popup;
+            btnPausa.Font = new Font("Dogica Pixel", 12F, FontStyle.Bold);
+            btnPausa.ForeColor = Color.White;
+            btnPausa.Location = new Point(1151, 46);
             btnPausa.Name = "btnPausa";
-            btnPausa.Size = new Size(158, 87);
+            btnPausa.Size = new Size(160, 90);
             btnPausa.TabIndex = 8;
             btnPausa.Text = "pause";
             btnPausa.UseVisualStyleBackColor = true;
@@ -173,7 +177,7 @@
         private PictureBox pbxChiaki;
         private Label lblContadorFragmentos;
         private Label lblExpresion;
-        private Button btnPausa;
+        private BotonJuego btnPausa;
         private PictureBox pbxMonokuma;
     }
 }

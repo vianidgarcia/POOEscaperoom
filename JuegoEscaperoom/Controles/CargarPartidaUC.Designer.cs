@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             lvPartidas = new ListView();
-            btnVolver = new Button();
-            btnCargar = new Button();
-            btnEliminar = new Button();
+            btnVolver = new BotonJuego();
+            btnCargar = new BotonJuego();
+            btnEliminar = new BotonJuego();
             SuspendLayout();
             // 
             // lvPartidas
@@ -110,8 +110,8 @@
         #endregion
 
         private ListView lvPartidas;
-        private Button btnVolver;
-        private Button btnCargar;
-        private Button btnEliminar;
+        private BotonJuego btnVolver;
+        private BotonJuego btnCargar;
+        private BotonJuego btnEliminar;
     }
 }

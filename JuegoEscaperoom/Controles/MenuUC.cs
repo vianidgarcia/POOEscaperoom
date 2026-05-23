@@ -15,10 +15,7 @@ namespace JuegoEscaperoom.Controles
     public partial class MenuUC : UserControl
     {
         private FormPrincipal _formPrincipal;
-        int r;
-        int g;
-        int b;
-
+    
         private static readonly Dictionary<string, string> Idiomas = new()
         {
             { "Español",    "es" },
@@ -31,7 +28,6 @@ namespace JuegoEscaperoom.Controles
         {
             InitializeComponent();
             _formPrincipal = formPrincipal;
-            SuscribirControles();
             this.Dock = DockStyle.Fill;
             InicializarSelectorIdioma();
             AplicarTextos();
@@ -75,16 +71,6 @@ namespace JuegoEscaperoom.Controles
             lblIdioma.Text = L.Obtener("ui.menu.seleccionarIdioma") + ":";
         }
 
-        private void SuscribirControles()
-        {
-            btnCargar.MouseEnter += MouseEnterButton;
-            btnJugarNueva.MouseEnter += MouseEnterButton;
-            btnSalir.MouseEnter += MouseEnterButton;
-            btnCargar.MouseLeave += MouseLeaveButton;
-            btnJugarNueva.MouseLeave += MouseLeaveButton;
-            btnSalir.MouseLeave += MouseLeaveButton;
-        }
-
         private void btnJugarNueva_Click(object sender, EventArgs e)
         {
             _formPrincipal.MostrarControl(new IntroUC(_formPrincipal));
@@ -95,28 +81,10 @@ namespace JuegoEscaperoom.Controles
             _formPrincipal.MostrarControl(new CargarPartidaUC(_formPrincipal));
         }
 
-
-
         private void btnSalir_Click(object sender, EventArgs e)
         {
            _formPrincipal.Close();
         }
 
-        private void MouseEnterButton(object sender, EventArgs e)
-        {
-            Button btn = sender as Button;
-            r = btn.BackColor.R;
-            g = btn.BackColor.G;
-            b = btn.BackColor.B;
-            btn.BackColor = Color.FromArgb(254, 200, 2);
-            btn.ForeColor = Color.Black;
-        }
-
-        private void MouseLeaveButton(object sender, EventArgs e)
-        {
-            Button btn = sender as Button;
-            btn.BackColor = Color.FromArgb(r, g, b); // Restaura el color original
-            btn.ForeColor = Color.White;
-        }
     }
 }

@@ -29,6 +29,7 @@ namespace JuegoEscaperoom.Controles
 
         protected override void OnLoad(EventArgs e)
         {
+            btnVolver.Text= L.Obtener("ui.volver");
             base.OnLoad(e);
             CargarVisual();
         }
@@ -44,26 +45,6 @@ namespace JuegoEscaperoom.Controles
             pbxSprite.SizeMode = PictureBoxSizeMode.Zoom;
             pbxSprite.Cursor = Cursors.Hand;
 
-            pbxSprite.MouseClick += OnSpriteClick;
-
-        }
-
-        private void OnSpriteClick(object? sender, MouseEventArgs e)
-          {
-            if (this.Controls.OfType<DialogoUC>().Any()) return;
-
-            if (_zona.Completada)
-            {
-                if (_zona.DialogosPista != null && _form.Controlador.Estado.PuedeIrAZonaFinal)
-                {
-                    MostrarDialogoPista();
-                }
-                else
-                    MostrarDialogoRevisita();
-                return;
-            }
-
-            AbrirDialogo();
         }
 
         private void AbrirDialogo()
@@ -71,6 +52,37 @@ namespace JuegoEscaperoom.Controles
             var ucDialogo = new DialogoUC(_form, _zona);
 
             ucDialogo.DialogosTerminados += OnDialogosTerminados;
+
+            ucDialogo.UltimoDialogoMostrado += (zona) =>
+            {
+                var btnJugar = new BotonJuego
+                {
+                    Text = L.Obtener("ui.opcionesJugar.jugar"),
+                    Size = new Size(200, 60),
+                    Location = new Point((this.Width - 420) / 2, this.Height - 250)
+                };
+
+                var btnRegresar = new BotonJuego
+                {
+                    Text = L.Obtener("ui.opcionesJugar.regresar"),
+                    Size = new Size(200, 60),
+                    Location = new Point((this.Width + 20) / 2, this.Height - 250)
+                };
+
+                this.Controls.Add(btnJugar);
+                this.Controls.Add(btnRegresar);
+                btnJugar.BringToFront();
+                btnRegresar.BringToFront();
+
+                btnJugar.Click += (s, e) =>
+                {
+                    OnDialogosTerminados(zona);
+                };
+                btnRegresar.Click += (s, e) =>
+                {
+                    _form.MostrarControl(new ZonaUC(_form, _zona));
+                };
+            };
 
             this.Controls.Add(ucDialogo);
             ucDialogo.BringToFront();
@@ -124,23 +136,35 @@ namespace JuegoEscaperoom.Controles
 
         private void OnDialogosTerminados(Zona zona)
         {
-            // Navega al minijuego correspondiente según el id de la zona
             UserControl minijuego = zona.Id switch
             {
                 "hiyoko" => new MinijuegoSecuenciaUC(_form, zona),
                 "gundham" => new MinijuegoPreguntasUC(_form, zona, BancoZonas.ObtenerPreguntasGundham()),
                 "chiaki" => new MinijuegoMemoramaUC(_form, zona),
                 "nagito" => new MinijuegoPreguntasUC(_form, zona, BancoZonas.ObtenerPreguntasNagito()),
-                "monokuma_final" => new MinijuegoCodigoUC(_form, zona), 
+                "monokuma_final" => new MinijuegoCodigoUC(_form, zona),
                 _ => throw new InvalidOperationException($"Zona desconocida: {zona.Id}")
             };
-
             _form.MostrarControl(minijuego);
         }
 
         private void pbxSprite_Click(object sender, EventArgs e)
         {
 
+            if (this.Controls.OfType<DialogoUC>().Any()) return;
+
+            if (_zona.Completada)
+            {
+                if (_zona.DialogosPista != null && _form.Controlador.Estado.PuedeIrAZonaFinal)
+                {
+                    MostrarDialogoPista();
+                }
+                else
+                    MostrarDialogoRevisita();
+                return;
+            }
+
+            AbrirDialogo();
         }
 
         private void btnVolver_Click(object sender, EventArgs e)

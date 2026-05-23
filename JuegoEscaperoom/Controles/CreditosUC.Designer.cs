@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnIrMenuPrincipal = new Button();
+            btnIrMenuPrincipal = new BotonJuego();
             SuspendLayout();
             // 
             // btnIrMenuPrincipal
@@ -58,6 +58,6 @@
 
         #endregion
 
-        private Button btnIrMenuPrincipal;
+        private BotonJuego btnIrMenuPrincipal;
     }
 }

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnJugarNueva = new Button();
-            btnCargar = new Button();
-            btnSalir = new Button();
+            btnJugarNueva = new BotonJuego();
+            btnCargar = new BotonJuego();
+            btnSalir = new BotonJuego();
             cmbIdioma = new ComboBox();
             lblIdioma = new Label();
             lblTitulo = new Label();
@@ -133,9 +133,9 @@
 
         #endregion
 
-        private Button btnJugarNueva;
-        private Button btnCargar;
-        private Button btnSalir;
+        private BotonJuego btnJugarNueva;
+        private BotonJuego btnCargar;
+        private BotonJuego btnSalir;
         private ComboBox cmbIdioma;
         private Label lblIdioma;
         private Label lblTitulo;

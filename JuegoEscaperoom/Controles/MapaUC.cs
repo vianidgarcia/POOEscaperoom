@@ -39,6 +39,7 @@ namespace JuegoEscaperoom.Controles
             {
                 pbxMonokuma.Visible = true;
                 pbxMonokuma.Enabled = true;
+                _form.Controlador.GuardarPartida();
             };
             ActualizarEstadoZonas();
             // Textos localizados
