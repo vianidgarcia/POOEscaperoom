@@ -74,6 +74,7 @@ namespace JuegoEscaperoom.Controles
         private void btnJugarNueva_Click(object sender, EventArgs e)
         {
             _formPrincipal.MostrarControl(new IntroUC(_formPrincipal));
+            _formPrincipal.IniciarJuego();
         }
 
         private void btnCargar_Click(object sender, EventArgs e)

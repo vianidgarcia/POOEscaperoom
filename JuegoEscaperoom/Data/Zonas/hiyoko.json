@@ -1,0 +1,18 @@
+{ 
+	"id": "hiyoko",
+	"imagenFondo": "Resources/zona_hiyoko.png", 
+	"spritePersonaje": "Resources/hiyoko_fullbody.png", 
+	"daFragmento": true, 
+	"personaje": 
+	{
+		"nombre": "Hiyoko Saionji",
+		"expresiones":
+		{
+			"feliz": "Resources/hiyoko_feliz.png",
+			"curiosa": "Resources/hiyoko_curiosa.png",
+			"pretenciosa": "Resources/hiyoko_pretenciosa.png",
+			"burlona": "Resources/hiyoko_burlona.png"
+		}
+	},
+	"tipoAcertijo": "secuencia"
+}

@@ -97,9 +97,9 @@ namespace JuegoEscaperoom.Controles
 
             // Zona temporal solo para el diálogo de pista
             var zonaTemp = new Zona(
-                _zona.Id, _zona.NombreVisible, _zona.ImagenFondo,
+                _zona.Id, _zona.ImagenFondo,
                 _zona.SpritePersonaje, personaje, dialogoPista,
-                _zona.Acertijo, null);
+                _zona.Acertijo, false, null);
             var ucDialogo = new DialogoUC(_form, zonaTemp);
             this.Controls.Add(ucDialogo);
             ucDialogo.BringToFront();
@@ -122,9 +122,9 @@ namespace JuegoEscaperoom.Controles
 
             // Zona temporal solo para el diálogo de revisita
             var zonaTemp = new Zona(
-                _zona.Id, _zona.NombreVisible, _zona.ImagenFondo,
+                _zona.Id, _zona.ImagenFondo,
                 _zona.SpritePersonaje, personaje, dialogoRevisita,
-                _zona.Acertijo, null);
+                _zona.Acertijo, false, null);
 
             var ucDialogo = new DialogoUC(_form, zonaTemp);
 
@@ -139,10 +139,10 @@ namespace JuegoEscaperoom.Controles
             UserControl minijuego = zona.Id switch
             {
                 "hiyoko" => new MinijuegoSecuenciaUC(_form, zona),
-                "gundham" => new MinijuegoPreguntasUC(_form, zona, BancoZonas.ObtenerPreguntasGundham()),
+                "gundham" => new MinijuegoPreguntasUC(_form, zona),
                 "chiaki" => new MinijuegoMemoramaUC(_form, zona),
-                "nagito" => new MinijuegoPreguntasUC(_form, zona, BancoZonas.ObtenerPreguntasNagito()),
-                "monokuma_final" => new MinijuegoCodigoUC(_form, zona),
+                "nagito" => new MinijuegoPreguntasUC(_form, zona),
+                "monokuma" => new MinijuegoCodigoUC(_form, zona),
                 _ => throw new InvalidOperationException($"Zona desconocida: {zona.Id}")
             };
             _form.MostrarControl(minijuego);

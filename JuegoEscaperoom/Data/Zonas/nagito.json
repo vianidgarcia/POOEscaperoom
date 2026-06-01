@@ -1,0 +1,17 @@
+{ 
+	"id": "nagito",
+	"imagenFondo": "Resources/zona_nagito.png", 
+	"spritePersonaje": "Resources/nagito_fullbody.png", 
+	"daFragmento": true, 
+	"personaje": 
+	{
+		"nombre": "Nagito Komaeda",
+		"expresiones":
+		{
+			"feliz": "Resources/nagito_feliz.png",
+			"pensativo": "Resources/nagito_pensando.png",
+			"intenso": "Resources/nagito_intenso.png"
+		}
+	},
+	"tipoAcertijo": "cuestionario"
+}

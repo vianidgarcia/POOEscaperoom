@@ -1,0 +1,18 @@
+{ 
+	"id": "chiaki",
+	"imagenFondo": "Resources/zona_chiaki.png", 
+	"spritePersonaje": "Resources/chiaki_fullbody.png", 
+	"daFragmento": true, 
+	"personaje": 
+	{
+		"nombre": "Chiaki Nanami",
+		"expresiones":
+		{
+			"tranquila": "Resources/chiaki_tranquila.png",
+			"curiosa": "Resources/chiaki_curiosa.png",
+			"pensando": "Resources/chiaki_pensando.png",
+			"sorprendida": "Resources/chiaki_sorprendida.png"
+		}
+	},
+	"tipoAcertijo": "memorama"
+}

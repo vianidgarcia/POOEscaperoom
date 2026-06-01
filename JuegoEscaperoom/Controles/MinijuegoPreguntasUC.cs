@@ -18,30 +18,23 @@ namespace JuegoEscaperoom.Controles
         private readonly FormPrincipal _form;
         private readonly Zona _zona;
         private readonly ServicioAudio _audio;
-        private readonly List<AcertijoOpcionMultiple> _preguntas;
-
-        private int _indiceActual = 0;
-        private int _intentos = 0;
-        private int _puntosGanados = 0;
-
-        private const int MaxIntentos = 3;
-        private const int PuntosBase = 100;
-        private const int DescuentoPorFallo = 25;
+        private readonly AcertijoCuestionario _acertijo;
 
         public event Action<Zona>? MinijuegoCompletado;
 
-        public MinijuegoPreguntasUC(FormPrincipal form, Zona zona, List<AcertijoOpcionMultiple> preguntas)
+        public MinijuegoPreguntasUC(FormPrincipal form, Zona zona)
         {
             InitializeComponent();
             _form = form;
             _zona = zona;
             _audio = form.Audio;
-            _preguntas = preguntas;
+            _acertijo = zona.Acertijo as AcertijoCuestionario
+                ?? throw new ArgumentException("La zona no tiene un acertijo de tipo cuestionario.");
             this.Dock = DockStyle.Fill;
             this.BackgroundImage = _zona.ImagenFondo;
             this.BackgroundImageLayout = ImageLayout.Stretch;
 
-            MostrarEstado(L.Formato("ui.preguntas.estadoInicial", 1, _preguntas.Count));
+            MostrarEstado(L.Formato("ui.preguntas.estadoInicial", 1, _acertijo.Preguntas.Count));
             OcultarPregunta();
 
             btnOpcion1.Click += (s, ev) => ValidarOpcion(0);
@@ -59,8 +52,8 @@ namespace JuegoEscaperoom.Controles
 
         private void MostrarPreguntaActual()
         {
-            var pregunta = _preguntas[_indiceActual];
-            _intentos = 0;
+            var pregunta = _acertijo.ObtenerPreguntaActual();
+            if (pregunta == null) return;
 
             lblPregunta.Text = pregunta.Pregunta;
             btnOpcion1.Text = pregunta.Opciones[0];
@@ -70,7 +63,7 @@ namespace JuegoEscaperoom.Controles
 
             CargarImagenesPregunta(pregunta);
             MostrarEstado(L.Formato("ui.preguntas.intentos",
-                _indiceActual + 1, _preguntas.Count, MaxIntentos));
+                _acertijo.PreguntaActual + 1, _acertijo.Preguntas.Count, ConfigJuego.RondasCuestionario));
             MostrarPregunta();
         }
         private void CargarImagenesPregunta(AcertijoOpcionMultiple pregunta)
@@ -88,63 +81,44 @@ namespace JuegoEscaperoom.Controles
 
         private void ValidarOpcion(int indiceSeleccionado)
         {
-            var pregunta = _preguntas[_indiceActual];
-            _intentos++;
-
-            if (pregunta.ValidarRespuesta(indiceSeleccionado.ToString()))
+           
+            if (_acertijo.Resolver(indiceSeleccionado.ToString()))
             {
-                int puntosObtenidos = Math.Max(PuntosBase - ((_intentos - 1) * DescuentoPorFallo), 0);
-                _puntosGanados += puntosObtenidos;
+                if (_acertijo.Resuelto)
+                {
+                    _audio.ReproducirEfecto("Audios/efecto_revelaacertijo.wav");
+                    OcultarPregunta();
+                    MostrarEstado(L.Formato("ui.preguntas.ganaste", _acertijo.CalcularPuntos()));
+                    MinijuegoCompletado?.Invoke(_zona);
+                    _form.Controlador.ProcesarVictoriaZona(_zona);
+                    return;
+                }
                 _audio.ReproducirEfecto("Audios/efecto_correcto.wav");
-                PreguntaCorrecta(puntosObtenidos);
+                MostrarEstado(L.Formato("ui.preguntas.correcto", _acertijo.Preguntas[_acertijo.PreguntaActual - 1].CalcularPuntos()));
+                MostrarPreguntaActual();
+
+
             }
             else
             {
-                _audio.ReproducirEfecto("Audios/efecto_triste.wav");
                 PreguntaIncorrecta();
+                _audio.ReproducirEfecto("Audios/efecto_triste.wav");
+               
             }
-        }
-
-        private void PreguntaCorrecta(int puntos)
-        {
-            _indiceActual++;
-
-            if (_indiceActual >= _preguntas.Count)
-            {
-                _audio.ReproducirEfecto("Audios/efecto_revelaacertijo.wav");
-                OcultarPregunta();
-                MostrarEstado(L.Formato("ui.preguntas.ganaste", _puntosGanados));
-                MinijuegoCompletado?.Invoke(_zona);
-                _form.Controlador.ProcesarVictoriaZona(_zona);
-                return;
-            }
-
-            MostrarEstado(L.Formato("ui.preguntas.correcto", puntos));
-            MostrarPreguntaActual();
         }
 
         private void PreguntaIncorrecta()
         {
-            int intentosRestantes = MaxIntentos - _intentos;
-
-            if (intentosRestantes <= 0)
+            int intentosRestantes = ConfigJuego.IntentosMaximosCuestionario
+                - _acertijo.ObtenerPreguntaActual().Intentos;
+            if (intentosRestantes > 0)
+                MostrarEstado(L.Formato("ui.preguntas.incorrecto", intentosRestantes));
+            else if (intentosRestantes == 0)
             {
-                MostrarEstado(L.Obtener("ui.preguntas.sinIntentos"));
-                _indiceActual++;
-
-                if (_indiceActual >= _preguntas.Count)
-                {
-                    OcultarPregunta();
-                    MostrarEstado(L.Formato("ui.preguntas.terminado", _puntosGanados));
-                    MinijuegoCompletado?.Invoke(_zona);
-                    return;
-                }
-
-                MostrarPreguntaActual();
+                MessageBox.Show("Horrible,perdiste", "xd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _form.MostrarControl(new ZonaUC(_form, _zona));
                 return;
             }
-
-            MostrarEstado(L.Formato("ui.preguntas.incorrecto", intentosRestantes));
         }
 
         private void btnSalir_Click(object? sender, EventArgs e)

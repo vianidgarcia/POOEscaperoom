@@ -156,12 +156,12 @@
       },
       {
         "texto": "Si quieres pasar, demuestra que tienes algo de ritmo.",
-        "expresion": "seria",
+        "expresion": "pretenciosa",
         "efecto": null
       },
       {
         "texto": "El bon odori tiene un orden sagrado. Cada paso en su momento.",
-        "expresion": "normal",
+        "expresion": "feliz",
         "efecto": null
       },
       {
@@ -217,7 +217,7 @@
     "nagito": [
       {
         "texto": "Oh... no esperaba visita. Aunque la suerte siempre encuentra su camino.",
-        "expresion": "sonriente",
+        "expresion": "feliz",
         "efecto": null
       },
       {

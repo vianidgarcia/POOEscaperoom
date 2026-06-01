@@ -9,20 +9,18 @@ namespace JuegoEscaperoom.Clases
 {
     public sealed class ServicioLocalizacion
     {
-        private static ServicioLocalizacion? _instancia;
-        public static ServicioLocalizacion Instancia =>
-            _instancia ??= new ServicioLocalizacion();
-
-        private JsonNode _datos = JsonNode.Parse("{}")!;
-        public string IdiomaActual { get; private set; } = "es";
-
-        private static readonly string CarpetaIdiomas =
-            Path.Combine(
-                AppDomain.CurrentDomain.BaseDirectory,
-                "..", "..", "..",
-                "Data", "Idiomas");
-
+        private string RutaJson(string codigo) =>
+            Path.GetFullPath(Path.Combine(CarpetaIdiomas, $"{codigo}.json"));
         private ServicioLocalizacion() => CargarIdioma("es");
+        private static ServicioLocalizacion? _instancia;
+        public static ServicioLocalizacion Instancia => _instancia ??= new ServicioLocalizacion();
+        private JsonNode _datos = JsonNode.Parse("{}")!;
+
+        private static readonly string CarpetaIdiomas = Path.Combine( AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "Data", "Idiomas");
+
+        public JsonNode? ObtenerAcertijo(string zonaId) => _datos["acertijos"]?[zonaId];
+
+        public string IdiomaActual { get; private set; } = "es";
 
         public void CargarIdioma(string codigoIdioma)
         {
@@ -38,9 +36,6 @@ namespace JuegoEscaperoom.Clases
             IdiomaActual = codigoIdioma;
         }
 
-        private string RutaJson(string codigo) =>
-            Path.GetFullPath(Path.Combine(CarpetaIdiomas, $"{codigo}.json"));
-
         public string Obtener(string ruta)
         {
             JsonNode? nodo = _datos;
@@ -51,14 +46,16 @@ namespace JuegoEscaperoom.Clases
             }
             return nodo?.GetValue<string>() ?? $"[{ruta}]";
         }
+
         public string Formato(string ruta, params object[] args)
         {
             string plantilla = Obtener(ruta);
             try { return string.Format(plantilla, args); }
             catch { return plantilla; }
         }
-        public System.Text.Json.Nodes.JsonArray ObtenerDialogos(string zonaId) =>
-            _datos["dialogos"]?[zonaId]?.AsArray() ?? new System.Text.Json.Nodes.JsonArray();
+
+        public JsonArray ObtenerDialogos(string zonaId) =>
+            _datos["dialogos"]?[zonaId]?.AsArray() ?? new JsonArray();
 
         public string ObtenerReaccionTalento(string talento, bool duplicado)
         {
@@ -67,8 +64,5 @@ namespace JuegoEscaperoom.Clases
                 : "dialogos.monokuma_talento_nuevo";
             return Formato(clave, talento);
         }
-
-        public JsonNode? ObtenerAcertijo(string zonaId) =>
-            _datos["acertijos"]?[zonaId];
     }
 }

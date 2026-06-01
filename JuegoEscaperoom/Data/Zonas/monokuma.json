@@ -1,0 +1,20 @@
+{ 
+	"id": "monokuma",
+	"imagenFondo": "Resources/zona_junko.png", 
+	"spritePersonaje": "Resources/kuma_fullbody.png", 
+	"daFragmento": true, 
+	"personaje": 
+	{
+		"nombre": "Monokuma",
+		"expresiones":
+		{
+			"neutral": "Resources/kuma_neutral.png",
+			"riendo": "Resources/kuma_riendo.png",
+			"feliz": "Resources/kuma_feliz.png",
+			"serio": "Resources/kuma_serio.png",
+			"curioso": "Resources/kuma_curioso.png",
+			"despreocupado": "Resources/kuma_despreocupado.png"
+		}
+	},
+	"tipoAcertijo": "codigo"
+}

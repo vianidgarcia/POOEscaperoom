@@ -13,79 +13,161 @@ namespace JuegoEscaperoom.Clases
         public int RondasParaGanar { get; }
         public int Aciertos { get; private set; } = 0;
 
-        public AcertijoSecuencia(string pregunta, string pista, int rondasParaGanar = 3)
+        public int RondasTotales { get; private set; } = 0;
+
+        public AcertijoSecuencia(int rondasParaGanar = ConfigJuego.RondasSecuencia)
         {
-            Pregunta = pregunta;
-            Pista = pista;
             RondasParaGanar = rondasParaGanar;
         }
 
         public void RegistrarAcierto() => Aciertos++;
+        public void RegistrarRonda() => RondasTotales++;
+        public override bool ValidarRespuesta(string _)
+        {
+            if (Aciertos >= RondasParaGanar)
+            {
+                Resuelto = true;
+                return true;
+            }
+            return false;
+        }
 
-        public override bool ValidarRespuesta(string _) => Aciertos >= RondasParaGanar;
+        public override int CalcularPuntos()
+        {
+            if (!Resuelto) return 0;
+            int fallos = RondasTotales - Aciertos;
+            int descuento = fallos * ConfigJuego.DescuentoPorFallo;
+            return Math.Max(ConfigJuego.PuntosBase - descuento, 0);
+        }
     }
 
-        public class AcertijoOpcionMultiple : Acertijo
-        {
-            public List<string> Opciones { get; }
-            public List<Image?> ImagenesOpciones { get; }
-            private readonly int _indiceCorrecto;
-
-            public AcertijoOpcionMultiple(
-                string pregunta,
-                List<string> opciones,
-                int indiceCorrecto,
-                string pista = "",
-                List<Image?>? imagenesOpciones = null)
-            {
-                Pregunta = pregunta;
-                Opciones = opciones;
-                Pista = pista;
-                _indiceCorrecto = indiceCorrecto;
-                ImagenesOpciones = imagenesOpciones ?? new List<Image?>(new Image?[opciones.Count]);
-            }
-
-            public override bool ValidarRespuesta(string respuesta) =>
-                int.TryParse(respuesta, out int indice) && indice == _indiceCorrecto;
-        }
-
-
-    public class AcertijoMemorama : Acertijo
+    public class AcertijoOpcionMultiple : Acertijo
     {
-        public int RondasParaGanar { get; private set; } = 0;
+        public string Pregunta { get; } = string.Empty;
+        public List<string> Opciones { get; }
+        public List<Image?> ImagenesOpciones { get; }
+        private readonly int _indiceCorrecto;
 
-        public int RondasGanadas { get; private set; } = 0;
-
-        public AcertijoMemorama(string pregunta, string pista = "", int rondasParaGanar = 3)
+        public AcertijoOpcionMultiple(string pregunta, List<string> opciones, int indiceCorrecto, List<Image?>? imagenesOpciones = null)
         {
             Pregunta = pregunta;
-            Pista = pista;
-            RondasParaGanar = rondasParaGanar;
+            Opciones = opciones;
+            _indiceCorrecto = indiceCorrecto;
+            ImagenesOpciones = imagenesOpciones ?? new List<Image?>(new Image?[opciones.Count]);
         }
-
-        public void RegistrarRondaGanada() => RondasGanadas++;
 
         public override bool ValidarRespuesta(string respuesta)
         {
-            // La validación real se haría en el control del memorama, aquí solo se simula
-            return RondasGanadas == RondasParaGanar;
+            if (int.TryParse(respuesta, out int indice) && indice == _indiceCorrecto)
+            {
+                Resuelto = true;
+                return true;
+            }
+            return false;
         }
     }
 
-    public class AcertijoCodigo : Acertijo
+    public class AcertijoCuestionario : Acertijo
     {
-        private readonly string _codigoCorrecto;
-
-        public AcertijoCodigo(string pregunta, string codigo, string pista = "")
+        public readonly List<AcertijoOpcionMultiple> Preguntas;
+        public int PreguntaActual { get; private set; } = 0;
+        public AcertijoCuestionario(List<AcertijoOpcionMultiple> preguntas)
         {
-            Pregunta = pregunta;
-            Pista = pista;
-            _codigoCorrecto = codigo.Trim();
+            Preguntas = preguntas.OrderBy(_ => Random.Shared.Next()).ToList();
+        }
+        public AcertijoOpcionMultiple? ObtenerPreguntaActual() =>
+            PreguntaActual < Preguntas.Count ? Preguntas[PreguntaActual] : null;
+        public override bool ValidarRespuesta(string respuesta)
+        {
+            var pregunta = ObtenerPreguntaActual();
+            if (pregunta == null) return false;
+            else
+        if (pregunta.Resolver(respuesta))
+            {
+                PreguntaActual++;
+                if (PreguntaActual >= Preguntas.Count)
+                {
+                    Resuelto = true;
+                    return true;
+                }
+                return true;
+            }
+            else
+            {
+                if (pregunta.Intentos >= ConfigJuego.IntentosMaximosCuestionario)
+                    return false; // falla completo, Resuelto nunca se marca
+                return false;
+            }
         }
 
-        public override bool ValidarRespuesta(string respuesta) =>
-            respuesta.Trim() == _codigoCorrecto;
+        public override int CalcularPuntos()
+        {
+            int puntosTotales = 0;
+            if (!Resuelto) return 0;
+            foreach (var pregunta in Preguntas)
+            {
+                puntosTotales += pregunta.CalcularPuntos();
+            }
+            return puntosTotales;
+        }
+
     }
-}
+        public class AcertijoMemorama : Acertijo
+        {
+            public int RondasParaGanar { get; private set; } = 0;
+            public int RondasGanadas { get; private set; } = 0;
+            public int TiempoRestante { get; private set; } = ConfigJuego.TiempoMemorama;
+            public int RondasTotales { get; private set; } = 0;
+
+            public AcertijoMemorama(int rondasParaGanar = ConfigJuego.RondasMemorama)
+            {
+                RondasParaGanar = rondasParaGanar;
+            }
+
+            public void RegistrarTiempo(int segundos) => TiempoRestante = Math.Max(TiempoRestante - segundos, 0);
+            public void RegistrarRondaGanada() => RondasGanadas++;
+            public void RegistrarRonda() => RondasTotales++;
+
+            public override bool ValidarRespuesta(string respuesta)
+            {
+                if (RondasGanadas >= RondasParaGanar)
+                {
+                    Resuelto = true;
+                    return true;
+                }
+                return false;
+            }
+
+            public override int CalcularPuntos()
+            {
+                if (!Resuelto) return 0;
+                int puntosBase = ConfigJuego.PuntosBaseMemorama;
+                int bonusTiempo = TiempoRestante * ConfigJuego.PuntosPorSegundoRestante;
+                int fallos = RondasTotales - RondasGanadas;
+                return puntosBase + bonusTiempo - (fallos * ConfigJuego.DescuentoPorFallo);
+            }
+        }
+
+        public class AcertijoCodigo : Acertijo
+        {
+            private readonly string _codigoCorrecto;
+
+            public AcertijoCodigo(string codigo)
+            {
+                _codigoCorrecto = codigo.Trim();
+            }
+
+            public override bool ValidarRespuesta(string respuesta)
+            {
+                if (respuesta.Trim() == _codigoCorrecto)
+                {
+                    Resuelto = true;
+                    return true;
+                }
+                return false;
+            }
+        }
+    }
+
 
 

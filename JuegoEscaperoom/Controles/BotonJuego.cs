@@ -12,11 +12,11 @@ namespace JuegoEscaperoom.Controles
         public int G { get; set; }
         public int B { get; set; }
 
-        public BotonJuego(int r = 5, int g = 50, int b = 116)
+        public BotonJuego()
         {
-            R = r;
-            G = g;
-            B = b;
+            R = 5;
+            G = 50;
+            B = 116;
             // Estilo base compartido
             this.FlatStyle = FlatStyle.Popup;
             this.BackColor = Color.FromArgb(R, G, B);

@@ -1,0 +1,18 @@
+{ 
+	"id": "gundham",
+	"imagenFondo": "Resources/zona_gundham.png", 
+	"spritePersonaje": "Resources/gundham_fullbody.png", 
+	"daFragmento": true, 
+	"personaje": 
+	{
+		"nombre": "Gundham Tanaka",
+		"expresiones":
+		{
+			"dramatico": "Resources/gundham_dramatico.png",
+			"serio": "Resources/gundham_serio.png",
+			"relajado": "Resources/gundham_relajado.png",
+			"confundido": "Resources/gundham_confundido.png"
+		}
+	},
+	"tipoAcertijo": "cuestionario"
+}

@@ -23,8 +23,7 @@ namespace JuegoEscaperoom
         {
             InitializeComponent();
             ConfigurarVentana();
-            IniciarJuego();
-           
+            MostrarControl(new MenuUC(this));
         }
 
         private void ConfigurarVentana()
@@ -34,14 +33,11 @@ namespace JuegoEscaperoom
             this.DoubleBuffered = true;
         }
 
-        private void IniciarJuego()
+        public void IniciarJuego()
         {
             var estado = new EstadoJuego();
             var zonas = BancoZonas.ObtenerTodasLasZonas();
             Controlador = new ControladorJuego(estado, zonas);
-
-
-            MostrarControl(new MenuUC(this));
         }
 
 

@@ -94,8 +94,8 @@ namespace JuegoEscaperoom.Controles
 
         private void pbxMonokuma_Click(object sender, EventArgs e)
         {
-            var zona = BancoZonas.CrearZonaMonokumaFinal();
-            _form.MostrarControl(new ZonaUC(_form, zona));
+            var zona = _zonas.FirstOrDefault(z => z.Id == "monokuma");
+            if (zona != null) _form.MostrarControl(new ZonaUC(_form, zona));
         }
     }
 }
