@@ -68,7 +68,7 @@ namespace JuegoEscaperoom.Controles
         {
             foreach (PictureBox pbx in _cartas)
             {
-                pbx.BackColor = Color.LightGray;
+                pbx.BackColor = Color.SeaShell;
                 pbx.SizeMode = PictureBoxSizeMode.StretchImage;
                 pbx.Click += Carta_Click;
             }

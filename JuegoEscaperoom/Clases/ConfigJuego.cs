@@ -15,7 +15,7 @@ namespace JuegoEscaperoom.Clases
 
         // Rondas
         public const int RondasSecuencia = 3;
-        public const int RondasMemorama = 3;
+        public const int RondasMemorama = 1;
         public const int RondasCuestionario = 3;
 
         // Tiempo

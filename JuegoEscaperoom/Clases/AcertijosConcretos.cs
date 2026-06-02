@@ -145,7 +145,7 @@ namespace JuegoEscaperoom.Clases
             }
             public override bool ValidarRespuesta(string respuesta)
             {
-                if (RondasGanadas >= RondasParaGanar)
+                if (RondasGanadas == RondasParaGanar)
                 {
                     Resuelto = true;
                     return true;

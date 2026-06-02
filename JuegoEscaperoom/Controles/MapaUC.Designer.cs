@@ -119,12 +119,15 @@
             // 
             // btnPausa
             // 
+            btnPausa.B = 116;
             btnPausa.BackColor = Color.FromArgb(5, 50, 116);
             btnPausa.FlatStyle = FlatStyle.Popup;
             btnPausa.Font = new Font("Dogica Pixel", 12F, FontStyle.Bold);
             btnPausa.ForeColor = Color.White;
+            btnPausa.G = 50;
             btnPausa.Location = new Point(1151, 46);
             btnPausa.Name = "btnPausa";
+            btnPausa.R = 5;
             btnPausa.Size = new Size(160, 90);
             btnPausa.TabIndex = 8;
             btnPausa.Text = "pause";
@@ -149,7 +152,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.mapafoto;
-            BackgroundImageLayout = ImageLayout.Zoom;
+            BackgroundImageLayout = ImageLayout.Stretch;
             Controls.Add(pbxMonokuma);
             Controls.Add(btnPausa);
             Controls.Add(lblExpresion);

@@ -96,7 +96,12 @@
       "errorEliminar": "Error deleting save. Please try again.",
       "tituloError": "Error"
     },
-    "fragmentoEsperanza": "Hope Fragment"
+    "fragmentoEsperanza": "Hope Fragment",
+    "creditos": {
+      "puntuacion": "Total Score: ",
+      "mensaje": "Thank you very much for playing our game!",
+      "menu": "Return to Main Menu"
+    }
   },
   "dialogos": {
     "monokuma_intro": [
@@ -231,7 +236,7 @@
         "efecto": null
       }
     ],
-    "monokuma_final": [
+    "monokuma": [
       {
         "texto": "Upupupu... so you made it this far.",
         "expresion": "riendo",
@@ -377,8 +382,7 @@
     },
     "chiaki": {
       "zonaId": "chiaki",
-      "tipo": "Memorama",
-      "rondasParaGanar": 3
+      "tipo": "Memorama"
     },
     "nagito": {
       "zonaId": "nagito",
@@ -419,8 +423,8 @@
         }
       ]
     },
-    "monokuma_final": {
-      "zonaId": "monokuma_final",
+    "monokuma": {
+      "zonaId": "monokuma",
       "tipo": "Codigo",
       "codigo": "3174"
     }

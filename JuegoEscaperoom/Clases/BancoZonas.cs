@@ -157,8 +157,7 @@ namespace JuegoEscaperoom.Clases
         private static AcertijoMemorama ConstruirAcertijoMemorama(string zonaId)
         {
             var nodo = L.ObtenerAcertijo(zonaId);
-            int rondas = nodo?["rondasParaGanar"]?.GetValue<int>() ?? 3;
-            return new AcertijoMemorama(rondas);
+            return new AcertijoMemorama(ConfigJuego.RondasMemorama);
         }
 
         private static List<AcertijoOpcionMultiple> ConstruirPreguntasOpcionMultiple(string zonaId)

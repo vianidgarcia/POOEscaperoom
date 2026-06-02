@@ -2,7 +2,7 @@
 	"id": "monokuma",
 	"imagenFondo": "Resources/zona_junko.png", 
 	"spritePersonaje": "Resources/kuma_fullbody.png", 
-	"daFragmento": true, 
+	"daFragmento": false, 
 	"personaje": 
 	{
 		"nombre": "Monokuma",

@@ -130,6 +130,17 @@ namespace JuegoEscaperoom.Controles
             _form.MostrarControl(new ZonaUC(_form, _zona));
         }
 
-        
+        protected override void OnMouseLeave(EventArgs e)
+        {
+            base.OnMouseLeave(e);
+            this.BackColor = Color.FromArgb(67, 20, 40); // normal
+            this.ForeColor = Color.White;
+        }
+        protected override void OnLostFocus(EventArgs e)
+        {
+            base.OnLostFocus(e);
+            this.BackColor = Color.FromArgb(67, 20, 40); // normal
+            this.ForeColor = Color.White;
+        }
     }
 }

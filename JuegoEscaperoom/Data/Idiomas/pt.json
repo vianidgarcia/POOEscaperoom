@@ -96,7 +96,12 @@
       "errorEliminar": "Erro ao eliminar a partida. Tente novamente.",
       "tituloError": "Erro"
     },
-    "fragmentoEsperanza": "Fragmento de Esperança"
+    "fragmentoEsperanza": "Fragmento de Esperança",
+    "creditos": {
+      "puntuacion": "Puntuación total: ",
+      "mensaje": "¡Muito obrigado por jogar nosso jogo!",
+      "menu": "Voltar ao Menu Principal"
+    }
   },
   "dialogos": {
     "monokuma_intro": [
@@ -231,7 +236,7 @@
         "efecto": null
       }
     ],
-    "monokuma_final": [
+    "monokuma": [
       {
         "texto": "Upupupu... então você chegou até aqui.",
         "expresion": "riendo",
@@ -377,8 +382,7 @@
     },
     "chiaki": {
       "zonaId": "chiaki",
-      "tipo": "Memorama",
-      "rondasParaGanar": 3
+      "tipo": "Memorama"
     },
     "nagito": {
       "zonaId": "nagito",
@@ -419,8 +423,8 @@
         }
       ]
     },
-    "monokuma_final": {
-      "zonaId": "monokuma_final",
+    "monokuma": {
+      "zonaId": "monokuma",
       "tipo": "Codigo",
       "codigo": "3174"
     }

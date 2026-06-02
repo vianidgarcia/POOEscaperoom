@@ -24,7 +24,8 @@ namespace JuegoEscaperoom.Controles
             _zonas = form.Controlador.Zonas.ToList();
             pbxMonokuma.Visible = false;
             pbxMonokuma.Enabled = false;
-
+            this.Dock = DockStyle.Fill;
+            
         }
 
         protected override void OnLoad(EventArgs e)
