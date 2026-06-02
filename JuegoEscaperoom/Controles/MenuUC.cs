@@ -23,12 +23,10 @@ namespace JuegoEscaperoom.Controles
             { "Português",  "pt" }
         };
 
-
         public MenuUC(FormPrincipal formPrincipal)
         {
             InitializeComponent();
             _formPrincipal = formPrincipal;
-            this.Dock = DockStyle.Fill;
             InicializarSelectorIdioma();
             AplicarTextos();
         }

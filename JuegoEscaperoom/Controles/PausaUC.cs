@@ -13,14 +13,10 @@ namespace JuegoEscaperoom.Controles
 {
     public partial class PausaUC : UserControl
     {
-        int r;
-        int g;
-        int b;
         private FormPrincipal _form;
         public PausaUC(FormPrincipal form)
         {
             InitializeComponent();
-            SuscribirControles();
             _form = form;
         }
         private static ServicioLocalizacion L => ServicioLocalizacion.Instancia;
@@ -31,17 +27,6 @@ namespace JuegoEscaperoom.Controles
             btnGuardar.Text = L.Obtener("ui.pausa.guardar");
             btnMenuPrincipal.Text = L.Obtener("ui.pausa.menuPrincipal");
             btnContinuar.Text = L.Obtener("ui.pausa.continuar");
-        }
-
-        private void SuscribirControles()
-        {
-            // Efectos hover para los botones
-            btnContinuar.MouseEnter += MouseEnterButton;
-            btnContinuar.MouseLeave += MouseLeaveButton;
-            btnGuardar.MouseEnter += MouseEnterButton;
-            btnGuardar.MouseLeave += MouseLeaveButton;
-            btnMenuPrincipal.MouseEnter += MouseEnterButton;
-            btnMenuPrincipal.MouseLeave += MouseLeaveButton;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -65,25 +50,7 @@ namespace JuegoEscaperoom.Controles
 
         private void btnContinuar_Click(object sender, EventArgs e)
         {
-            // Volver al mapa (o control previo). Se muestra el mapa principal.
             _form.MostrarControl(new MapaUC(_form));
-        }
-
-        private void MouseEnterButton(object sender, EventArgs e)
-        {
-            Button btn = sender as Button;
-            r = btn.BackColor.R;
-            g = btn.BackColor.G;
-            b = btn.BackColor.B;
-            btn.BackColor = Color.FromArgb(254, 200, 2);
-            btn.ForeColor = Color.Black;
-        }
-
-        private void MouseLeaveButton(object sender, EventArgs e)
-        {
-            Button btn = sender as Button;
-            btn.BackColor = Color.FromArgb(r, g, b); // Restaura el color original
-            btn.ForeColor = Color.White;
         }
 
     }

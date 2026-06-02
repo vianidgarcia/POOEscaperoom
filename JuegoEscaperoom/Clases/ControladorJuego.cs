@@ -34,13 +34,13 @@ namespace JuegoEscaperoom.Clases
         }
 
         // Acciones del jugador
-        public void ProcesarVictoriaZona(Zona zona)
+        public void ProcesarVictoriaZona(Zona zona, int puntos)
         {
             if (zona.Completada) return;
 
             zona.MarcarComoCompletada();
             _estado.RegistrarZonaCompletada(zona.Id);
-            _estado.SumarPuntos(100);
+            _estado.SumarPuntos(puntos);
 
             if (zona.DaFragmento)
                 _estado.AgregarFragmento();

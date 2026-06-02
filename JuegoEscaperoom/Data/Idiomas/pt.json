@@ -21,7 +21,7 @@
       "tituloConfirmar": "Voltar"
     },
     "opcionesJugar": {
-      "jugar": "¡Por supuesto!",Por supuesto
+      "jugar": "Claro!",
       "regresar": "melhor não...."
     },
     "zonaRevisita": "Você já resolveu meu desafio. Não tenho mais nada para você.",
@@ -156,12 +156,12 @@
       },
       {
         "texto": "Se quiser passar, prove que tem ritmo.",
-        "expresion": "seria",
+        "expresion": "pretenciosa",
         "efecto": null
       },
       {
         "texto": "O bon odori tem uma ordem sagrada. Cada passo em seu momento.",
-        "expresion": "normal",
+        "expresion": "feliz",
         "efecto": null
       },
       {
@@ -217,7 +217,7 @@
     "nagito": [
       {
         "texto": "Oh... não esperava visita. Embora a sorte sempre encontre seu caminho.",
-        "expresion": "sonriente",
+        "expresion": "feliz",
         "efecto": null
       },
       {
@@ -232,39 +232,105 @@
       }
     ],
     "monokuma_final": [
-  { "texto": "Upupupu... então você chegou até aqui.", "expresion": "riendo", "efecto": null },
-  { "texto": "Pensei que desistiria. Mas aqui está você, com seus quatro fragmentos de esperança.", "expresion": "serio", "efecto": null },
-  { "texto": "Muito bem. A porta de saída tem um código de quatro dígitos.", "expresion": "curioso", "efecto": null },
-  { "texto": "Cada um dos meus queridos estudantes tem um dígito. Visite-os no sentido horário e obterá o que precisa.", "expresion": "despreocupado", "efecto": null },
-  { "texto": "Conseguirá decifrar todos? Upupupu!", "expresion": "riendo", "efecto": null }
-],
-"hiyoko_pista": [
-  { "texto": "Você de novo? Que chato.", "expresion": "burlona", "efecto": null },
-  { "texto": "Tudo bem. Meu número... são os passos do primeiro movimento do bon odori.", "expresion": "seria", "efecto": null },
-  { "texto": "Um, dois, três. Entendeu, desajeitado? Três passos. Esse é o meu número.", "expresion": "curiosa", "efecto": null }
-],
-"gundham_pista": [
-  { "texto": "Mortal... você retornou.", "expresion": "serio", "efecto": null },
-  { "texto": "Os Sete Selos do Abismo foram quebrados pelos meus Quatro Cavaleiros e os Três Espíritos Ancestrais.", "expresion": "dramatico", "efecto": null },
-  { "texto": "Lembre desse número. Sete. É tudo que você precisa saber.", "expresion": "relajado", "efecto": null }
-],
-"chiaki_pista": [
-  { "texto": "Ah, você voltou.", "expresion": "tranquila", "efecto": null },
-  { "texto": "Em todo jogo há um jogador número um. O primeiro. O que sempre começa.", "expresion": "curiosa", "efecto": null },
-  { "texto": "Meu número é esse. O primeiro. Entendeu?", "expresion": "pensando", "efecto": null }
-],
-"nagito_pista": [
-  { "texto": "Oh... que coincidência você ter voltado.", "expresion": "sonriente", "efecto": null },
-  { "texto": "Quatro fragmentos de esperança. Quatro almas que confiaram em você.", "expresion": "pensativo", "efecto": null },
-  { "texto": "A resposta sempre esteve no que você já tinha. Meu número é quatro.", "expresion": "intenso", "efecto": null }
-]
+      {
+        "texto": "Upupupu... então você chegou até aqui.",
+        "expresion": "riendo",
+        "efecto": null
+      },
+      {
+        "texto": "Pensei que desistiria. Mas aqui está você, com seus quatro fragmentos de esperança.",
+        "expresion": "serio",
+        "efecto": null
+      },
+      {
+        "texto": "Muito bem. A porta de saída tem um código de quatro dígitos.",
+        "expresion": "curioso",
+        "efecto": null
+      },
+      {
+        "texto": "Cada um dos meus queridos estudantes tem um dígito. Visite-os no sentido horário e obterá o que precisa.",
+        "expresion": "despreocupado",
+        "efecto": null
+      },
+      {
+        "texto": "Conseguirá decifrar todos? Upupupu!",
+        "expresion": "riendo",
+        "efecto": null
+      }
+    ],
+    "hiyoko_pista": [
+      {
+        "texto": "Você de novo? Que chato.",
+        "expresion": "burlona",
+        "efecto": null
+      },
+      {
+        "texto": "Tudo bem. Meu número... são os passos do primeiro movimento do bon odori.",
+        "expresion": "pretenciosa",
+        "efecto": null
+      },
+      {
+        "texto": "Um, dois, três. Entendeu, desajeitado? Três passos. Esse é o meu número.",
+        "expresion": "curiosa",
+        "efecto": null
+      }
+    ],
+    "gundham_pista": [
+      {
+        "texto": "Mortal... você retornou.",
+        "expresion": "serio",
+        "efecto": null
+      },
+      {
+        "texto": "Os Sete Selos do Abismo foram quebrados pelos meus Quatro Cavaleiros e os Três Espíritos Ancestrais.",
+        "expresion": "dramatico",
+        "efecto": null
+      },
+      {
+        "texto": "Lembre desse número. Sete. É tudo que você precisa saber.",
+        "expresion": "relajado",
+        "efecto": null
+      }
+    ],
+    "chiaki_pista": [
+      {
+        "texto": "Ah, você voltou.",
+        "expresion": "tranquila",
+        "efecto": null
+      },
+      {
+        "texto": "Em todo jogo há um jogador número um. O primeiro. O que sempre começa.",
+        "expresion": "curiosa",
+        "efecto": null
+      },
+      {
+        "texto": "Meu número é esse. O primeiro. Entendeu?",
+        "expresion": "pensando",
+        "efecto": null
+      }
+    ],
+    "nagito_pista": [
+      {
+        "texto": "Oh... que coincidência você ter voltado.",
+        "expresion": "feliz",
+        "efecto": null
+      },
+      {
+        "texto": "Quatro fragmentos de esperança. Quatro almas que confiaram em você.",
+        "expresion": "pensativo",
+        "efecto": null
+      },
+      {
+        "texto": "A resposta sempre esteve no que você já tinha. Meu número é quatro.",
+        "expresion": "intenso",
+        "efecto": null
+      }
+    ]
   },
   "acertijos": {
     "hiyoko": {
       "zonaId": "hiyoko",
       "tipo": "Secuencia",
-      "pregunta": "Repita a sequência de passos que Hiyoko mostra.",
-      "pista": "Observe a ordem dos botões.",
       "rondasParaGanar": 3
     },
     "gundham": {
@@ -272,63 +338,46 @@
       "tipo": "OpcionMultiple",
       "preguntas": [
         {
-          "pregunta": "Este cavaleiro é o menor mas o mais feroz. Seus dentes podem partir o aço.",
+          "pregunta": "Este ser domina as sombras e caça em silêncio absoluto. Seus olhos veem o que os mortais não conseguem. Que criatura é essa?",
           "opciones": [
-            "Cham-P",
-            "San-D",
-            "Maga-Z",
-            "Jum-P"
+            "A coruja",
+            "O lobo",
+            "O corvo",
+            "A serpente"
           ],
           "indiceCorrecto": 0,
-          "pista": "Seu nome começa com C.",
-          "imagenesOpciones": [
-            "cham_p",
-            "san_d",
-            "maga_z",
-            "jum_p"
-          ]
+          "pista": "Voa na escuridão.",
+          "imagenesOpciones": null
         },
         {
-          "pregunta": "Este guardião controla as tempestades de areia do deserto eterno.",
+          "pregunta": "A besta que pode matar com um único olhar segundo a lenda. Seu veneno pode parar o coração mais corajoso. Qual é?",
           "opciones": [
-            "Jum-P",
-            "Cham-P",
-            "San-D",
-            "Maga-Z"
-          ],
-          "indiceCorrecto": 2,
-          "pista": "Seu nome evoca areia.",
-          "imagenesOpciones": [
-            "jum_p",
-            "cham_p",
-            "san_d",
-            "maga_z"
-          ]
-        },
-        {
-          "pregunta": "O mais sábio dos quatro. Domina a magia negra ancestral.",
-          "opciones": [
-            "San-D",
-            "Maga-Z",
-            "Jum-P",
-            "Cham-P"
+            "O escorpião",
+            "A cobra-real",
+            "O louva-a-deus",
+            "A aranha viúva-negra"
           ],
           "indiceCorrecto": 1,
-          "pista": "Seu nome soa como magia.",
-          "imagenesOpciones": [
-            "san_d",
-            "maga_z",
-            "jum_p",
-            "cham_p"
-          ]
+          "pista": "Abre seu capuz antes de atacar.",
+          "imagenesOpciones": null
+        },
+        {
+          "pregunta": "O animal que os antigos impérios usavam como símbolo de poder absoluto e imortalidade. Renasce de suas próprias cinzas.",
+          "opciones": [
+            "O dragão",
+            "A fênix",
+            "O grifo",
+            "O basilisco"
+          ],
+          "indiceCorrecto": 1,
+          "pista": "Está relacionado ao fogo.",
+          "imagenesOpciones": null
         }
       ]
     },
     "chiaki": {
       "zonaId": "chiaki",
       "tipo": "Memorama",
-      "pregunta": "Memorize o padrão e depois recrie-o.",
-      "pista": "Você tem 3 segundos para observá-lo.",
       "rondasParaGanar": 3
     },
     "nagito": {
@@ -336,34 +385,34 @@
       "tipo": "OpcionMultiple",
       "preguntas": [
         {
-          "pregunta": "Se todos mentem exceto um...",
+          "pregunta": "O que pesa menos que uma pena, mas nem o homem mais forte do mundo consegue segurá-lo por mais de alguns minutos?",
           "opciones": [
-            "Mente",
-            "Diz a verdade",
-            "Impossível saber",
-            "As duas coisas"
+            "A fumaça",
+            "Uma bolha",
+            "O fôlego",
+            "Um olhar"
           ],
           "indiceCorrecto": 2,
           "pista": ""
         },
         {
-          "pregunta": "Tenho irmãs que têm um irmão...",
+          "pregunta": "Estou sempre correndo mas não tenho pernas. Tenho rosto mas não tenho olhos. O que sou?",
           "opciones": [
-            "Nenhum",
-            "Um",
-            "Depende",
-            "Os mesmos que elas"
+            "Um relógio",
+            "Um rio",
+            "Um carro",
+            "O vento"
           ],
-          "indiceCorrecto": 1,
+          "indiceCorrecto": 0,
           "pista": ""
         },
         {
-          "pregunta": "A esperança nasce do desespero...",
+          "pregunta": "Saímos à noite sem que ninguém nos chame, e desaparecemos de dia sem que ninguém nos roube. O que somos?",
           "opciones": [
-            "Mais esperança",
-            "Nada",
-            "O vazio",
-            "A própria pergunta"
+            "As sombras",
+            "As estrelas",
+            "As corujas",
+            "Os pesadelos"
           ],
           "indiceCorrecto": 1,
           "pista": ""
@@ -371,11 +420,9 @@
       ]
     },
     "monokuma_final": {
-  "zonaId": "monokuma_final",
-  "tipo": "Codigo",
-  "codigo": "3174",
-  "pregunta": "Digite o código de quatro dígitos.",
-  "pista": "Siga o sentido horário no mapa."
-}
+      "zonaId": "monokuma_final",
+      "tipo": "Codigo",
+      "codigo": "3174"
+    }
   }
 }

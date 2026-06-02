@@ -45,12 +45,15 @@
             // 
             // btnVolver
             // 
+            btnVolver.B = 116;
             btnVolver.BackColor = Color.FromArgb(5, 50, 116);
             btnVolver.FlatStyle = FlatStyle.Popup;
             btnVolver.Font = new Font("Dogica Pixel", 12F, FontStyle.Bold);
             btnVolver.ForeColor = Color.White;
+            btnVolver.G = 50;
             btnVolver.Location = new Point(20, 21);
             btnVolver.Name = "btnVolver";
+            btnVolver.R = 5;
             btnVolver.Size = new Size(160, 90);
             btnVolver.TabIndex = 1;
             btnVolver.Text = "Volv";
@@ -63,6 +66,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(btnVolver);
             Controls.Add(pbxSprite);
+            DoubleBuffered = true;
             Name = "ZonaUC";
             Size = new Size(1368, 788);
             ((System.ComponentModel.ISupportInitialize)pbxSprite).EndInit();

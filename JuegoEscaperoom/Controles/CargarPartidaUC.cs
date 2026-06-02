@@ -21,16 +21,6 @@ namespace JuegoEscaperoom.Controles
         {
             InitializeComponent();
             _formPrincipal = formPrincipal;
-                this.Dock = DockStyle.Fill;
-                AplicarTextos();
-            this.DoubleBuffered = true;
-        }
-
-        private void AplicarTextos()
-        {
-            btnVolver.Text = L.Obtener("ui.cargarPartida.volver");
-            btnCargar.Text = L.Obtener("ui.cargarPartida.cargar");
-            btnEliminar.Text = L.Obtener("ui.cargarPartida.eliminar");
         }
 
         private void CargarPartidaUC_Load(object sender, EventArgs e)
@@ -41,6 +31,10 @@ namespace JuegoEscaperoom.Controles
                 string display = $"{partida.TalentoJugador} - {partida.FechaGuardado:dd/MM/yyyy HH:mm:ss}";
                 lvPartidas.Items.Add(new ListViewItem(display) { Tag = partida.SlotId });
             }
+
+            btnVolver.Text = L.Obtener("ui.cargarPartida.volver");
+            btnCargar.Text = L.Obtener("ui.cargarPartida.cargar");
+            btnEliminar.Text = L.Obtener("ui.cargarPartida.eliminar");
         }
 
         private void btnVolver_Click(object sender, EventArgs e)

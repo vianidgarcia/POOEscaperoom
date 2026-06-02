@@ -22,7 +22,6 @@ namespace JuegoEscaperoom.Controles
             InitializeComponent();
             _form = form;
             _zonas = form.Controlador.Zonas.ToList();
-            this.Dock = DockStyle.Fill;
             pbxMonokuma.Visible = false;
             pbxMonokuma.Enabled = false;
 
@@ -42,7 +41,6 @@ namespace JuegoEscaperoom.Controles
                 _form.Controlador.GuardarPartida();
             };
             ActualizarEstadoZonas();
-            // Textos localizados
             lblExpresion.Text = L.Obtener("ui.mapa.instruccion");
             btnPausa.Text = L.Obtener("ui.mapa.pausa");
 

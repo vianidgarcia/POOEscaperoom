@@ -35,10 +35,8 @@ namespace JuegoEscaperoom.Controles
             _audio = form.Audio;
             _zona = zona;
             _dialogos = zona.Dialogos.ToList();
-            _servicioDialogo = new ServicioDialogo(lblDialogo);
-
+            _servicioDialogo = new ServicioDialogo(texto => lblDialogo.Text = texto);
             this.BackColor = Color.Transparent;
-            this.DoubleBuffered = true;
 
             this.MouseClick += (s, e) => SiguienteDialogo();
             pnlDialogo.MouseClick += (s, e) => SiguienteDialogo();
@@ -67,15 +65,8 @@ namespace JuegoEscaperoom.Controles
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-
             pbxHudBarra.Parent = pbxSprite;
             pbxHudDatos.Parent = pbxSprite;
-
-            pbxSprite.SendToBack();
-            pbxHudBarra.BringToFront();
-            pbxHudDatos.BringToFront();
-            pnlDialogo.BringToFront();
-
             this.Focus();
             SiguienteDialogo();
         }

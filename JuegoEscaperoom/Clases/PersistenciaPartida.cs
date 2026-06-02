@@ -56,9 +56,8 @@ namespace JuegoEscaperoom.Clases
                 throw new FileNotFoundException(
                     $"No se encontró una partida para el talento '{slotId}'.", RutaCarpetaPartidas);
 
-            EstadoJuego estado = JsonSerializer.Deserialize<EstadoJuego>(File.ReadAllText(rutaArchivo)) 
-                ?? throw new FileNotFoundException(
-                    $"No se encontró una partida para el talento '{slotId}'.", RutaCarpetaPartidas);
+            EstadoJuego estado = JsonSerializer.Deserialize<EstadoJuego>(File.ReadAllText(rutaArchivo))
+               ?? throw new FormatException( $"La partida para el talento '{slotId}' no se pudo deserializar.");
             return estado;
         }
 

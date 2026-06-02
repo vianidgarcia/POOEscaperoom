@@ -94,12 +94,15 @@
             // 
             // btnEmpezar
             // 
+            btnEmpezar.B = 116;
             btnEmpezar.BackColor = Color.FromArgb(5, 50, 116);
             btnEmpezar.FlatStyle = FlatStyle.Popup;
             btnEmpezar.Font = new Font("Dogica Pixel", 12F, FontStyle.Bold);
             btnEmpezar.ForeColor = Color.White;
+            btnEmpezar.G = 50;
             btnEmpezar.Location = new Point(77, 64);
             btnEmpezar.Name = "btnEmpezar";
+            btnEmpezar.R = 5;
             btnEmpezar.Size = new Size(167, 120);
             btnEmpezar.TabIndex = 5;
             btnEmpezar.Text = "butEmp";
@@ -107,12 +110,15 @@
             // 
             // btnSalir
             // 
+            btnSalir.B = 116;
             btnSalir.BackColor = Color.FromArgb(5, 50, 116);
             btnSalir.FlatStyle = FlatStyle.Popup;
             btnSalir.Font = new Font("Dogica Pixel", 12F, FontStyle.Bold);
             btnSalir.ForeColor = Color.White;
+            btnSalir.G = 50;
             btnSalir.Location = new Point(1119, 68);
             btnSalir.Name = "btnSalir";
+            btnSalir.R = 5;
             btnSalir.Size = new Size(167, 120);
             btnSalir.TabIndex = 6;
             btnSalir.Text = "butSal";
@@ -120,11 +126,12 @@
             // 
             // tmrSecuencia
             // 
-            tmrSecuencia.Interval = 200;
+            tmrSecuencia.Interval = 150;
+            tmrSecuencia.Tick += tmrSecuencia_Tick;
             // 
             // tmrApagar
             // 
-            tmrApagar.Interval = 30;
+            tmrApagar.Interval = 20;
             tmrApagar.Tick += tmrApagar_Tick;
             // 
             // MinijuegoSecuenciaUC

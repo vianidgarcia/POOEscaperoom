@@ -19,7 +19,6 @@ namespace JuegoEscaperoom.Controles
         {
             InitializeComponent();
             _form = form;
-            this.Dock = DockStyle.Fill;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -34,6 +33,7 @@ namespace JuegoEscaperoom.Controles
             {
                 _form.Controlador.Estado.TalentoJugador = talento;
             },
+
             obtenerTalento: () => _form.Controlador.Estado.TalentoJugador,
             onRegistrar: () => PersistenciaPartida.GuardarPartida(_form.Controlador.Estado)
             );
@@ -57,7 +57,7 @@ namespace JuegoEscaperoom.Controles
             TextBox textBox = new TextBox
             {
                 Font = new Font("FOT-Rodin Pro B", 20, FontStyle.Bold),
-                Location = new Point(300, 500),
+                Location = new Point((this.Width - 400) / 2, 665),
                 Size = new Size(400, 50)
             };
 
@@ -81,7 +81,6 @@ namespace JuegoEscaperoom.Controles
 
         private void OnIntroTerminada(Zona _)
         {
-            _form.Audio.DetenerMusica();
             _form.MostrarControl(new MapaUC(_form));
         }
     }

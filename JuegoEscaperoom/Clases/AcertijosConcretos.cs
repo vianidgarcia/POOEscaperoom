@@ -20,8 +20,15 @@ namespace JuegoEscaperoom.Clases
             RondasParaGanar = rondasParaGanar;
         }
 
-        public void RegistrarAcierto() => Aciertos++;
-        public void RegistrarRonda() => RondasTotales++;
+        public void RegistrarAcierto()
+        {
+            if (!Resuelto) Aciertos++;
+        }
+
+        public void RegistrarRonda()
+        {
+            if (!Resuelto) RondasTotales++;
+        }
         public override bool ValidarRespuesta(string _)
         {
             if (Aciertos >= RondasParaGanar)
@@ -69,11 +76,11 @@ namespace JuegoEscaperoom.Clases
 
     public class AcertijoCuestionario : Acertijo
     {
-        public readonly List<AcertijoOpcionMultiple> Preguntas;
+        public IReadOnlyList<AcertijoOpcionMultiple> Preguntas { get; }
         public int PreguntaActual { get; private set; } = 0;
         public AcertijoCuestionario(List<AcertijoOpcionMultiple> preguntas)
         {
-            Preguntas = preguntas.OrderBy(_ => Random.Shared.Next()).ToList();
+            Preguntas = preguntas.OrderBy(_ => Random.Shared.Next()).ToList().AsReadOnly();
         }
         public AcertijoOpcionMultiple? ObtenerPreguntaActual() =>
             PreguntaActual < Preguntas.Count ? Preguntas[PreguntaActual] : null;
@@ -116,7 +123,7 @@ namespace JuegoEscaperoom.Clases
         {
             public int RondasParaGanar { get; private set; } = 0;
             public int RondasGanadas { get; private set; } = 0;
-            public int TiempoRestante { get; private set; } = ConfigJuego.TiempoMemorama;
+            public int TiempoRestante { get; private set; } = 0;
             public int RondasTotales { get; private set; } = 0;
 
             public AcertijoMemorama(int rondasParaGanar = ConfigJuego.RondasMemorama)
@@ -124,10 +131,18 @@ namespace JuegoEscaperoom.Clases
                 RondasParaGanar = rondasParaGanar;
             }
 
-            public void RegistrarTiempo(int segundos) => TiempoRestante = Math.Max(TiempoRestante - segundos, 0);
-            public void RegistrarRondaGanada() => RondasGanadas++;
-            public void RegistrarRonda() => RondasTotales++;
-
+            public void RegistrarTiempo(int segundos)
+            {
+                TiempoRestante += segundos;
+            }
+            public void RegistrarRondaGanada()
+            { 
+                if (!Resuelto) RondasGanadas++;
+            }
+            public void RegistrarRonda()
+            { 
+                if (!Resuelto) RondasTotales++;
+            }
             public override bool ValidarRespuesta(string respuesta)
             {
                 if (RondasGanadas >= RondasParaGanar)

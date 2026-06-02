@@ -156,12 +156,12 @@
       },
       {
         "texto": "If you want to pass, prove you have some rhythm.",
-        "expresion": "seria",
+        "expresion": "pretenciosa",
         "efecto": null
       },
       {
         "texto": "The bon odori has a sacred order. Every step in its moment.",
-        "expresion": "normal",
+        "expresion": "feliz",
         "efecto": null
       },
       {
@@ -217,7 +217,7 @@
     "nagito": [
       {
         "texto": "Oh... I wasn't expecting a visitor. Though luck always finds its way.",
-        "expresion": "sonriente",
+        "expresion": "feliz",
         "efecto": null
       },
       {
@@ -230,41 +230,107 @@
         "expresion": "intenso",
         "efecto": null
       }
+    ],
+    "monokuma_final": [
+      {
+        "texto": "Upupupu... so you made it this far.",
+        "expresion": "riendo",
+        "efecto": null
+      },
+      {
+        "texto": "I thought you'd give up. But here you are, with your four hope fragments.",
+        "expresion": "serio",
+        "efecto": null
+      },
+      {
+        "texto": "Very well. The exit door has a four-digit code.",
+        "expresion": "curioso",
+        "efecto": null
+      },
+      {
+        "texto": "Each of my dear students has one digit. Visit them clockwise and you'll get what you need.",
+        "expresion": "despreocupado",
+        "efecto": null
+      },
+      {
+        "texto": "Can you figure them all out? Upupupu!",
+        "expresion": "riendo",
+        "efecto": null
+      }
+    ],
+    "hiyoko_pista": [
+      {
+        "texto": "You again? How annoying.",
+        "expresion": "burlona",
+        "efecto": null
+      },
+      {
+        "texto": "Fine, fine. My number... it's the steps of the first bon odori movement.",
+        "expresion": "pretenciosa",
+        "efecto": null
+      },
+      {
+        "texto": "One, two, three. Get it, klutz? Three steps. That's my number.",
+        "expresion": "curiosa",
+        "efecto": null
+      }
+    ],
+    "gundham_pista": [
+      {
+        "texto": "Mortal... you have returned.",
+        "expresion": "serio",
+        "efecto": null
+      },
+      {
+        "texto": "The Seven Seals of the Abyss were broken by my Four Devas and the Three Ancestral Spirits.",
+        "expresion": "dramatico",
+        "efecto": null
+      },
+      {
+        "texto": "Remember that number. Seven. That is all you need to know.",
+        "expresion": "relajado",
+        "efecto": null
+      }
+    ],
+    "chiaki_pista": [
+      {
+        "texto": "Oh, you're back.",
+        "expresion": "tranquila",
+        "efecto": null
+      },
+      {
+        "texto": "In every game there's a player number one. The first. The one who always starts.",
+        "expresion": "curiosa",
+        "efecto": null
+      },
+      {
+        "texto": "My number is that one. The first. Do you understand?",
+        "expresion": "pensando",
+        "efecto": null
+      }
+    ],
+    "nagito_pista": [
+      {
+        "texto": "Oh... what a coincidence that you returned.",
+        "expresion": "feliz",
+        "efecto": null
+      },
+      {
+        "texto": "Four hope fragments. Four souls that trusted you.",
+        "expresion": "pensativo",
+        "efecto": null
+      },
+      {
+        "texto": "The answer was always in what you already had. My number is four.",
+        "expresion": "intenso",
+        "efecto": null
+      }
     ]
-    ,"monokuma_final": [
-  { "texto": "Upupupu... so you made it this far.", "expresion": "riendo", "efecto": null },
-  { "texto": "I thought you'd give up. But here you are, with your four hope fragments.", "expresion": "serio", "efecto": null },
-  { "texto": "Very well. The exit door has a four-digit code.", "expresion": "curioso", "efecto": null },
-  { "texto": "Each of my dear students has one digit. Visit them clockwise and you'll get what you need.", "expresion": "despreocupado", "efecto": null },
-  { "texto": "Can you figure them all out? Upupupu!", "expresion": "riendo", "efecto": null }
-],
-"hiyoko_pista": [
-  { "texto": "You again? How annoying.", "expresion": "burlona", "efecto": null },
-  { "texto": "Fine, fine. My number... it's the steps of the first bon odori movement.", "expresion": "seria", "efecto": null },
-  { "texto": "One, two, three. Get it, klutz? Three steps. That's my number.", "expresion": "curiosa", "efecto": null }
-],
-"gundham_pista": [
-  { "texto": "Mortal... you have returned.", "expresion": "serio", "efecto": null },
-  { "texto": "The Seven Seals of the Abyss were broken by my Four Devas and the Three Ancestral Spirits.", "expresion": "dramatico", "efecto": null },
-  { "texto": "Remember that number. Seven. That is all you need to know.", "expresion": "relajado", "efecto": null }
-],
-"chiaki_pista": [
-  { "texto": "Oh, you're back.", "expresion": "tranquila", "efecto": null },
-  { "texto": "In every game there's a player number one. The first. The one who always starts.", "expresion": "curiosa", "efecto": null },
-  { "texto": "My number is that one. The first. Do you understand?", "expresion": "pensando", "efecto": null }
-],
-"nagito_pista": [
-  { "texto": "Oh... what a coincidence that you returned.", "expresion": "sonriente", "efecto": null },
-  { "texto": "Four hope fragments. Four souls that trusted you.", "expresion": "pensativo", "efecto": null },
-  { "texto": "The answer was always in what you already had. My number is four.", "expresion": "intenso", "efecto": null }
-]
   },
   "acertijos": {
     "hiyoko": {
       "zonaId": "hiyoko",
       "tipo": "Secuencia",
-      "pregunta": "Repeat the sequence of steps that Hiyoko shows.",
-      "pista": "Watch the order of the buttons.",
       "rondasParaGanar": 3
     },
     "gundham": {
@@ -272,63 +338,46 @@
       "tipo": "OpcionMultiple",
       "preguntas": [
         {
-          "pregunta": "This rider is the smallest but the most ferocious. Its fangs can split steel.",
+          "pregunta": "This being masters the shadows and hunts in absolute silence. Its eyes see what mortals cannot. What creature is it?",
           "opciones": [
-            "Cham-P",
-            "San-D",
-            "Maga-Z",
-            "Jum-P"
+            "The owl",
+            "The wolf",
+            "The raven",
+            "The serpent"
           ],
           "indiceCorrecto": 0,
-          "pista": "Its name starts with C.",
-          "imagenesOpciones": [
-            "cham_p",
-            "san_d",
-            "maga_z",
-            "jum_p"
-          ]
+          "pista": "It flies in darkness.",
+          "imagenesOpciones": null
         },
         {
-          "pregunta": "This guardian controls the sandstorms of the eternal desert.",
+          "pregunta": "The beast that can kill with a single glance according to legend. Its venom can stop the bravest heart. Which is it?",
           "opciones": [
-            "Jum-P",
-            "Cham-P",
-            "San-D",
-            "Maga-Z"
-          ],
-          "indiceCorrecto": 2,
-          "pista": "Its name evokes sand.",
-          "imagenesOpciones": [
-            "jum_p",
-            "cham_p",
-            "san_d",
-            "maga_z"
-          ]
-        },
-        {
-          "pregunta": "The wisest of the four. Masters ancestral dark magic.",
-          "opciones": [
-            "San-D",
-            "Maga-Z",
-            "Jum-P",
-            "Cham-P"
+            "The scorpion",
+            "The king cobra",
+            "The praying mantis",
+            "The black widow spider"
           ],
           "indiceCorrecto": 1,
-          "pista": "Its name sounds like magic.",
-          "imagenesOpciones": [
-            "san_d",
-            "maga_z",
-            "jum_p",
-            "cham_p"
-          ]
+          "pista": "It spreads its hood before striking.",
+          "imagenesOpciones": null
+        },
+        {
+          "pregunta": "The animal that ancient empires used as a symbol of absolute power and immortality. It is reborn from its own ashes.",
+          "opciones": [
+            "The dragon",
+            "The phoenix",
+            "The griffin",
+            "The basilisk"
+          ],
+          "indiceCorrecto": 1,
+          "pista": "It is related to fire.",
+          "imagenesOpciones": null
         }
       ]
     },
     "chiaki": {
       "zonaId": "chiaki",
       "tipo": "Memorama",
-      "pregunta": "Memorize the pattern and recreate it.",
-      "pista": "You have 3 seconds to observe it.",
       "rondasParaGanar": 3
     },
     "nagito": {
@@ -336,34 +385,34 @@
       "tipo": "OpcionMultiple",
       "preguntas": [
         {
-          "pregunta": "If everyone lies except one...",
+          "pregunta": "What weighs less than a feather, but not even the strongest man in the world can hold it for more than a few minutes?",
           "opciones": [
-            "Lies",
-            "Tells the truth",
-            "Impossible to know",
-            "Both"
+            "Smoke",
+            "A bubble",
+            "Breath",
+            "A glance"
           ],
           "indiceCorrecto": 2,
           "pista": ""
         },
         {
-          "pregunta": "I have sisters who have a brother...",
+          "pregunta": "I am always running but have no legs. I have a face but no eyes. What am I?",
           "opciones": [
-            "None",
-            "One",
-            "Depends",
-            "The same as them"
+            "A clock",
+            "A river",
+            "A car",
+            "The wind"
           ],
-          "indiceCorrecto": 1,
+          "indiceCorrecto": 0,
           "pista": ""
         },
         {
-          "pregunta": "Hope is born from despair...",
+          "pregunta": "We come out at night without being called, and vanish during the day without being stolen. What are we?",
           "opciones": [
-            "More hope",
-            "Nothing",
-            "The void",
-            "The question itself"
+            "Shadows",
+            "Stars",
+            "Owls",
+            "Nightmares"
           ],
           "indiceCorrecto": 1,
           "pista": ""
@@ -371,11 +420,9 @@
       ]
     },
     "monokuma_final": {
-  "zonaId": "monokuma_final",
-  "tipo": "Codigo",
-  "codigo": "3174",
-  "pregunta": "Enter the four-digit code.",
-  "pista": "Follow the clockwise direction on the map."
-}
+      "zonaId": "monokuma_final",
+      "tipo": "Codigo",
+      "codigo": "3174"
+    }
   }
 }

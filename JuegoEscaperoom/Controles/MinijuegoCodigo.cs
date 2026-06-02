@@ -29,9 +29,8 @@ namespace JuegoEscaperoom.Controles
             InitializeComponent();
             _form = form;
             _zona = zona;
-            _acertijo = (AcertijoCodigo)zona.Acertijo;
+            _acertijo = zona.Acertijo as AcertijoCodigo ?? throw new ArgumentException("La zona no tiene un acertijo de tipo código.");
             _audio = form.Audio;
-            this.Dock = DockStyle.Fill;
 
             _form.Controlador.JuegoTerminado += () =>
             {
@@ -113,7 +112,7 @@ namespace JuegoEscaperoom.Controles
                 _audio.ReproducirEfecto("Audios/efecto_revelaacertijo.wav");
                 lblEstado.Text = L.Obtener("ui.codigo.correcto");
                 MinijuegoCompletado?.Invoke(_zona);
-                _form.Controlador.ProcesarVictoriaZona(_zona);
+                _form.Controlador.ProcesarVictoriaZona(_zona, _acertijo.CalcularPuntos());
                 _form.Controlador.ProcesarVictoriaFinal();
 
             }

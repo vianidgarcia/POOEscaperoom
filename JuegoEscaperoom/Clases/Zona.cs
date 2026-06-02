@@ -21,7 +21,7 @@ namespace JuegoEscaperoom.Clases
         public Zona(string id, Image imagenFondo,
                     Image spritePersonaje, Personaje personaje,
                     List<Dialogo> dialogos, Acertijo? acertijo = null,
-                   bool daFragmento = false, List<Dialogo> dialogosPista = null)
+                   bool daFragmento = false, List<Dialogo>? dialogosPista = null)
         {
             Id = id;
             ImagenFondo = imagenFondo;

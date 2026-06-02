@@ -49,7 +49,7 @@ namespace JuegoEscaperoom.Clases
             return new Zona(id, Image.FromFile(rutaFondo), Image.FromFile(rutaFullbody), personaje, dialogos, acertijo, daFragmento, dialogosPista);
         }
 
-        private static Acertijo? ConstruirAcertijo(string tipoAcertijo, string zonaId)
+        private static Acertijo? ConstruirAcertijo(string? tipoAcertijo, string zonaId)
         { 
             switch (tipoAcertijo)
             {
@@ -150,8 +150,6 @@ namespace JuegoEscaperoom.Clases
         private static AcertijoSecuencia ConstruirAcertijoSecuencia(string zonaId)
         {
             var nodo = L.ObtenerAcertijo(zonaId);
-            string pregunta = nodo?["pregunta"]?.GetValue<string>() ?? "";
-            string pista = nodo?["pista"]?.GetValue<string>() ?? "";
             int rondas = nodo?["rondasParaGanar"]?.GetValue<int>() ?? 3;
             return new AcertijoSecuencia(rondas);
         }
@@ -159,8 +157,6 @@ namespace JuegoEscaperoom.Clases
         private static AcertijoMemorama ConstruirAcertijoMemorama(string zonaId)
         {
             var nodo = L.ObtenerAcertijo(zonaId);
-            string pregunta = nodo?["pregunta"]?.GetValue<string>() ?? "";
-            string pista = nodo?["pista"]?.GetValue<string>() ?? "";
             int rondas = nodo?["rondasParaGanar"]?.GetValue<int>() ?? 3;
             return new AcertijoMemorama(rondas);
         }

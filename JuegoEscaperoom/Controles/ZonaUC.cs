@@ -22,9 +22,6 @@ namespace JuegoEscaperoom.Controles
             InitializeComponent();
             _form = form;
             _zona = zona;
-
-            this.Dock = DockStyle.Fill;
-            this.DoubleBuffered = true;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -36,15 +33,20 @@ namespace JuegoEscaperoom.Controles
 
         private void CargarVisual()
         {
-            // Fondo de la zona
             this.BackgroundImage = _zona.ImagenFondo;
             this.BackgroundImageLayout = ImageLayout.Stretch;
-
-            // Sprite del personaje
             pbxSprite.Image = _zona.SpritePersonaje;
             pbxSprite.SizeMode = PictureBoxSizeMode.Zoom;
+            pbxSprite.Location = DarUbicacionAleatoria();
             pbxSprite.Cursor = Cursors.Hand;
 
+        }
+
+        private Point DarUbicacionAleatoria()
+        {
+            Random rnd = new Random();
+            int x = rnd.Next(449, 975);
+            return new Point(x, 72);
         }
 
         private void AbrirDialogo()
@@ -95,7 +97,6 @@ namespace JuegoEscaperoom.Controles
             var dialogoPista = new List<Dialogo> { };
             dialogoPista = _zona.DialogosPista!.ToList();
 
-            // Zona temporal solo para el diálogo de pista
             var zonaTemp = new Zona(
                 _zona.Id, _zona.ImagenFondo,
                 _zona.SpritePersonaje, personaje, dialogoPista,
@@ -120,7 +121,6 @@ namespace JuegoEscaperoom.Controles
                 }
             };
 
-            // Zona temporal solo para el diálogo de revisita
             var zonaTemp = new Zona(
                 _zona.Id, _zona.ImagenFondo,
                 _zona.SpritePersonaje, personaje, dialogoRevisita,
@@ -156,9 +156,7 @@ namespace JuegoEscaperoom.Controles
             if (_zona.Completada)
             {
                 if (_zona.DialogosPista != null && _form.Controlador.Estado.PuedeIrAZonaFinal)
-                {
                     MostrarDialogoPista();
-                }
                 else
                     MostrarDialogoRevisita();
                 return;
@@ -166,6 +164,7 @@ namespace JuegoEscaperoom.Controles
 
             AbrirDialogo();
         }
+
 
         private void btnVolver_Click(object sender, EventArgs e)
         {

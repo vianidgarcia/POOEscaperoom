@@ -11,7 +11,15 @@ namespace JuegoEscaperoom.Clases
     public class EstadoJuego
     {
         public int Puntaje { get; private set; } = 0;
-        public string TalentoJugador { get; set; } = "";
+
+        private string _talentoJugador = "";
+        public string TalentoJugador
+        {
+            get => _talentoJugador;
+            set => _talentoJugador = string.Concat(
+                value.Where(c => !Path.GetInvalidFileNameChars().Contains(c)));
+        }
+
         public List<string> ZonasCompletadas { get; private set; } = new();
         public int FragmentosObtenidos { get; private set; } = 0;
 

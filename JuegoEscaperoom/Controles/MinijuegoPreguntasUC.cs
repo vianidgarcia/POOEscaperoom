@@ -90,7 +90,7 @@ namespace JuegoEscaperoom.Controles
                     OcultarPregunta();
                     MostrarEstado(L.Formato("ui.preguntas.ganaste", _acertijo.CalcularPuntos()));
                     MinijuegoCompletado?.Invoke(_zona);
-                    _form.Controlador.ProcesarVictoriaZona(_zona);
+                    _form.Controlador.ProcesarVictoriaZona(_zona, _acertijo.CalcularPuntos());
                     return;
                 }
                 _audio.ReproducirEfecto("Audios/efecto_correcto.wav");
@@ -109,6 +109,7 @@ namespace JuegoEscaperoom.Controles
 
         private void PreguntaIncorrecta()
         {
+            if (_acertijo.ObtenerPreguntaActual() != null) { }
             int intentosRestantes = ConfigJuego.IntentosMaximosCuestionario
                 - _acertijo.ObtenerPreguntaActual().Intentos;
             if (intentosRestantes > 0)

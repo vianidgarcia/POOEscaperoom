@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,7 @@ namespace JuegoEscaperoom.Controles
         private int _indiceMostrar = 0;
         private int _indiceJugador = 0;
         private bool _mostrandoSecuencia = false;
+        private bool _faseApagar = false;
 
         private static readonly Random _rng = new();
 
@@ -46,10 +48,18 @@ namespace JuegoEscaperoom.Controles
             InitializeComponent();
             _form = form;
             _zona = zona;
-            _acertijo = (AcertijoSecuencia)zona.Acertijo;
+            _acertijo = zona.Acertijo as AcertijoSecuencia
+                ?? throw new ArgumentException("La zona no tiene un acertijo de tipo Secuencia.");
             _audio = form.Audio;
             this.Dock = DockStyle.Fill;
 
+            _mapaBotones = new()
+            {
+                { Direccion.Arriba,    pbxArriba    },
+                { Direccion.Abajo,     pbxAbajo     },
+                { Direccion.Izquierda, pbxIzquierda },
+                { Direccion.Derecha,   pbxDerecha   }
+            };
         }
 
         protected override void OnLoad(EventArgs e)
@@ -58,23 +68,10 @@ namespace JuegoEscaperoom.Controles
 
             this.BackgroundImage = _zona.ImagenFondo;
             this.BackgroundImageLayout = ImageLayout.Stretch;
-
-            // Mapear cada PictureBox a su dirección
-            _mapaBotones = new()
-            {
-                { Direccion.Arriba,    pbxArriba    },
-                { Direccion.Abajo,     pbxAbajo     },
-                { Direccion.Izquierda, pbxIzquierda },
-                { Direccion.Derecha,   pbxDerecha   }
-            };
-
             CargarImagenesBotones();
-
             btnEmpezar.Click += (s, ev) => IniciarRonda();
             btnSalir.Click += (s, ev) => Salir();
-
-            tmrSecuencia.Interval = 600;
-            tmrSecuencia.Tick += MostrarSiguienteDireccion;
+            tmrSecuencia.Interval = 300;
 
             // Textos localizados y textos de botones
             MostrarEstado(L.Formato("ui.secuencia.estadoInicial", 0, _acertijo.RondasParaGanar));
@@ -140,28 +137,6 @@ namespace JuegoEscaperoom.Controles
             return secuencia;
         }
 
-        private void MostrarSiguienteDireccion(object? sender, EventArgs e)
-        {
-            // Apagar el botón anterior
-            if (_indiceMostrar > 0)
-                IluminarBoton(_secuenciaActual[_indiceMostrar - 1], false);
-
-            if (_indiceMostrar < _secuenciaActual.Count)
-            {
-                IluminarBoton(_secuenciaActual[_indiceMostrar], true);
-                _audio.ReproducirEfecto("Audios/efecto_correcto.wav");
-                _indiceMostrar++;
-            }
-            else
-            {
-                // Termina la demostración
-                tmrSecuencia.Stop();
-                _mostrandoSecuencia = false;
-                MostrarEstado(L.Obtener("ui.secuencia.turnoJugador"));
-                this.Focus();
-                CargarImagenesBotones();
-            }
-        }
 
         // Input del jugador 
         private void OnTeclaPresionada(object? sender, KeyEventArgs e)
@@ -176,9 +151,6 @@ namespace JuegoEscaperoom.Controles
             {
                 _indiceJugador++;
                 _audio.ReproducirEfecto("Audios/efecto_correcto.wav");
-
-                if (_indiceJugador >= _secuenciaActual.Count)
-                    RondaCompletada();
             }
             else
             {
@@ -192,6 +164,14 @@ namespace JuegoEscaperoom.Controles
             tmrApagar.Stop();
             foreach (var dir in _mapaBotones.Keys)
                 IluminarBoton(dir, false);
+
+            if (_indiceJugador >= _secuenciaActual.Count)
+                RondaCompletada();
+
+            if (_acertijo.Resolver(""))
+            {
+                _audio.ReproducirEfecto("Audios/efecto_revelaacertijo.wav");
+            }
         }
 
         private void RondaCompletada()
@@ -202,9 +182,8 @@ namespace JuegoEscaperoom.Controles
 
             if (_acertijo.Resolver(""))
             {
-                _audio.ReproducirEfecto("Audios/efecto_revelaacertijo.wav");
                 MinijuegoCompletado?.Invoke(_zona);
-                _form.Controlador.ProcesarVictoriaZona(_zona);
+                _form.Controlador.ProcesarVictoriaZona(_zona, _acertijo.CalcularPuntos());
                 MostrarEstado(L.Obtener("ui.secuencia.ganaste"));
 
                 return;
@@ -241,5 +220,34 @@ namespace JuegoEscaperoom.Controles
         }
 
         private void MostrarEstado(string texto) => lblEstado.Text = texto;
+
+        private void tmrSecuencia_Tick(object sender, EventArgs e)
+        {
+            if (_faseApagar)
+            {
+                if (_indiceMostrar > 0)
+                    IluminarBoton(_secuenciaActual[_indiceMostrar - 1], false);
+            }
+            else
+            {
+                if (_indiceMostrar < _secuenciaActual.Count)
+                {
+                    IluminarBoton(_secuenciaActual[_indiceMostrar], true);
+                    _audio.ReproducirEfecto("Audios/efecto_correcto.wav");
+                    _indiceMostrar++;
+                }
+                else
+                {
+                    // Termina la demostración
+                    tmrSecuencia.Stop();
+                    _mostrandoSecuencia = false;
+                    MostrarEstado(L.Obtener("ui.secuencia.turnoJugador"));
+                    this.Focus();
+                    CargarImagenesBotones();
+                    return;
+                }
+            }
+                _faseApagar = !_faseApagar;
+        }
     }
 }

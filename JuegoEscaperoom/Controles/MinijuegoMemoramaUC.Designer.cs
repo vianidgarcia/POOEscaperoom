@@ -46,6 +46,7 @@
             pbxCarta11 = new PictureBox();
             pbxCarta12 = new PictureBox();
             pbxCarta9 = new PictureBox();
+            tmrFlip = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)pbxCarta1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbxCarta2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbxCarta3).BeginInit();
@@ -62,12 +63,15 @@
             // 
             // btnEmpezar
             // 
+            btnEmpezar.B = 116;
             btnEmpezar.BackColor = Color.FromArgb(5, 50, 116);
             btnEmpezar.FlatStyle = FlatStyle.Popup;
             btnEmpezar.Font = new Font("Dogica Pixel", 12F, FontStyle.Bold);
             btnEmpezar.ForeColor = Color.White;
+            btnEmpezar.G = 50;
             btnEmpezar.Location = new Point(60, 38);
             btnEmpezar.Name = "btnEmpezar";
+            btnEmpezar.R = 5;
             btnEmpezar.Size = new Size(148, 78);
             btnEmpezar.TabIndex = 0;
             btnEmpezar.Text = "btnEmpe";
@@ -76,12 +80,15 @@
             // 
             // btnRegresar
             // 
+            btnRegresar.B = 116;
             btnRegresar.BackColor = Color.FromArgb(5, 50, 116);
             btnRegresar.FlatStyle = FlatStyle.Popup;
             btnRegresar.Font = new Font("Dogica Pixel", 12F, FontStyle.Bold);
             btnRegresar.ForeColor = Color.White;
+            btnRegresar.G = 50;
             btnRegresar.Location = new Point(60, 667);
             btnRegresar.Name = "btnRegresar";
+            btnRegresar.R = 5;
             btnRegresar.Size = new Size(148, 78);
             btnRegresar.TabIndex = 1;
             btnRegresar.Text = "Regre";
@@ -213,6 +220,11 @@
             pbxCarta9.TabIndex = 15;
             pbxCarta9.TabStop = false;
             // 
+            // tmrFlip
+            // 
+            tmrFlip.Interval = 30;
+            tmrFlip.Tick += tmrFlip_Tick;
+            // 
             // MinijuegoMemoramaUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -272,5 +284,6 @@
         private PictureBox pbxCarta11;
         private PictureBox pbxCarta12;
         private PictureBox pbxCarta9;
+        private System.Windows.Forms.Timer tmrFlip;
     }
 }

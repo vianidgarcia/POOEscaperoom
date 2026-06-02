@@ -232,39 +232,105 @@
       }
     ],
     "monokuma_final": [
-  { "texto": "Upupupu... así que llegaste hasta aquí.", "expresion": "riendo", "efecto": null },
-  { "texto": "Pensé que te rendirías. Pero aquí estás, con tus cuatro fragmentos de esperanza.", "expresion": "serio", "efecto": null },
-  { "texto": "Muy bien. La puerta de salida tiene un código de cuatro dígitos.", "expresion": "curioso", "efecto": null },
-  { "texto": "Cada uno de mis queridos estudiantes tiene uno. Visítalos en el sentido de las manecillas del reloj y obtendrás lo que buscas.", "expresion": "despreocupado", "efecto": null },
-  { "texto": "¿Podrás descifrarlos todos? ¡Upupupu!", "expresion": "riendo", "efecto": null }
-],
-"hiyoko_pista": [
-  { "texto": "¿Otra vez tú? Qué pesado.", "expresion": "burlona", "efecto": null },
-  { "texto": "Está bien, está bien. Mi número... son los pasos del primer movimiento del bon odori.", "expresion": "seria", "efecto": null },
-  { "texto": "Uno, dos, tres. ¿Lo entiendes, torpe? Tres pasos. Ese es mi número.", "expresion": "curiosa", "efecto": null }
-],
-"gundham_pista": [
-  { "texto": "Mortal... has regresado.", "expresion": "serio", "efecto": null },
-  { "texto": "Los Siete Sellos del Abismo fueron rotos por mis Cuatro Jinetes más los Tres Espíritus Ancestrales.", "expresion": "dramatico", "efecto": null },
-  { "texto": "Recuerda ese número. Siete. Es todo lo que necesitas saber.", "expresion": "relajado", "efecto": null }
-],
-"chiaki_pista": [
-  { "texto": "Ah, volviste.", "expresion": "tranquila", "efecto": null },
-  { "texto": "En todo juego hay un jugador número uno. El primero. El que empieza siempre.", "expresion": "curiosa", "efecto": null },
-  { "texto": "Mi número es ese. El primero. ¿Entiendes?", "expresion": "pensando", "efecto": null }
-],
-"nagito_pista": [
-  { "texto": "Oh... qué coincidencia que hayas regresado.", "expresion": "sonriente", "efecto": null },
-  { "texto": "Cuatro fragmentos de esperanza. Cuatro almas que confiaron en ti.", "expresion": "pensativo", "efecto": null },
-  { "texto": "La respuesta siempre estuvo en lo que ya tenías. Mi número es cuatro.", "expresion": "intenso", "efecto": null }
-]
+      {
+        "texto": "Upupupu... así que llegaste hasta aquí.",
+        "expresion": "riendo",
+        "efecto": null
+      },
+      {
+        "texto": "Pensé que te rendirías. Pero aquí estás, con tus cuatro fragmentos de esperanza.",
+        "expresion": "serio",
+        "efecto": null
+      },
+      {
+        "texto": "Muy bien. La puerta de salida tiene un código de cuatro dígitos.",
+        "expresion": "curioso",
+        "efecto": null
+      },
+      {
+        "texto": "Cada uno de mis queridos estudiantes tiene uno. Visítalos en el sentido de las manecillas del reloj y obtendrás lo que buscas.",
+        "expresion": "despreocupado",
+        "efecto": null
+      },
+      {
+        "texto": "¿Podrás descifrarlos todos? ¡Upupupu!",
+        "expresion": "riendo",
+        "efecto": null
+      }
+    ],
+    "hiyoko_pista": [
+      {
+        "texto": "¿Otra vez tú? Qué pesado.",
+        "expresion": "burlona",
+        "efecto": null
+      },
+      {
+        "texto": "Está bien, está bien. Mi número... son los pasos del primer movimiento del bon odori.",
+        "expresion": "pretenciosa",
+        "efecto": null
+      },
+      {
+        "texto": "Uno, dos, tres. ¿Lo entiendes, torpe? Tres pasos. Ese es mi número.",
+        "expresion": "curiosa",
+        "efecto": null
+      }
+    ],
+    "gundham_pista": [
+      {
+        "texto": "Mortal... has regresado.",
+        "expresion": "serio",
+        "efecto": null
+      },
+      {
+        "texto": "Los Siete Sellos del Abismo fueron rotos por mis Cuatro Jinetes más los Tres Espíritus Ancestrales.",
+        "expresion": "dramatico",
+        "efecto": null
+      },
+      {
+        "texto": "Recuerda ese número. Siete. Es todo lo que necesitas saber.",
+        "expresion": "relajado",
+        "efecto": null
+      }
+    ],
+    "chiaki_pista": [
+      {
+        "texto": "Ah, volviste.",
+        "expresion": "tranquila",
+        "efecto": null
+      },
+      {
+        "texto": "En todo juego hay un jugador número uno. El primero. El que empieza siempre.",
+        "expresion": "curiosa",
+        "efecto": null
+      },
+      {
+        "texto": "Mi número es ese. El primero. ¿Entiendes?",
+        "expresion": "pensando",
+        "efecto": null
+      }
+    ],
+    "nagito_pista": [
+      {
+        "texto": "Oh... qué coincidencia que hayas regresado.",
+        "expresion": "feliz",
+        "efecto": null
+      },
+      {
+        "texto": "Cuatro fragmentos de esperanza. Cuatro almas que confiaron en ti.",
+        "expresion": "pensativo",
+        "efecto": null
+      },
+      {
+        "texto": "La respuesta siempre estuvo en lo que ya tenías. Mi número es cuatro.",
+        "expresion": "intenso",
+        "efecto": null
+      }
+    ]
   },
   "acertijos": {
     "hiyoko": {
       "zonaId": "hiyoko",
       "tipo": "Secuencia",
-      "pregunta": "Repite la secuencia de pasos que marca Hiyoko.",
-      "pista": "Observa el orden de los botones.",
       "rondasParaGanar": 3
     },
     "gundham": {
@@ -272,63 +338,46 @@
       "tipo": "OpcionMultiple",
       "preguntas": [
         {
-          "pregunta": "Este jinete es el más pequeño pero el más feroz. Sus colmillos pueden partir el acero.",
+          "pregunta": "Este ser domina las sombras y caza en silencio absoluto. Sus ojos ven lo que los mortales no pueden. ¿Qué criatura es?",
           "opciones": [
-            "Cham-P",
-            "San-D",
-            "Maga-Z",
-            "Jum-P"
+            "El búho",
+            "El lobo",
+            "El cuervo",
+            "La serpiente"
           ],
           "indiceCorrecto": 0,
-          "pista": "Su nombre empieza con C.",
-          "imagenesOpciones": [
-            "cham_p",
-            "san_d",
-            "maga_z",
-            "jum_p"
-          ]
+          "pista": "Vuela en la oscuridad.",
+          "imagenesOpciones": null
         },
         {
-          "pregunta": "Este guardián controla las tormentas de arena del desierto eterno.",
+          "pregunta": "La bestia que puede matar con una sola mirada según la leyenda. Su veneno es capaz de detener el corazón más valiente. ¿Cuál es?",
           "opciones": [
-            "Jum-P",
-            "Cham-P",
-            "San-D",
-            "Maga-Z"
-          ],
-          "indiceCorrecto": 2,
-          "pista": "Su nombre evoca la arena.",
-          "imagenesOpciones": [
-            "jum_p",
-            "cham_p",
-            "san_d",
-            "maga_z"
-          ]
-        },
-        {
-          "pregunta": "El más sabio de los cuatro. Domina la magia oscura ancestral.",
-          "opciones": [
-            "San-D",
-            "Maga-Z",
-            "Jum-P",
-            "Cham-P"
+            "El escorpión",
+            "La cobra real",
+            "La mantis religiosa",
+            "La araña viuda negra"
           ],
           "indiceCorrecto": 1,
-          "pista": "Su nombre suena a magia.",
-          "imagenesOpciones": [
-            "san_d",
-            "maga_z",
-            "jum_p",
-            "cham_p"
-          ]
+          "pista": "Se expande su capucha antes de atacar.",
+          "imagenesOpciones": null
+        },
+        {
+          "pregunta": "El animal que los antiguos imperios usaban como símbolo de poder absoluto e inmortalidad. Renace de sus propias cenizas.",
+          "opciones": [
+            "El dragón",
+            "El fénix",
+            "El grifo",
+            "El basilisco"
+          ],
+          "indiceCorrecto": 1,
+          "pista": "Está relacionado con el fuego.",
+          "imagenesOpciones": null
         }
       ]
     },
     "chiaki": {
       "zonaId": "chiaki",
       "tipo": "Memorama",
-      "pregunta": "Memoriza el patron y luego recrealo.",
-      "pista": "Tienes 3 segundos para observarlo.",
       "rondasParaGanar": 3
     },
     "nagito": {
@@ -371,11 +420,9 @@
       ]
     },
     "monokuma_final": {
-  "zonaId": "monokuma_final",
-  "tipo": "Codigo",
-  "codigo": "3174",
-  "pregunta": "Ingresa el código de cuatro dígitos.",
-  "pista": "Sigue las manecillas del reloj en el mapa."
+      "zonaId": "monokuma_final",
+      "tipo": "Codigo",
+      "codigo": "3174"
+    }
   }
-}
 }

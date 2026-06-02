@@ -18,15 +18,20 @@ namespace JuegoEscaperoom.Controles
         private AcertijoMemorama _acertijo;
         private ServicioAudio _audio;
         private static ServicioLocalizacion L => ServicioLocalizacion.Instancia;
+        private List<PictureBox> _cartasAnimando = new();
+        private int _anchoOriginal;
+        private bool _cerrando = true;
+        private bool _esPrimeraCarta;
+        private bool _esVuelta;
 
         List<int> paresNumeros = new List<int> { 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6 };
-        string primerSeleccion = null;
-        string segundaSeleccion = null;
+        string? primerSeleccion = null;
+        string? segundaSeleccion = null;
 
-        int TiempoTotal = 60;
+        int TiempoTotal = ConfigJuego.TiempoMemorama;
         List<PictureBox> _cartas = new List<PictureBox>();
-        PictureBox _carta1;
-        PictureBox _carta2;
+        PictureBox? _carta1;
+        PictureBox? _carta2;
 
         public event Action<Zona>? MinijuegoCompletado;
 
@@ -34,12 +39,12 @@ namespace JuegoEscaperoom.Controles
         {
             _form = formPrincipal;
             _zona = zona;
-            _acertijo = (AcertijoMemorama)zona.Acertijo;
+            _acertijo = zona.Acertijo as AcertijoMemorama ?? throw new ArgumentException("La zona no tiene un acertijo de tipo memorama.");
             _audio = formPrincipal.Audio;
             this.BackgroundImage = _zona.ImagenFondo;
             InitializeComponent();
             this.Dock = DockStyle.Fill;
-            
+
         }
 
         protected override void OnLoad(EventArgs e)
@@ -56,13 +61,14 @@ namespace JuegoEscaperoom.Controles
                 pbxCarta9, pbxCarta10, pbxCarta11, pbxCarta12
             };
             CargarFoto();
+            _anchoOriginal = pbxCarta1.Width-15;
         }
 
         private void CargarFoto()
         {
-            foreach (PictureBox pbx in _cartas) 
-            { 
-              pbx.BackColor = Color.LightGray;
+            foreach (PictureBox pbx in _cartas)
+            {
+                pbx.BackColor = Color.LightGray;
                 pbx.SizeMode = PictureBoxSizeMode.StretchImage;
                 pbx.Click += Carta_Click;
             }
@@ -70,50 +76,11 @@ namespace JuegoEscaperoom.Controles
             PrepararJuego();
         }
 
-        private void Carta_Click(object sender, EventArgs e)
-        {
-            if (!tmrJuego.Enabled) return;
-
-            if (_acertijo.Resuelto)
-            {
-                return;
-            }
-
-
-            if (primerSeleccion == null)
-            {
-                _carta1 = sender as PictureBox;
-
-                if (_carta1.Tag != null && _carta1.Image == null)
-                {
-                    _carta1.Image = Properties.Resources.ResourceManager.GetObject((string)_carta1.Tag) as Image;
-                    primerSeleccion = (string)_carta1.Tag;
-                }
-
-            }
-            else if (segundaSeleccion == null)
-            {
-                _carta2 = sender as PictureBox;
-
-                if (_carta2.Tag != null && _carta2.Image == null)
-                {
-                    _carta2.Image = Properties.Resources.ResourceManager.GetObject((string)_carta2.Tag) as Image;
-                    segundaSeleccion = (string)_carta2.Tag;
-
-                }
-            }
-            else
-            {
-                RondaCompletada(_carta1, _carta2);
-            }
-        }
-
         private void PrepararJuego()
         {
-            var randomList = paresNumeros.OrderBy(x => Guid.NewGuid()).ToList();
+            var rndLista = paresNumeros.OrderBy(x => Guid.NewGuid()).ToList();
 
-            // save the random list to the question numbers list again
-            paresNumeros = randomList;
+            paresNumeros = rndLista;
 
             for (int i = 0; i < _cartas.Count; i++)
             {
@@ -123,7 +90,45 @@ namespace JuegoEscaperoom.Controles
 
         }
 
-        private void RondaCompletada(PictureBox A, PictureBox B)
+        private void Carta_Click(object? sender, EventArgs e)
+        {
+            if (!tmrJuego.Enabled) 
+                return;
+
+            if (_acertijo.Resuelto)
+                return;
+            
+            if (primerSeleccion == null)
+            {
+                _carta1 = sender as PictureBox;
+                _cartasAnimando = new List<PictureBox> { _carta1 };
+                _esPrimeraCarta = true;
+
+                if (_carta1?.Tag != null && _carta1.Image == null)
+                {
+                    tmrFlip.Start();
+                }
+            }
+
+            else if (segundaSeleccion == null)
+            {
+                _carta2 = sender as PictureBox;
+                _cartasAnimando[0] = _carta2;
+                _esPrimeraCarta = false;
+
+                if (_carta2?.Tag != null && _carta2.Image == null)
+                {
+                   tmrFlip.Start();
+                }
+            }
+
+            else
+            {
+                RevisarCartas(_carta1, _carta2);
+            }
+        }
+
+        private void RevisarCartas(PictureBox A, PictureBox B)
         {
 
             if (primerSeleccion == segundaSeleccion)
@@ -133,23 +138,25 @@ namespace JuegoEscaperoom.Controles
             }
             else
             {
+                _cartasAnimando = new List<PictureBox> { A, B };
                 lblEstado.Text = L.Obtener("ui.memorama.sigueIntentando");
             }
 
             primerSeleccion = null;
             segundaSeleccion = null;
 
-            foreach (PictureBox x in _cartas.ToList())
+            foreach (PictureBox carta in _cartas.ToList())
             {
-                if (x.Tag != null)
+                if (carta.Tag != null)
                 {
-                    x.Image = null;
+                    carta.Image = null;
                 }
             }
 
             if (_cartas.All(o => o.Tag == null))
             {
                 _acertijo.RegistrarRondaGanada();
+                _acertijo.RegistrarTiempo(ConfigJuego.TiempoMemorama - TiempoTotal);
                 tmrJuego.Stop();
                 lblEstado.Text = L.Obtener("ui.memorama.felicitacionesRonda");
 
@@ -157,7 +164,7 @@ namespace JuegoEscaperoom.Controles
                 {
                     _audio.ReproducirEfecto("Audios/efecto_revelaacertijo.wav");
                     MinijuegoCompletado?.Invoke(_zona);
-                    _form.Controlador.ProcesarVictoriaZona(_zona);
+                    _form.Controlador.ProcesarVictoriaZona(_zona, _acertijo.CalcularPuntos());
                     lblEstado.Text = L.Obtener("ui.memorama.ganaste");
 
                     return;
@@ -174,8 +181,9 @@ namespace JuegoEscaperoom.Controles
             btnEmpezar.Enabled = false;
             lblEstado.Text = L.Obtener("ui.memorama.empezando");
             lblTiempo.Text = L.Formato("ui.memorama.tiempoRestante", TiempoTotal);
-            TiempoTotal = 60;
+            TiempoTotal = ConfigJuego.TiempoMemorama;
             PrepararJuego();
+            _acertijo.RegistrarRonda();
             tmrJuego.Start();
         }
 
@@ -205,6 +213,56 @@ namespace JuegoEscaperoom.Controles
                 tmrJuego.Stop();
                 MessageBox.Show(L.Obtener("ui.memorama.tiempoAgotado"), L.Obtener("ui.memorama.tituloTiempo"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnEmpezar.Enabled = true;
+            }
+        }
+
+        private void tmrFlip_Tick(object sender, EventArgs e)
+        {
+            if (_cerrando)
+            {
+                if (_cartasAnimando.Count > 0 && _cartasAnimando[0].Width > 0)
+                {
+                    foreach (var carta in _cartasAnimando)
+                    {
+                        carta.Width -= 20;
+                    }
+                   
+                }
+                else
+                {
+                    tmrFlip.Stop();
+                    if (_esPrimeraCarta)
+                        primerSeleccion = (string)_cartasAnimando[0].Tag;
+                    else
+                        segundaSeleccion = (string)_cartasAnimando[0].Tag;
+                    if (_esVuelta)
+                    {
+                        foreach (var carta in _cartasAnimando)
+                            carta.Image = null;
+                    }
+                    else
+                    {
+                        _cartasAnimando[0].Image = Properties.Resources.ResourceManager.GetObject((string)_cartasAnimando[0].Tag) as Image;
+                    }
+                    _cerrando = !_cerrando;
+                    tmrFlip.Start();
+                }
+            }
+            else
+            {
+                if (_cartasAnimando.Count > 0 && _cartasAnimando[0].Width < _anchoOriginal)
+                {
+                    foreach (var carta in _cartasAnimando)
+                    {
+                        carta.Width += 20;
+                    }
+                }
+                else
+                {
+                    tmrFlip.Stop();
+                    _cerrando = !_cerrando;
+                }
+
             }
         }
     }

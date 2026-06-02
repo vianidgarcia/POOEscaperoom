@@ -50,6 +50,7 @@ namespace JuegoEscaperoom
             this.Controls.Add(nuevoControl);
             _controlActual = nuevoControl;
             nuevoControl.BringToFront();
+            nuevoControl.Dock = DockStyle.Fill;
         }
 
         public void IniciarConEstadoCargado(EstadoJuego estado)
@@ -62,6 +63,11 @@ namespace JuegoEscaperoom
         // ── Cierre limpio 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
+            if (Controlador == null)
+            {
+                base.OnFormClosing(e);
+                return;
+            }
             if (Controlador.CambiosSinGuardar)
             {
                 var res = MessageBox.Show(L.Obtener("ui.cierre.confirmarGuardar"),
