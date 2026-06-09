@@ -34,6 +34,9 @@ namespace JuegoEscaperoom.Controles
             this.BackgroundImage = _zona.ImagenFondo;
             this.BackgroundImageLayout = ImageLayout.Stretch;
 
+            btnEmpezar.Text = L.Formato("ui.minijuego.empezar");
+            btnSalir.Text = L.Formato("ui.minijuego.salir");
+
             MostrarEstado(L.Formato("ui.preguntas.estadoInicial", 1, _acertijo.Preguntas.Count));
             OcultarPregunta();
 

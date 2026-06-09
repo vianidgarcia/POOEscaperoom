@@ -121,7 +121,7 @@ namespace JuegoEscaperoom.Clases
     }
         public class AcertijoMemorama : Acertijo
         {
-            public int RondasParaGanar { get; private set; } = 0;
+            public int RondasParaGanar { get;} = 0;
             public int RondasGanadas { get; private set; } = 0;
             public int TiempoRestante { get; private set; } = 0;
             public int RondasTotales { get; private set; } = 0;

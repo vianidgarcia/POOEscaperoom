@@ -6,6 +6,11 @@
       "salir": "Salir",
       "seleccionarIdioma": "Idioma"
     },
+    "dialogo": {
+      "titulo": "Escaperoom",
+      "contadorZona": "Zona: {0} / 4",
+      "puntuacion": "Puntuación: {0}"
+    },
     "mapa": {
       "instruccion": "Selecciona en el mapa la zona a realizar",
       "fragmentos": "Fragmentos: {0} / 4",

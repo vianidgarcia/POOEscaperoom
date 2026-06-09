@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DialogoUC));
             lblDialogo = new Label();
             pnlDialogo = new Panel();
             pbxHudBarra = new PictureBox();
             pbxHudDatos = new PictureBox();
             pbxSprite = new PictureBox();
+            lblEscaperoom = new Label();
+            lblContadorZona = new Label();
+            lblPuntuacion = new Label();
             pnlDialogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbxHudBarra).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbxHudDatos).BeginInit();
@@ -76,7 +80,7 @@
             // 
             // pbxHudDatos
             // 
-            pbxHudDatos.Image = Properties.Resources.HUDdatos;
+            pbxHudDatos.Image = (Image)resources.GetObject("pbxHudDatos.Image");
             pbxHudDatos.Location = new Point(957, 0);
             pbxHudDatos.Name = "pbxHudDatos";
             pbxHudDatos.Size = new Size(409, 145);
@@ -93,11 +97,45 @@
             pbxSprite.TabIndex = 5;
             pbxSprite.TabStop = false;
             // 
+            // lblEscaperoom
+            // 
+            lblEscaperoom.BackColor = Color.FromArgb(221, 217, 182);
+            lblEscaperoom.Font = new Font("FOT-Rodin Pro B", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblEscaperoom.Location = new Point(1001, 25);
+            lblEscaperoom.Name = "lblEscaperoom";
+            lblEscaperoom.Size = new Size(218, 19);
+            lblEscaperoom.TabIndex = 6;
+            lblEscaperoom.Text = "escaperoom";
+            // 
+            // lblContadorZona
+            // 
+            lblContadorZona.BackColor = Color.FromArgb(255, 229, 1);
+            lblContadorZona.Font = new Font("FOT-Rodin Pro B", 12F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            lblContadorZona.Location = new Point(1015, 53);
+            lblContadorZona.Name = "lblContadorZona";
+            lblContadorZona.Size = new Size(204, 19);
+            lblContadorZona.TabIndex = 7;
+            lblContadorZona.Text = "contZona";
+            // 
+            // lblPuntuacion
+            // 
+            lblPuntuacion.BackColor = Color.FromArgb(52, 52, 52);
+            lblPuntuacion.Font = new Font("FOT-Rodin Pro B", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblPuntuacion.ForeColor = SystemColors.ButtonHighlight;
+            lblPuntuacion.Location = new Point(1041, 82);
+            lblPuntuacion.Name = "lblPuntuacion";
+            lblPuntuacion.Size = new Size(184, 19);
+            lblPuntuacion.TabIndex = 8;
+            lblPuntuacion.Text = "Pts";
+            // 
             // DialogoUC
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
+            Controls.Add(lblPuntuacion);
+            Controls.Add(lblContadorZona);
+            Controls.Add(lblEscaperoom);
             Controls.Add(pnlDialogo);
             Controls.Add(pbxHudDatos);
             Controls.Add(pbxHudBarra);
@@ -119,5 +157,8 @@
         private PictureBox pbxHudBarra;
         private PictureBox pbxHudDatos;
         private PictureBox pbxSprite;
+        private Label lblEscaperoom;
+        private Label lblContadorZona;
+        private Label lblPuntuacion;
     }
 }

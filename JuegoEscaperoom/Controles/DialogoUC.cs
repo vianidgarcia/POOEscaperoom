@@ -23,6 +23,8 @@ namespace JuegoEscaperoom.Controles
         private ServicioDialogo _servicioDialogo;
         private int _indiceActual = 0;
         private bool _esperandoInput = false;
+        
+        private static ServicioLocalizacion L => ServicioLocalizacion.Instancia;
 
         public event Action<Zona>? UltimoDialogoMostrado;
         public event Action<Zona>? DialogosTerminados;
@@ -67,8 +69,22 @@ namespace JuegoEscaperoom.Controles
             base.OnLoad(e);
             pbxHudBarra.Parent = pbxSprite;
             pbxHudDatos.Parent = pbxSprite;
+            lblEscaperoom.Text = L.Obtener("ui.dialogo.titulo");
+            if (_form.Controlador == null)
+            {
+                lblContadorZona.Text = "...";
+                lblPuntuacion.Text = "...";
+            }
+            else
+            {
+                lblContadorZona.Text = L.Formato("ui.dialogo.contadorZona",
+                    _form.Controlador.Estado.FragmentosObtenidos);
+                lblPuntuacion.Text = L.Formato("ui.dialogo.puntuacion", _form.Controlador.Estado.Puntaje);
+                lblEscaperoom.Text = L.Formato("ui.dialogo.titulo");
+            }
             this.Focus();
             SiguienteDialogo();
+            
         }
 
 

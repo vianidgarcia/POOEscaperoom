@@ -203,6 +203,16 @@ namespace JuegoEscaperoom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cartaVolteada {
+            get {
+                object obj = ResourceManager.GetObject("cartaVolteada", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cham_p {
             get {
                 object obj = ResourceManager.GetObject("cham_p", resourceCulture);

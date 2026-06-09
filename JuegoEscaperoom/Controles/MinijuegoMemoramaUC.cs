@@ -68,7 +68,7 @@ namespace JuegoEscaperoom.Controles
         {
             foreach (PictureBox pbx in _cartas)
             {
-                pbx.BackColor = Color.SeaShell;
+                pbx.BackgroundImage = Properties.Resources.cartaVolteada;
                 pbx.SizeMode = PictureBoxSizeMode.StretchImage;
                 pbx.Click += Carta_Click;
             }
@@ -82,54 +82,79 @@ namespace JuegoEscaperoom.Controles
 
             paresNumeros = rndLista;
 
+            primerSeleccion = null;
+            segundaSeleccion = null;
+            _carta1 = null;
+            _carta2 = null;
+
             for (int i = 0; i < _cartas.Count; i++)
             {
                 _cartas[i].Image = null;
+                _cartas[i].BackgroundImage = Properties.Resources.cartaVolteada;
+                _cartas[i].BackColor = Color.Transparent;
                 _cartas[i].Tag = paresNumeros[i].ToString();
             }
-
         }
 
         private void Carta_Click(object? sender, EventArgs e)
         {
-            if (!tmrJuego.Enabled) 
+            if (!tmrJuego.Enabled)
                 return;
 
             if (_acertijo.Resuelto)
                 return;
-            
+
+            PictureBox? cartaSeleccionada = sender as PictureBox;
+
+            if (cartaSeleccionada == null)
+                return;
+
+            if (cartaSeleccionada.Tag == null)
+                return;
+
+            if (cartaSeleccionada.Image != null)
+                return;
+
             if (primerSeleccion == null)
             {
-                _carta1 = sender as PictureBox;
-                _cartasAnimando = new List<PictureBox> { _carta1 };
+                _carta1 = cartaSeleccionada;
+
+                _cartasAnimando = new List<PictureBox>
+        {
+            _carta1
+        };
+
                 _esPrimeraCarta = true;
+                tmrFlip.Start();
 
-                if (_carta1?.Tag != null && _carta1.Image == null)
-                {
-                    tmrFlip.Start();
-                }
+                return;
             }
 
-            else if (segundaSeleccion == null)
+            if (segundaSeleccion == null)
             {
-                _carta2 = sender as PictureBox;
-                _cartasAnimando[0] = _carta2;
+                if (_carta1 == cartaSeleccionada)
+                    return;
+
+                _carta2 = cartaSeleccionada;
+
+                _cartasAnimando = new List<PictureBox>
+        {
+            _carta2
+        };
+
                 _esPrimeraCarta = false;
+                tmrFlip.Start();
 
-                if (_carta2?.Tag != null && _carta2.Image == null)
-                {
-                   tmrFlip.Start();
-                }
+                return;
             }
 
-            else
-            {
-                RevisarCartas(_carta1, _carta2);
-            }
+            RevisarCartas(_carta1!, _carta2!);
         }
 
         private void RevisarCartas(PictureBox A, PictureBox B)
         {
+            if (A.Tag == null || B.Tag == null)
+                return;
 
             if (primerSeleccion == segundaSeleccion)
             {
@@ -138,42 +163,54 @@ namespace JuegoEscaperoom.Controles
             }
             else
             {
-                _cartasAnimando = new List<PictureBox> { A, B };
                 lblEstado.Text = L.Obtener("ui.memorama.sigueIntentando");
+
+                A.Image = null;
+                A.BackgroundImage = Properties.Resources.cartaVolteada;
+                A.BackColor = Color.Transparent;
+
+                B.Image = null;
+                B.BackgroundImage = Properties.Resources.cartaVolteada;
+                B.BackColor = Color.Transparent;
             }
 
             primerSeleccion = null;
             segundaSeleccion = null;
 
-            foreach (PictureBox carta in _cartas.ToList())
-            {
-                if (carta.Tag != null)
-                {
-                    carta.Image = null;
-                }
-            }
+            _carta1 = null;
+            _carta2 = null;
 
             if (_cartas.All(o => o.Tag == null))
             {
                 _acertijo.RegistrarRondaGanada();
                 _acertijo.RegistrarTiempo(ConfigJuego.TiempoMemorama - TiempoTotal);
+
                 tmrJuego.Stop();
+
                 lblEstado.Text = L.Obtener("ui.memorama.felicitacionesRonda");
 
                 if (_acertijo.Resolver(""))
                 {
                     _audio.ReproducirEfecto("Audios/efecto_revelaacertijo.wav");
+
                     MinijuegoCompletado?.Invoke(_zona);
-                    _form.Controlador.ProcesarVictoriaZona(_zona, _acertijo.CalcularPuntos());
+
+                    _form.Controlador.ProcesarVictoriaZona(
+                        _zona,
+                        _acertijo.CalcularPuntos());
+
                     lblEstado.Text = L.Obtener("ui.memorama.ganaste");
 
                     return;
                 }
 
                 btnEmpezar.Enabled = true;
-                lblEstado.Text = L.Formato("ui.memorama.rondasGanadas", _acertijo.RondasGanadas, _acertijo.RondasParaGanar);
-            }
 
+                lblEstado.Text = L.Formato(
+                    "ui.memorama.rondasGanadas",
+                    _acertijo.RondasGanadas,
+                    _acertijo.RondasParaGanar);
+            }
         }
 
         private void btnEmpezar_Click(object sender, EventArgs e)
@@ -220,37 +257,46 @@ namespace JuegoEscaperoom.Controles
         {
             if (_cerrando)
             {
-                if (_cartasAnimando.Count > 0 && _cartasAnimando[0].Width > 0)
+                if (_cartasAnimando.Count > 0 &&
+                    _cartasAnimando[0].Width > 0)
                 {
                     foreach (var carta in _cartasAnimando)
                     {
                         carta.Width -= 20;
                     }
-                   
                 }
                 else
                 {
                     tmrFlip.Stop();
+
                     if (_esPrimeraCarta)
+                    {
                         primerSeleccion = (string)_cartasAnimando[0].Tag;
+                    }
                     else
+                    {
                         segundaSeleccion = (string)_cartasAnimando[0].Tag;
-                    if (_esVuelta)
-                    {
-                        foreach (var carta in _cartasAnimando)
-                            carta.Image = null;
                     }
-                    else
+
+                    foreach (var carta in _cartasAnimando)
                     {
-                        _cartasAnimando[0].Image = Properties.Resources.ResourceManager.GetObject((string)_cartasAnimando[0].Tag) as Image;
+                        carta.BackgroundImage = null;
+                        carta.BackColor = Color.SeaShell;
+
+                        carta.Image =
+                            Properties.Resources.ResourceManager.GetObject(
+                                (string)carta.Tag) as Image;
                     }
-                    _cerrando = !_cerrando;
+
+                    _cerrando = false;
+
                     tmrFlip.Start();
                 }
             }
             else
             {
-                if (_cartasAnimando.Count > 0 && _cartasAnimando[0].Width < _anchoOriginal)
+                if (_cartasAnimando.Count > 0 &&
+                    _cartasAnimando[0].Width < _anchoOriginal)
                 {
                     foreach (var carta in _cartasAnimando)
                     {
@@ -260,10 +306,19 @@ namespace JuegoEscaperoom.Controles
                 else
                 {
                     tmrFlip.Stop();
-                    _cerrando = !_cerrando;
-                }
 
+                    _cerrando = true;
+
+                    if (primerSeleccion != null &&
+                        segundaSeleccion != null &&
+                        _carta1 != null &&
+                        _carta2 != null)
+                    {
+                        RevisarCartas(_carta1, _carta2);
+                    }
+                }
             }
         }
+
     }
 }
