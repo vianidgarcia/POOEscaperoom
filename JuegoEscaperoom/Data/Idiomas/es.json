@@ -4,7 +4,8 @@
       "nuevaPartida": "Nueva Partida",
       "cargarPartida": "Cargar Partida",
       "salir": "Salir",
-      "seleccionarIdioma": "Idioma"
+      "seleccionarIdioma": "Idioma",
+      "scores": "Los cinco mejores puntajes"
     },
     "dialogo": {
       "titulo": "Escaperoom",

@@ -35,7 +35,11 @@ namespace JuegoEscaperoom.Controles
             { Keys.Up,    Direccion.Arriba    },
             { Keys.Down,  Direccion.Abajo     },
             { Keys.Left,  Direccion.Izquierda },
-            { Keys.Right, Direccion.Derecha   }
+            { Keys.Right, Direccion.Derecha   },
+            { Keys.W,     Direccion.Arriba    },
+            { Keys.S,     Direccion.Abajo     },
+            { Keys.A,     Direccion.Izquierda },
+            { Keys.D,     Direccion.Derecha   }
         };
 
         // Mapeo dirección → PictureBox correspondiente

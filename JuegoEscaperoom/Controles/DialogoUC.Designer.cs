@@ -47,7 +47,7 @@
             // 
             lblDialogo.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             lblDialogo.BackColor = SystemColors.ActiveCaptionText;
-            lblDialogo.Font = new Font("FOT-Rodin Pro B", 17.25F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            lblDialogo.Font = new Font("FOT-Rodin Pro B", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblDialogo.ForeColor = SystemColors.ButtonHighlight;
             lblDialogo.Location = new Point(16, 15);
             lblDialogo.Name = "lblDialogo";

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -30,6 +31,20 @@ namespace JuegoEscaperoom.Controles
             InicializarSelectorIdioma();
             AplicarTextos();
         }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            var top5 = PersistenciaPartida.ListarPartidasGuardadas()
+            .OrderByDescending(p => p.Puntaje)
+            .Take(5)
+            .ToList();
+
+            lbxScores.Items.Clear();
+            foreach (var partida in top5)
+                lbxScores.Items.Add($"{partida.TalentoJugador} — {partida.Puntaje} pts");
+        }
+
 
         private void InicializarSelectorIdioma()
         {
@@ -67,6 +82,7 @@ namespace JuegoEscaperoom.Controles
             btnCargar.Text = L.Obtener("ui.menu.cargarPartida");
             btnSalir.Text = L.Obtener("ui.menu.salir");
             lblIdioma.Text = L.Obtener("ui.menu.seleccionarIdioma") + ":";
+            lblScores.Text = L.Obtener("ui.menu.scores") + ":";
         }
 
         private void btnJugarNueva_Click(object sender, EventArgs e)

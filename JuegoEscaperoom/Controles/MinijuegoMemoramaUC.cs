@@ -281,7 +281,6 @@ namespace JuegoEscaperoom.Controles
                     foreach (var carta in _cartasAnimando)
                     {
                         carta.BackgroundImage = null;
-                        carta.BackColor = Color.SeaShell;
 
                         carta.Image =
                             Properties.Resources.ResourceManager.GetObject(

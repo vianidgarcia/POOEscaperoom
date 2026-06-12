@@ -4,7 +4,8 @@
       "nuevaPartida": "New Game",
       "cargarPartida": "Load Game",
       "salir": "Exit",
-      "seleccionarIdioma": "Language"
+      "seleccionarIdioma": "Language",
+      "scores": "The best five scores"
     },
     "dialogo": {
       "titulo": "Escaperoom",
